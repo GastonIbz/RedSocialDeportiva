@@ -8,5 +8,7 @@ namespace RedSocial.BD.Data.Entidades
 {
     public class Estadistica
     {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
     }
 }

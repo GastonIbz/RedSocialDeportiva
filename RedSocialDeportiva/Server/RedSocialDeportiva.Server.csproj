@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\RedSocial.BD\RedSocial.BD.csproj" />
     <ProjectReference Include="..\Client\RedSocialDeportiva.Client.csproj" />
     <ProjectReference Include="..\Shared\RedSocialDeportiva.Shared.csproj" />
   </ItemGroup>

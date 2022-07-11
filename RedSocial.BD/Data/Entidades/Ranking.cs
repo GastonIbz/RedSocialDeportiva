@@ -8,5 +8,6 @@ namespace RedSocial.BD.Data.Entidades
 {
     public class Ranking
     {
+        public int Id { get; set; }
     }
 }
