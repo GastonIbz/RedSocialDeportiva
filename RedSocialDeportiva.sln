@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSocialDeportiva.Server", "RedSocialDeportiva\Server\RedSocialDeportiva.Server.csproj", "{FDD38AB8-F27E-42E1-AE48-D3809C590439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSocialDeportiva.Server", "RedSocialDeportiva\Server\RedSocialDeportiva.Server.csproj", "{FDD38AB8-F27E-42E1-AE48-D3809C590439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSocialDeportiva.Client", "RedSocialDeportiva\Client\RedSocialDeportiva.Client.csproj", "{842234F1-3946-470C-A821-4FE4F4BCAD2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSocialDeportiva.Client", "RedSocialDeportiva\Client\RedSocialDeportiva.Client.csproj", "{842234F1-3946-470C-A821-4FE4F4BCAD2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSocialDeportiva.Shared", "RedSocialDeportiva\Shared\RedSocialDeportiva.Shared.csproj", "{87D1D0DC-3F9E-4057-955D-27E8EE6FB2F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSocialDeportiva.Shared", "RedSocialDeportiva\Shared\RedSocialDeportiva.Shared.csproj", "{87D1D0DC-3F9E-4057-955D-27E8EE6FB2F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedSocial.BD", "RedSocial.BD\RedSocial.BD.csproj", "{A3175F4C-8458-4D17-BB4B-39AFD28E454A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedSocial.BD", "RedSocial.BD\RedSocial.BD.csproj", "{A3175F4C-8458-4D17-BB4B-39AFD28E454A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

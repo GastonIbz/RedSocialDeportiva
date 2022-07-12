@@ -1,3 +1,7 @@
+/* Importo los modelos de manera global*/
+global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models;
+/* Importo los modelos de manera global*/
+
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using RedSocialDeportiva.Client;

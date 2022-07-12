@@ -16,9 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\LoginAndRegister\Components\" />
     <Folder Include="Pages\LoginAndRegister\Adapters\" />
-    <Folder Include="Pages\LoginAndRegister\Models\" />
     <Folder Include="Pages\LoginAndRegister\Services\" />
   </ItemGroup>
 

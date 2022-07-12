@@ -1,0 +1,36 @@
+﻿<EditForm>
+
+    <h2>Iniciar Sesion</h2>
+
+
+
+
+</EditForm>
+
+@code {
+
+
+    /* TODO: Pasar a Services Idem youtube */
+    public List<FormInputsLogin> InputsLogin = new List<FormInputsLogin>
+    {
+        new FormInputsLogin
+        {
+            Placeholder = "Correo electronico: ",
+            ErrorMessage ="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.",
+            ExpReg = "(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i)",
+            Name = "emailLogin",
+            Type = "email"
+        },
+        new FormInputsLogin
+        {
+            Placeholder = "Contraseña: ",
+            ErrorMessage = "password",
+            ExpReg = "passwordLogin",
+            Name = "(/^.{6,255}$/)",
+            Type = "Minimo 6 caracteres",
+        }
+    };
+
+
+
+}
