@@ -1,16 +1,31 @@
-﻿<EditForm>
+﻿
+<EditForm Model="UserLogin" OnSubmit="HandleLogin">
 
     <h2>Iniciar Sesion</h2>
 
-
-
+    @foreach (FormInputsLogin Input in InputsLogin)
+    {
+        /* INVESTIGAR DE FORMU EN BLAZOR PARA HACER DINAMICO */
+        <label for="@Input.Name" >@Input.Placeholder</label>
+        <div>
+            <InputText 
+                id="@Input.Name"
+                @bind-Value="UserLogin." ///INCOMPLETO 
+                type="@Input.Type"
+                class="form-control col-sm-3" 
+            ></InputText>
+            <p>@Input.ErrorMessage</p>    
+        </div>
+    }
 
 </EditForm>
 
 @code {
 
 
-    /* TODO: Pasar a Services Idem youtube */
+    public FormLogin UserLogin = new FormLogin{};
+    
+
     public List<FormInputsLogin> InputsLogin = new List<FormInputsLogin>
     {
         new FormInputsLogin
@@ -18,19 +33,30 @@
             Placeholder = "Correo electronico: ",
             ErrorMessage ="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.",
             ExpReg = "(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i)",
-            Name = "emailLogin",
+            Name = "Email",
             Type = "email"
         },
         new FormInputsLogin
         {
             Placeholder = "Contraseña: ",
-            ErrorMessage = "password",
-            ExpReg = "passwordLogin",
-            Name = "(/^.{6,255}$/)",
-            Type = "Minimo 6 caracteres",
+            Type = "password",
+            Name = "Password",
+            ExpReg = "(/^.{6,255}$/)",
+            ErrorMessage = "Minimo 6 caracteres",
         }
     };
 
 
+    private string HandleLogin()
+    //private Task HandleLogin()
+    {
 
+
+
+        Console.WriteLine("aaa");
+        if (4 == 4)
+        {
+            return "";
+        }
+    };
 }
