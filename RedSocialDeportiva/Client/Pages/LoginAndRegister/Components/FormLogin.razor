@@ -1,19 +1,22 @@
 ﻿
-<EditForm Model="UserLogin" OnSubmit="HandleLogin">
+<h1>asd</h1>
+
+<EditForm Model="userLogin" OnSubmit="HandleLogin">
 
     <h2>Iniciar Sesion</h2>
 
-    @foreach (FormInputsLogin Input in InputsLogin)
+    @foreach (Models.FormInputsLogin Input in InputsLogin)
     {
-        /* INVESTIGAR DE FORMU EN BLAZOR PARA HACER DINAMICO */
-        <label for="@Input.Name" >@Input.Placeholder</label>
+        <label for="@Input.Name">@Input.Placeholder</label>
         <div>
             <InputText 
                 id="@Input.Name"
-                @bind-Value="UserLogin." ///INCOMPLETO 
+                @bind-Value="userLogin[Input.Name]" 
                 type="@Input.Type"
                 class="form-control col-sm-3" 
             ></InputText>
+            @*Investigar sobre reflection para poder hacer userLogin[Input.Name]    *@
+            @*https://social.msdn.microsoft.com/Forums/es-ES/8aff9759-ea44-4ea1-b3a6-ba44cd4d5d91/acceder-a-una-propiedad-de-un-objeto-dinamicamente?forum=vsgenerales*@
             <p>@Input.ErrorMessage</p>    
         </div>
     }
@@ -23,38 +26,36 @@
 @code {
 
 
-    public FormLogin UserLogin = new FormLogin{};
-    
 
-    public List<FormInputsLogin> InputsLogin = new List<FormInputsLogin>
+    /* https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions Para exp Reg */
+    public List<Models.FormInputsLogin> InputsLogin = new List<Models.FormInputsLogin>
     {
-        new FormInputsLogin
+        new Models.FormInputsLogin
         {
             Placeholder = "Correo electronico: ",
             ErrorMessage ="El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.",
-            ExpReg = "(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i)",
+            ExpReg = new Regex(@"/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i") ,
             Name = "Email",
             Type = "email"
         },
-        new FormInputsLogin
+        new Models.FormInputsLogin
         {
             Placeholder = "Contraseña: ",
             Type = "password",
             Name = "Password",
-            ExpReg = "(/^.{6,255}$/)",
+            ExpReg = new Regex(@"/^.{6,255}$/"),
             ErrorMessage = "Minimo 6 caracteres",
         }
     };
 
+    public Models.FormLogin userLogin = new Models.FormLogin();
+
 
     private string HandleLogin()
-    //private Task HandleLogin()
     {
-
-
-
+        int asd = 4
         Console.WriteLine("aaa");
-        if (4 == 4)
+        if (asd == 4)
         {
             return "";
         }
