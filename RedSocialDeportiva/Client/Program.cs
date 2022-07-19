@@ -1,10 +1,11 @@
 /* Importo los modelos de manera global*/
-global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models;
+//global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models; /* No me tomaba todas las clases */
+global using System.Text.RegularExpressions;
 /* Importo los modelos de manera global*/
 
+using RedSocialDeportiva.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using RedSocialDeportiva.Client;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
