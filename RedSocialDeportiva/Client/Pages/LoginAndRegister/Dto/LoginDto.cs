@@ -1,6 +1,6 @@
-﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Models
+﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Dto
 {
-    public class FormLogin
+    public class LoginDto
     {
         public string? Email { get; set; }
 

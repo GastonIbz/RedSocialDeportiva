@@ -1,8 +1,8 @@
 ﻿
 
-<h2>Iniciar Sesion</h2>
+<h2>Registrarse</h2>
 
-<EditForm Model="loginDto" OnSubmit="HandleLogin">
+<EditForm Model="registerDto" OnSubmit="HandleRegister">
 
 
         <div>
@@ -10,7 +10,7 @@
             <div>
                 <InputText 
                     id="Email|"
-                    @bind-Value="loginDto.Email" 
+                    @bind-Value="registerDto.Email" 
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
@@ -24,7 +24,7 @@
             <div>
                 <InputText 
                     id="Passowrd"
-                    @bind-Value="loginDto.Password"  
+                    @bind-Value="registerDto.Password"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
@@ -42,14 +42,14 @@
 
 @code {
 
-    private Dto.LoginDto loginDto { get; set; } = new Dto.LoginDto();
+    private Dto.RegisterDto registerDto { get; set; } = new Dto.RegisterDto();
 
 
-    private void HandleLogin()
+    private void HandleRegister()
     {
 
-        Console.WriteLine($"aaa {loginDto.Password}");
-        Console.WriteLine($"aaa page {loginDto.Email}");
+        Console.WriteLine($"aaa {registerDto.Password}");
+        Console.WriteLine($"aaa page {registerDto.Email}");
 
         //Console.WriteLine($"True or False: {bln}");
     }
