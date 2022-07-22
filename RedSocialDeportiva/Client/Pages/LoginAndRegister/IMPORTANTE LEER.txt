@@ -1,0 +1,16 @@
+﻿
+PENDIENTES POR VER
+1) Ver este video
+https://www.youtube.com/watch?v=VEpzQUYnLH4&t=262s min 7 en adelante y
+Y aplicarlo en login tb
+https://www.youtube.com/watch?v=o-8yBjtXzEo&t=3s
+
+2) Nota: Aprender ClientFactory (mencoinado vid 1)
+   
+3) MIrar este video https://www.youtube.com/watch?v=9ImjPeCSIDg&t=2s min 6 sobre
+State Container (Idem al useContext) y comparar con Fluxor.
+
+
+
+
+CAPAAZ: Fluxor https://www.youtube.com/watch?v=yM9F8rxo8L8

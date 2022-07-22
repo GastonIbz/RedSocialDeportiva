@@ -31,6 +31,19 @@
                 <p>Minimo 6 caractereas</p>    
             </div>
         </div>
+        
+        <div>
+            <label for="ConfirmPassword">Confirmar cpntraseña: </label>
+            <div>
+                <InputText 
+                    id="Passowrd"
+                    @bind-Value="registerDto.ConfirmPassword"  
+                    type="password"
+                    class="form-control col-sm-3" 
+                ></InputText>
+                <p>La contraseña no coincide</p>    
+            </div>
+        </div>
 
         <br />
     
@@ -41,6 +54,9 @@
 </EditForm>
 
 @code {
+
+
+
 
     private Dto.RegisterDto registerDto { get; set; } = new Dto.RegisterDto();
 
