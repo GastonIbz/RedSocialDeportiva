@@ -1,7 +1,7 @@
-/* Importo los modelos de manera global*/
-//global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models; /* No me tomaba todas las clases */
-global using System.Text.RegularExpressions;
-/* Importo los modelos de manera global*/
+
+#region Realizo importaciones a nivel global para evitar el using en cada pag
+global using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister; // Voy a poder utilziar todos los DTO de LoginAndRegister dentro del CLiente.
+#endregion
 
 using RedSocialDeportiva.Client;
 using Microsoft.AspNetCore.Components.Web;
