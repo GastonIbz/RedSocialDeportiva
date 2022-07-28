@@ -2,8 +2,10 @@
 
 <h2>Registrarse</h2>
 
-<EditForm Model="registerDto" OnSubmit="HandleRegister">
+@*<EditForm Model="registerDto" OnSubmit="HandleRegister">*@
+<EditForm EditContext="editFormContext" OnValidSubmit="HandleRegister">
 
+    <DataAnnotationsValidator/>
 
         <div>
             <label for="Email">Correo electronico: </label>
@@ -14,10 +16,35 @@
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <p>El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>    
-            </div>
+                <ValidationMessage For="(() => registerDto.Email)"/>
+             </div>
         </div>
 
+        <div>
+            <label for="NameCompleted">Nombere Completo: </label>
+            <div>
+                <InputText 
+                    id="NameCompleted"
+                    @bind-Value="registerDto.NameCompleted" 
+                    type="text"
+                    class="form-control col-sm-3" 
+                ></InputText>
+                <ValidationMessage For="(() => registerDto.NameCompleted)"/>
+             </div>
+        </div> 
+        
+        <div>
+            <label for="UserName">Usuario: </label>
+            <div>
+                <InputText 
+                    id="UserName"
+                    @bind-Value="registerDto.UserName" 
+                    type="text"
+                    class="form-control col-sm-3" 
+                ></InputText>
+                <ValidationMessage For="(() => registerDto.UserName)"/>
+             </div>
+        </div>
 
         <div>
             <label for="Password">Contraseña: </label>
@@ -28,26 +55,26 @@
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <p>Minimo 6 caractereas</p>    
+                <ValidationMessage For="(() => registerDto.Password)"/>
             </div>
         </div>
         
         <div>
-            <label for="ConfirmPassword">Confirmar cpntraseña: </label>
+            <label for="ConfirmPassword">Confirmar contraseña: </label>
             <div>
                 <InputText 
-                    id="Passowrd"
+                    id="ConfirmPassword"
                     @bind-Value="registerDto.ConfirmPassword"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <p>La contraseña no coincide</p>    
+                <ValidationMessage For="(() => registerDto.ConfirmPassword)"/>    
             </div>
         </div>
 
         <br />
     
-        <button type="submit" class="btn btn-primary">ASDA</button>
+        <button type="submit" class="btn btn-primary" disabled="@formInvalid">ASDA</button>
         @*<button type="button" class="btn btn-danger" @onclick="DeleteHero">Eliminar Heroe</button>*@
 
 
@@ -55,20 +82,64 @@
 
 @code {
 
+    #region VARIABLES
+
+        private EditContext? editFormContext;
+        private bool formInvalid = false;
+        private RegisterDto registerDto { get; set; } = new RegisterDto();
+
+    #endregion
+
+
+    #region Ciclo de vida del componente.// "CONSTRUCTOR"
+
+        protected override void OnInitialized()
+        {
+            editFormContext = new(registerDto);
+            editFormContext.OnFieldChanged += HandleFieldFormChanged;
+        }
+
+    #endregion
 
 
 
-    private Dto.RegisterDto registerDto { get; set; } = new Dto.RegisterDto();
+
+    #region METODOS 
 
 
-    private void HandleRegister()
-    {
+        private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+        {
+            if (editFormContext is not null)
+            {
+                formInvalid = !editFormContext.Validate();
+                StateHasChanged();
+            }
+        }
 
-        Console.WriteLine($"aaa {registerDto.Password}");
-        Console.WriteLine($"aaa page {registerDto.Email}");
 
-        //Console.WriteLine($"True or False: {bln}");
-    }
+        private void HandleRegister()
+        {
+            Console.WriteLine($"aaa {registerDto.Password}");
+            Console.WriteLine($"aaa page {registerDto.Email}");
+
+            //Console.WriteLine($"True or False: {bln}");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
+
 
       
 }

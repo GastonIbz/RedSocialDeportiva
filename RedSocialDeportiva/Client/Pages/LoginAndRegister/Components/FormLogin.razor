@@ -2,8 +2,9 @@
 
 <h2>Iniciar Sesion</h2>
 
-<EditForm Model="loginDto" OnSubmit="HandleLogin">
+<EditForm  EditContext="editFormContext"  OnValidSubmit="HandleLogin">
 
+        <DataAnnotationsValidator/>
 
         <div>
             <label for="Email">Correo electronico: </label>
@@ -14,7 +15,7 @@
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <p>El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>    
+                <ValidationMessage For="(() => registerDto.Email)"/>  
             </div>
         </div>
 
@@ -28,7 +29,7 @@
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <p>Minimo 6 caractereas</p>    
+                <ValidationMessage For="(() => registerDto.Password)"/>  
             </div>
         </div>
 
@@ -42,17 +43,60 @@
 
 @code {
 
-    private Dto.LoginDto loginDto { get; set; } = new Dto.LoginDto();
+    #region VARIABLES
+
+        private EditContext? editFormContext;
+        private bool formInvalid = false;
+        private LoginDto loginDto { get; set; } = new LoginDto();
+    
+    #endregion
 
 
-    private void HandleLogin()
-    {
+    #region Ciclo de vida del componente.// "CONSTRUCTOR"
 
-        Console.WriteLine($"aaa {loginDto.Password}");
-        Console.WriteLine($"aaa page {loginDto.Email}");
+        protected override void OnInitialized()
+        {
+            editFormContext = new(loginDto);
+            editFormContext.OnFieldChanged += HandleFieldFormChanged;
+        }
 
-        //Console.WriteLine($"True or False: {bln}");
-    }
+    #endregion
 
+    #region METODOS 
+
+
+        private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+        {
+            if (editFormContext is not null)
+            {
+                formInvalid = !editFormContext.Validate();
+                StateHasChanged();
+            }
+        }
+
+
+        private void HandleLogin()
+        {
+
+            Console.WriteLine($"aaa {loginDto.Password}");
+            Console.WriteLine($"aaa page {loginDto.Email}");
+
+            //Console.WriteLine($"True or False: {bln}");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #endregion
       
 }
