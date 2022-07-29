@@ -2,7 +2,6 @@
 
 <h2>Registrarse</h2>
 
-@*<EditForm Model="registerDto" OnSubmit="HandleRegister">*@
 <EditForm EditContext="editFormContext" OnValidSubmit="HandleRegister">
 
     <DataAnnotationsValidator/>
@@ -11,7 +10,7 @@
             <label for="Email">Correo electronico: </label>
             <div>
                 <InputText 
-                    id="Email|"
+                    id="Email"
                     @bind-Value="registerDto.Email" 
                     type="email"
                     class="form-control col-sm-3" 
@@ -84,12 +83,11 @@
 
     #region VARIABLES
 
-        private EditContext? editFormContext;
+        private EditContext editFormContext;
         private bool formInvalid = false;
         private RegisterDto registerDto { get; set; } = new RegisterDto();
 
     #endregion
-
 
     #region Ciclo de vida del componente.// "CONSTRUCTOR"
 
@@ -100,8 +98,6 @@
         }
 
     #endregion
-
-
 
 
     #region METODOS 
@@ -139,6 +135,7 @@
 
 
     #endregion
+
 
 
       

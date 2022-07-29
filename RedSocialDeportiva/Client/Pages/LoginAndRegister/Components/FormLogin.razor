@@ -2,7 +2,8 @@
 
 <h2>Iniciar Sesion</h2>
 
-<EditForm  EditContext="editFormContext"  OnValidSubmit="HandleLogin">
+
+<EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
 
         <DataAnnotationsValidator/>
 
@@ -10,12 +11,12 @@
             <label for="Email">Correo electronico: </label>
             <div>
                 <InputText 
-                    id="Email|"
+                    id="Email"
                     @bind-Value="loginDto.Email" 
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.Email)"/>  
+                <ValidationMessage For="(() => loginDto.Email)"/>  
             </div>
         </div>
 
@@ -24,12 +25,12 @@
             <label for="Password">Contraseña: </label>
             <div>
                 <InputText 
-                    id="Passowrd"
+                    id="Password"
                     @bind-Value="loginDto.Password"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.Password)"/>  
+                <ValidationMessage For="(() => loginDto.Password)"/>  
             </div>
         </div>
 
@@ -45,7 +46,7 @@
 
     #region VARIABLES
 
-        private EditContext? editFormContext;
+        private EditContext editFormContext;
         private bool formInvalid = false;
         private LoginDto loginDto { get; set; } = new LoginDto();
     

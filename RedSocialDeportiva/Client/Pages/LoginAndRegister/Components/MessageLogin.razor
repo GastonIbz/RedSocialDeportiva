@@ -1,10 +1,12 @@
-﻿<article>
+﻿@inject LoginAndRegisterStore store;
+
+<article>
 
    <h3> ¿Ya tienes una cuenta?</h3>
    <p> Inicia sesion para entrar a la pagina</p>
    
-   <button @click="">
-       Iniciar sesion
+   <button >
+       Iniciar sesion  @store.isLoginActive()
    </button>
 
 </article>
@@ -12,6 +14,17 @@
 
 
 @code {
+    protected override void OnInitialized()
+    {
+        store.AddStateChangeListeners(() => StateHasChanged());
+        //store.AddStateChangeListeners(UpdateView);
 
+    }
+    
+    
+    private void UpdateView()
+    {
+        StateHasChanged();
+    }
 }
 
