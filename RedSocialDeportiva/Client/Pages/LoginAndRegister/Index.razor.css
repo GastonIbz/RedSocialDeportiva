@@ -1,2 +1,18 @@
-﻿body {
+﻿.containerPage {
+    width: 100%;
+    max-width: 50rem;
+    margin: auto;
+    position: relative;
+    /*background: red;*/
+}
+
+/* Contenedor fondo azul text */
+.containerBackground {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2.25rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(0.75rem);
+    background: rgba(0, 128, 255, 0.5);
 }
