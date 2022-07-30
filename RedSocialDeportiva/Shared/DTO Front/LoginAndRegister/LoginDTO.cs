@@ -21,6 +21,7 @@ namespace RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister
         #endregion
 
         [Required(ErrorMessage = "Campo requerido")]
+        /// TOO Poner minlenght de 6 caracteres
         [RegularExpression(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$",
              ErrorMessage = "La contraseña debe contener al menos: 1 letra mayuscula, 1 letra minuscula y 1 numero.")]
         public string? Password { get; set; }
