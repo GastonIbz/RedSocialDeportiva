@@ -1,5 +1,4 @@
 ﻿
-
 <h2>Iniciar Sesion</h2>
 
 
@@ -75,14 +74,12 @@
             }
         }
 
-
+        
         private void HandleLogin()
         {
 
-            Console.WriteLine($"aaa {loginDto.Password}");
-            Console.WriteLine($"aaa page {loginDto.Email}");
+            JsonService.ShowConsoleDataInJson<LoginDto>(loginDto);
 
-            //Console.WriteLine($"True or False: {bln}");
         }
 
 

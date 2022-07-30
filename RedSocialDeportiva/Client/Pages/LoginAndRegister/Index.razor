@@ -1,6 +1,8 @@
 ﻿@page "/a"
 @using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components
 
+
+
 @*Incorporamos el store dentro del index *@
 @inject LoginAndRegisterStore store;
 
@@ -29,11 +31,9 @@
 
         <section>
 
-                <FormLogin />
-
-                <FormRegister />
-
-
+            <FormLogin />
+            
+            <FormRegister />
 
         </section>
 
@@ -75,6 +75,9 @@
     public void change()
     {
         store.SetLoginActive(!store.IsLoginActive());
+
+
+
     }
 
 

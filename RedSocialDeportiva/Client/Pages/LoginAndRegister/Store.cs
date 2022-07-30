@@ -9,6 +9,7 @@
         public bool RegisterActive { get; set; }
         public bool IsLoader { get; set; }
         public string? MessageModal { get; set; }
+        public LoginDto LoginDto { get; set; } 
     }
     
     #endregion
@@ -27,7 +28,9 @@
                 LoginActive = true,
                 RegisterActive = false,
                 IsLoader = false,
-                MessageModal = ""
+                MessageModal = "",
+                LoginDto = new LoginDto()
+
             };
         }
 
@@ -67,6 +70,14 @@
             this._state.MessageModal = newState;
             ExecuteStateChange();
         }
+
+
+        /* PROBAR PARA MANEAR LOS FORM DESDE EL STORE*/
+        public LoginDto GetFormLogin()
+        {
+            return this._state.LoginDto;
+        }
+        /* PROBAR PARA MANEAR LOS FORM DESDE EL STORE*/
 
 
         #endregion Metodos para obtener y setear los States
