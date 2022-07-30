@@ -4,6 +4,7 @@
 global using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister; // Voy a poder utilziar todos los DTO de LoginAndRegister dentro del CLiente.
 global using RedSocialDeportiva.Client.Pages.LoginAndRegister; // Accedemos al Store que tiene dicha pag.
 
+global using RedSocialDeportiva.Client.Utils.JsonService;
 #endregion
 
 using RedSocialDeportiva.Client;
@@ -15,6 +16,12 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+
+#region Servicios agregados
+
 builder.Services.AddScoped<LoginAndRegisterStore>();
+builder.Services.AddScoped<JsonService>();
+
+#endregion
 
 await builder.Build().RunAsync();
