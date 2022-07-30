@@ -1,52 +1,79 @@
 ﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister
 {
 
-    /// Definimos los datos q contendra nuestro State
+    #region Clase del State
+    
     public class LoginAndRegisterState
     {
         public bool LoginActive { get; set; }
         public bool RegisterActive { get; set; }
         public bool IsLoader { get; set; }
-
+        public string? MessageModal { get; set; }
     }
-
+    
+    #endregion
 
     // Definimos el store junto al State y los metodos del store
     public class LoginAndRegisterStore
     {
 
-        #region State inicial
+        #region State con valores iniciales
 
         private LoginAndRegisterState _state;
         public LoginAndRegisterStore()
         {
             _state = new LoginAndRegisterState
             {
-                LoginActive = true
+                LoginActive = true,
+                RegisterActive = false,
+                IsLoader = false,
+                MessageModal = ""
             };
         }
 
-        #endregion
+        #endregion State con valores iniciales
 
 
-        #region Metodos
+        #region Metodos para obtener y setear los States
 
 
-        public bool isLoginActive() => this._state.LoginActive;
+        public bool IsLoginActive() => this._state.LoginActive;
         public void SetLoginActive(bool newState)
         {
             this._state.LoginActive = newState;
-
             ExecuteStateChange();
-
         }
 
 
-        #endregion
+        public bool IsRegisterActive() => this._state.RegisterActive;
+        public void SetRegisterActive(bool newState)
+        {
+            this._state.RegisterActive = newState;
+            ExecuteStateChange();
+        }
+
+
+        public bool IsLoader() => this._state.IsLoader;
+        public void SetIsLoader(bool newState)
+        {
+            this._state.IsLoader = newState;
+            ExecuteStateChange();
+        }
+
+
+        public string MessageModal() => this._state.MessageModal;
+        public void SetMessageModal(string newState)
+        {
+            this._state.MessageModal = newState;
+            ExecuteStateChange();
+        }
+
+
+        #endregion Metodos para obtener y setear los States
 
 
 
-        #region Listeners Patron Observer
+        #region Listeners Patron Observer || Gestion de eventos
 
 
         // Actua como controlador de eventos.

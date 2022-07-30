@@ -5,8 +5,8 @@
    <h3> ¿Ya tienes una cuenta?</h3>
    <p> Inicia sesion para entrar a la pagina</p>
    
-   <button >
-       Iniciar sesion  @store.isLoginActive()
+   <button @onclick="goToLogin">
+       Iniciar sesion
    </button>
 
 </article>
@@ -14,17 +14,39 @@
 
 
 @code {
+
+
+    #region Ciclo Vida componente
+
     protected override void OnInitialized()
     {
-        store.AddStateChangeListeners(() => StateHasChanged());
-        //store.AddStateChangeListeners(UpdateView);
+        store.AddStateChangeListeners(updateView);
+    }
 
-    }
-    
-    
-    private void UpdateView()
+    #endregion
+
+    #region Metodos relacionado al Store
+
+    public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
     {
-        StateHasChanged();
+        store.RemoveStateChangeListeners(updateView);
     }
+
+    private void updateView() => StateHasChanged();
+
+    #endregion
+
+
+
+    public void goToLogin()
+    {
+        store.SetLoginActive(true);
+        store.SetRegisterActive(false);
+        /// TODO: Resetear FORM register.
+    } 
+
+
+
+
 }
 

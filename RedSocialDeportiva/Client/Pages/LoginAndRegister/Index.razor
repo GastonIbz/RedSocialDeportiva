@@ -5,18 +5,17 @@
 @inject LoginAndRegisterStore store;
 
 
-
-<PageTitle>Index</PageTitle>
-
 @*LOADER*@
+<PageTitle>Index</PageTitle>
 
 
 <main>
 
+    <p>Estado LoginACtive ====> @store.IsLoginActive()</p>
+    <p>Estado RegisterActive  ===> @store.IsRegisterActive()</p>
 
-    <p>LALALA @store.isLoginActive()</p>
 
-    <button @onclick="change"> CAMBIAR STATE</button>
+
 
     <div class="containerPage">
 
@@ -34,6 +33,8 @@
 
                 <FormRegister />
 
+
+
         </section>
 
     </div>
@@ -41,40 +42,45 @@
 </main>
 
 
-@*Modal Container*@
-
 @code{
 
     //private string css_containerFormActive = 
     private string styleContainerForms = $"containerLoginAndRegister";
 
 
+
+    #region Ciclo Vida componente
+
     protected override void OnInitialized()
     {
-        //loginAndRegisterStore.AddStateChangeListeners(() => StateHasChanged());
-        store.AddStateChangeListeners(UpdateView);
-
+        store.AddStateChangeListeners(updateView);
     }
 
+    #endregion
+
+    #region Metodos relacionado al Store
 
     public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
     {
-        store.RemoveStateChangeListeners(UpdateView);
+        store.RemoveStateChangeListeners(updateView);
     }
 
-    private void UpdateView()
-    {
-        StateHasChanged();
-    }
+    private void updateView() => StateHasChanged();
 
+    #endregion
+    
 
+    #region METODOS
 
     public void change()
     {
-        store.SetLoginActive(!store.isLoginActive());
-
+        store.SetLoginActive(!store.IsLoginActive());
     }
 
 
+
+
+
+    #endregion
 
 }

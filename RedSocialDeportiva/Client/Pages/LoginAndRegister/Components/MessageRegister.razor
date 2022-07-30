@@ -1,9 +1,11 @@
-﻿<article>
+﻿@inject LoginAndRegisterStore store;
+
+<article>
 
    <h3> ¿Aun no tienes una cuenta?</h3>
    <p> Registrate para que puedas iniciar sesion</p>
    
-   <button >
+   <button @onclick="goToRegister">
        Registrarse
    </button>
 
@@ -13,4 +15,35 @@
 
 @code {
 
+
+    #region Ciclo Vida componente
+
+    protected override void OnInitialized()
+    {
+        store.AddStateChangeListeners(updateView);
+    }
+
+    #endregion
+
+    #region Metodos relacionado al Store
+
+    public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
+    {
+        store.RemoveStateChangeListeners(updateView);
+    }
+
+    private void updateView() => StateHasChanged();
+
+    #endregion
+
+
+
+    public void goToRegister()
+    {
+        store.SetLoginActive(false);
+        store.SetRegisterActive(true);
+        /// TODO: Resetear FORM Login.
+    } 
+
 }
+
