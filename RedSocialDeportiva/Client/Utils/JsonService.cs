@@ -4,10 +4,10 @@ namespace RedSocialDeportiva.Client.Utils.JsonService
 {
     public class JsonService
     {
-        
+        /// TODO: NO UTILIAR, DEJAR POR EL TEMA DE SERIALZIACION.
         public JsonService() { }
 
-        public static void ShowConsoleDataInJson<T>(T data)
+        public static void ShowConsoleDataInJson<DateType>(string? message, DateType data)
         { 
             var options = new JsonSerializerOptions
             {
@@ -15,8 +15,8 @@ namespace RedSocialDeportiva.Client.Utils.JsonService
                 WriteIndented = true
             };
 
-            string jsonString = JsonSerializer.Serialize<T>(data, options);
-            Console.WriteLine("aaaa" + jsonString);
+            string jsonString = JsonSerializer.Serialize<DateType>(data, options);
+            Console.WriteLine(message + jsonString);
         }
 
     }
