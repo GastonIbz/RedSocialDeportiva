@@ -1,0 +1,27 @@
+﻿
+1* Nota: Aprender ClientFactory (mencoinado vid 1)
+   https://www.youtube.com/watch?v=5aTfPbvvn0c
+   Lo de arriba se aplica en este video https://www.youtube.com/watch?v=VEpzQUYnLH4&t=262s min 13.
+
+   
+
+2* Ejecutar con el ultimo metodo de ciclo de vida.: store.RemoveStateChangeListeners(updateView)
+   para desubscribirse al Listeners del store. 
+   Nota: En todos los comopnentes de LoginAndRegister
+
+
+3* Al llenar cualquiera de los formularios e irse a la otra seccion (es decir, para registrarse o loguearse)
+   y completar los campos, deja de validarnos si escribimos mal, debido a que la variable "formInvalid" 
+   o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima vez y no vuelve a 
+   su valor inicial
+
+
+   4* Agregar interface a servicios
+
+
+
+
+
+
+
+
