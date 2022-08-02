@@ -15,35 +15,32 @@
 
 @code {
 
+    #region Ciclo de vida del componente.// "CONSTRUCTOR"
 
-    #region Ciclo Vida componente
-
-    protected override void OnInitialized()
-    {
-        store.AddStateChangeListeners(updateView);
-    }
-
-    #endregion
-
-    #region Metodos relacionado al Store
-
-    public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
-    {
-        store.RemoveStateChangeListeners(updateView);
-    }
-
-    private void updateView() => StateHasChanged();
+        protected override void OnInitialized()
+        {
+            store.AddStateChangeListeners(updateView);
+        }
 
     #endregion
 
+    #region METODOS
 
 
-    public void goToLogin()
-    {
-        store.SetLoginActive(true);
-        store.SetRegisterActive(false);
-        /// TODO: Resetear FORM register.
-    } 
+        private void updateView() => StateHasChanged();
+
+        public void goToLogin()
+        {
+            store.SetLoginActive(true);
+            store.SetRegisterActive(false);
+            store.ResetFormRegister();
+        } 
+
+
+    #endregion
+
+
+
 
 
 

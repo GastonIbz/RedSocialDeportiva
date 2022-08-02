@@ -1,44 +1,46 @@
-﻿
-<h2>Iniciar Sesion</h2>
+﻿@inject LoginAndRegisterStore store;
+@inject ConsoleJS consoleJS;
+@inject LoginAndRegisterService logAndRegister;
+@inject NavigationManager NavigationManager;
 
+<h2>Iniciar Sesion</h2>
 
 <EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
 
         <DataAnnotationsValidator/>
 
+        @*Email *@
         <div>
             <label for="Email">Correo electronico: </label>
             <div>
                 <InputText 
                     id="Email"
-                    @bind-Value="loginDto.Email" 
+                    @bind-Value="store.GetFormLogin().Email" 
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => loginDto.Email)"/>  
+                <ValidationMessage For="(() => store.GetFormLogin().Email)"/>  
             </div>
         </div>
 
-
+        @*Contraseña *@
         <div>
             <label for="Password">Contraseña: </label>
             <div>
                 <InputText 
                     id="Password"
-                    @bind-Value="loginDto.Password"  
+                    @bind-Value="store.GetFormLogin().Password"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => loginDto.Password)"/>  
+                <ValidationMessage For="(() => store.GetFormLogin().Password)"/>  
             </div>
         </div>
 
         <br />
     
-        <button type="submit" class="btn btn-primary">ASDA</button>
-        @*<button type="button" class="btn btn-danger" @onclick="DeleteHero">Eliminar Heroe</button>*@
-
-
+        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+   
 </EditForm>
 
 @code {
@@ -47,8 +49,7 @@
 
         private EditContext editFormContext;
         private bool formInvalid = false;
-        private LoginDto loginDto { get; set; } = new LoginDto();
-    
+
     #endregion
 
 
@@ -56,30 +57,39 @@
 
         protected override void OnInitialized()
         {
-            editFormContext = new(loginDto);
+            // State
+            store.AddStateChangeListeners(updateView);
+
+            // Formulario
+            editFormContext = new(store.GetFormLogin());
             editFormContext.OnFieldChanged += HandleFieldFormChanged;
         }
 
     #endregion
 
+
+
     #region METODOS 
 
+        private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
         private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
         {
             if (editFormContext is not null)
             {
                 formInvalid = !editFormContext.Validate();
-                StateHasChanged();
+                updateView();
             }
         }
 
         
-        private void HandleLogin()
+        private async Task HandleLogin()
         {
 
-            JsonService.ShowConsoleDataInJson<LoginDto>(loginDto);
+            consoleJS.log<LoginDto>("Handle Login", store.GetFormLogin());
+            await logAndRegister.probando();
 
+            //NavigationManager.NavigateTo("hero");
         }
 
 

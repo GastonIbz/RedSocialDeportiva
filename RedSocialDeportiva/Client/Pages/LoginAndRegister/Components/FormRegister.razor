@@ -1,4 +1,6 @@
-﻿
+﻿@inject LoginAndRegisterStore store;
+
+@inject ConsoleJS consoleJS;
 
 <h2>Registrarse</h2>
 
@@ -6,75 +8,80 @@
 
     <DataAnnotationsValidator/>
 
+
+        @*Email *@
         <div>
             <label for="Email">Correo electronico: </label>
             <div>
                 <InputText 
                     id="Email"
-                    @bind-Value="registerDto.Email" 
+                    @bind-Value="store.GetFormRegister().Email" 
                     type="email"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.Email)"/>
+                <ValidationMessage For="(() => store.GetFormRegister().Email)"/>
              </div>
         </div>
 
+        @*Nombre completo *@
         <div>
             <label for="NameCompleted">Nombere Completo: </label>
             <div>
                 <InputText 
                     id="NameCompleted"
-                    @bind-Value="registerDto.NameCompleted" 
+                    @bind-Value="store.GetFormRegister().NameCompleted" 
                     type="text"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.NameCompleted)"/>
+                <ValidationMessage For="(() => store.GetFormRegister().NameCompleted)"/>
              </div>
         </div> 
         
+        @*Usuario *@
         <div>
             <label for="UserName">Usuario: </label>
             <div>
                 <InputText 
                     id="UserName"
-                    @bind-Value="registerDto.UserName" 
+                    @bind-Value="store.GetFormRegister().UserName" 
                     type="text"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.UserName)"/>
+                <ValidationMessage For="(() => store.GetFormRegister().UserName)"/>
              </div>
         </div>
 
+        @*Contraseña *@
         <div>
             <label for="Password">Contraseña: </label>
             <div>
                 <InputText 
                     id="Passowrd"
-                    @bind-Value="registerDto.Password"  
+                    @bind-Value="store.GetFormRegister().Password"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.Password)"/>
+                <ValidationMessage For="(() => store.GetFormRegister().Password)"/>
             </div>
         </div>
         
+        @*Confirmar contraseña *@
         <div>
             <label for="ConfirmPassword">Confirmar contraseña: </label>
             <div>
                 <InputText 
                     id="ConfirmPassword"
-                    @bind-Value="registerDto.ConfirmPassword"  
+                    @bind-Value="store.GetFormRegister().ConfirmPassword"  
                     type="password"
                     class="form-control col-sm-3" 
                 ></InputText>
-                <ValidationMessage For="(() => registerDto.ConfirmPassword)"/>    
+                <ValidationMessage For="(() => store.GetFormRegister().ConfirmPassword)"/>    
             </div>
         </div>
 
         <br />
     
-        <button type="submit" class="btn btn-primary" disabled="@formInvalid">ASDA</button>
-        @*<button type="button" class="btn btn-danger" @onclick="DeleteHero">Eliminar Heroe</button>*@
+        <button type="submit" class="btn btn-primary" disabled="@formInvalid">Registrarse</button>
 
 
 </EditForm>
@@ -85,7 +92,6 @@
 
         private EditContext editFormContext;
         private bool formInvalid = false;
-        private RegisterDto registerDto { get; set; } = new RegisterDto();
 
     #endregion
 
@@ -93,7 +99,11 @@
 
         protected override void OnInitialized()
         {
-            editFormContext = new(registerDto);
+            // State
+            store.AddStateChangeListeners(updateView);
+
+            // Formulario
+            editFormContext = new(store.GetFormRegister());
             editFormContext.OnFieldChanged += HandleFieldFormChanged;
         }
 
@@ -102,6 +112,7 @@
 
     #region METODOS 
 
+        private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
         private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
         {
@@ -115,10 +126,8 @@
 
         private void HandleRegister()
         {
-            Console.WriteLine($"aaa {registerDto.Password}");
-            Console.WriteLine($"aaa page {registerDto.Email}");
 
-            //Console.WriteLine($"True or False: {bln}");
+            consoleJS.log<RegisterDto>("HandleRegister", store.GetFormRegister());
         }
 
 
