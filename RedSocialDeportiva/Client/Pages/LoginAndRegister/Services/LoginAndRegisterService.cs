@@ -19,10 +19,17 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
 
         public async Task probando()
         {
-            var result = await this.http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast/PROBANDO");
-            //var result = await this.http.GetFromJsonAsync<WeatherForecast[]>("/login");
-            consoleJS.log <WeatherForecast[]>("Handle Login", result);
-            Console.WriteLine(result);
+
+
+            //var result = await this.http.GetFromJsonAsync<WeatherForecast[]>("WeatherForecast/PROBANDO");
+            //var result = await this.http.GetFromJsonAsync<UserDTO>("api/User");
+
+            var result = await this.http.GetStringAsync("api/User");
+            consoleJS.log("Handle probando", result);
+            Console.WriteLine("Handle ", result);
+
+
+
         }
     }
 }

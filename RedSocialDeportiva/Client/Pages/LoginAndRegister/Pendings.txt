@@ -21,7 +21,48 @@
 
 
 
+NOTAS
+
+GET
+*** En caso de que nos interese tener en cuenta el status de la peticion entre otras cosas, podemos hacer:
+
+Caso 1: 
+    var result = await this.http.GetAsync("api/User");; /// Obtenemos todos los datos de la peticion, headers, etc..
+    var asd = await result.Content.ReadAsStringAsync() /// Convertimos los datos del headers q recibimos en string
+ 
+Caso 2: 
+    var result = await this.http.GetAsync("api/User");
+    var asd = await result.Content.ReadFromJsonAsync<UserDTO>(); // Convertimos los datos del headers q recibimos en json para leerlos
+    
+
+*** En caso de que solo nos interese los datos que nos devuelve el end-point, podemos hacer:
+
+Caso 1:
+    var result = await this.http.GetStringAsync("api/User"); /// Obtenemos todos los datos del headers directamente.
+
+Caso 2:
+    var result = await this.http.GetFromJsonAsync<UserDTO>("api/User");
+
+
+POST
+*** 
+Caso 1: 
+    var asd = await this.http.PostAsync("api/User", ""); /// Idem al .GetAsync pero en enviando POST con los datos en cualquier formato.
+    var content = await asd.Content.ReadAsStringAsync(); // Convertimos los datos del headers q recibimos en string
+
+Caso 2:
+    var asd = await this.http.PostAsJsonAsync("api/User", ""); /// Idem al .GetAsync pero en enviando POST con los datos en formato JSON .
+    var content = await asd.Content.ReadAsStringAsync(); // Convertimos los datos del headers q recibimos en string
 
 
 
+// Nota: En casos de que se utilice 'ReadAsStringAsync' o 'ReadFromJsonAsync'
+   abria que desearilziar con options los datos para poder utilizarlo en front.
 
+
+PUT 
+  PutAsJsonAsync
+
+
+DELETE
+    DeleteAsync 

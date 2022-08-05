@@ -1,3 +1,9 @@
+
+#region Realizo importaciones a nivel global para evitar el using en cada pag
+global using RedSocialDeportiva.Shared.DTO_Back.User;
+#endregion
+
+
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using RedSocial.BD.Data;
