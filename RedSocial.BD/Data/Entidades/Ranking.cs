@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RedSocial.BD.Data.Entidades
 {
-    public class Ranking
+    public class Ranking : EntityBase
     {
         public int Id { get; set; }
     }

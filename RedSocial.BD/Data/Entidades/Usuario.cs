@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace RedSocial.BD.Data.Entidades
 {
-    [Index(nameof(Id), Name = "IdUsuario_UQ", IsUnique = true)]
-    public class Usuario
-    { 
-
-        public int Id { get; set; }
+    
+    public class Usuario : EntityBase
+    {
 
         [Required]
         [MaxLength(30, ErrorMessage = "El nombre de usuario no debe superar los {1} caracteres")]

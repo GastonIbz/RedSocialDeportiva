@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace RedSocial.BD.Data.Entidades
 {
-    public class Estadistica
+    public class Estadistica : EntityBase
     {
-        public int Id { get; set; }
-        public string Nombre { get; set; }
+       
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RedSocial.BD.Data.Entidades
 {
-    public class Publicacion
+    public class Publicacion : EntityBase
     {
-        public int Id { get; set; }
+        
     }
 }
