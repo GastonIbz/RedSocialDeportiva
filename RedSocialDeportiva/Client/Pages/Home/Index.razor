@@ -1,0 +1,89 @@
+﻿@page "/Home"
+@using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components
+
+
+
+@*Incorporamos el store dentro del index *@
+@inject LoginAndRegisterStore store;
+
+
+@*LOADER*@
+<PageTitle>Index</PageTitle>
+
+
+<main>
+
+    <p>Estado LoginACtive ====> @store.IsLoginActive()</p>
+    <p>Estado RegisterActive  ===> @store.IsRegisterActive()</p>
+
+
+
+
+    <div class="containerPage">
+
+        <section class="containerBackground">
+
+            <MessageLogin/>
+
+            <MessageRegister/>
+
+        </section>
+
+        <section>
+
+            <FormLogin />
+            
+            <FormRegister />
+
+        </section>
+
+    </div>
+
+</main>
+
+
+@code{
+
+    //private string css_containerFormActive = 
+    private string styleContainerForms = $"containerLoginAndRegister";
+
+
+
+    #region Ciclo Vida componente
+
+    protected override void OnInitialized()
+    {
+        store.AddStateChangeListeners(updateView);
+    }
+
+    #endregion
+
+    #region Metodos relacionado al Store
+
+    public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
+    {
+        store.RemoveStateChangeListeners(updateView);
+    }
+
+    private void updateView() => StateHasChanged();
+
+    #endregion
+    
+
+    #region METODOS
+
+    public void change()
+    {
+        store.SetLoginActive(!store.IsLoginActive());
+
+
+
+    }
+
+
+
+
+
+    #endregion
+
+}
