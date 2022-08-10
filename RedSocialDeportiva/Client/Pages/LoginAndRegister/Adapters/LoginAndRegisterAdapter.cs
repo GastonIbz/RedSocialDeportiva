@@ -3,18 +3,19 @@
     public class LoginAndRegisterAdapter
     {
 
-        public UserModels CreateAdapterUser(UserDTO dataUser)
+        public UserModels CreateAdapterUser(LoginDataDTO dataUser)
         {
 
             UserModels formattedUser = new UserModels
             {
-                Email = dataUser.Email,
-                Id = dataUser.Id,
-                LastName = dataUser.LastName,
-                NameCompleted = dataUser.NameCompleted,
-                UserName = dataUser.UserName,
+                Email = dataUser.User.Email,
+                Id = dataUser.User.Id,
+                LastName = dataUser.User.LastName,
+                NameCompleted = dataUser.User.NameCompleted,
+                UserName = dataUser.User.UserName,
                 Token = dataUser.Token,
             };
+
 
             return formattedUser;
         }
