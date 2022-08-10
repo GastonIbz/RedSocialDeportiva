@@ -4,7 +4,8 @@ namespace RedSocialDeportiva.Client.Utils.JsonService
 {
     public class JsonService
     {
-        /// TODO: NO UTILIAR, DEJAR POR EL TEMA DE SERIALZIACION.
+        /// TODO: NO UTILIAR, DEJAR POR EL TEMA DE SERIALZIACION.  <summary>
+        /// VER SI DEPSUES BORRAR
         public JsonService() { }
 
         public static void ShowConsoleDataInJson<DateType>(string? message, DateType data)
