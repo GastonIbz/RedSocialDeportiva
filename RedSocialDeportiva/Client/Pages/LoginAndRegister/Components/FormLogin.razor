@@ -1,6 +1,6 @@
 ﻿@inject LoginAndRegisterStore store;
 @inject ConsoleJS consoleJS;
-@inject LoginAndRegisterService logAndRegister;
+@inject UserService userService;
 @inject NavigationManager NavigationManager;
 
 <h2>Iniciar Sesion</h2>
@@ -87,7 +87,7 @@
         {
 
             consoleJS.log("Handle Login", store.GetFormLogin());
-            await logAndRegister.probando();
+            await userService.login();
 
             //NavigationManager.NavigateTo("hero");
         }
