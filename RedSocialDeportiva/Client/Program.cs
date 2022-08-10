@@ -1,12 +1,20 @@
 
 #region Realizo importaciones a nivel global para evitar el using en cada pag
 
+// DTO's
 global using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister; // Voy a poder utilziar todos los DTO de LoginAndRegister dentro del CLiente.
-global using RedSocialDeportiva.Shared.DTO_Back.User; 
+global using RedSocialDeportiva.Shared.DTO_Back.User;
 
-global using RedSocialDeportiva.Client.Pages.LoginAndRegister; // Accedemos al Store que tiene dicha pag.
-global using RedSocialDeportiva.Client.Utils.ConsoleJS;
+// Models
+global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models;
+
+// Services
 global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Services;
+global using RedSocialDeportiva.Client.Utils.ConsoleJS;
+
+// Store's
+global using RedSocialDeportiva.Client.Pages.LoginAndRegister; // Accedemos al Store que tiene dicha pag.
+
 
 #endregion
 
@@ -24,7 +32,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddScoped<LoginAndRegisterStore>();
 builder.Services.AddScoped<ConsoleJS>();
-builder.Services.AddScoped<LoginAndRegisterService>();
+builder.Services.AddScoped<UserService>();
 
 #endregion
 
