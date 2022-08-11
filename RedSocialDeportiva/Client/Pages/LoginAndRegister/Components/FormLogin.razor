@@ -1,6 +1,7 @@
-﻿@inject LoginAndRegisterStore store;
+﻿@inject StoreGlobal.Store storeGlobal;
+@inject LoginAndRegisterStore store;
 @inject ConsoleJS consoleJS;
-@inject UserService userService;
+@inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
 
 <h2>Iniciar Sesion</h2>
@@ -47,23 +48,24 @@
 
     #region VARIABLES
 
-        private EditContext editFormContext;
-        private bool formInvalid = false;
+    private EditContext editFormContext;
+    private bool formInvalid = false;
 
     #endregion
 
 
     #region Ciclo de vida del componente.// "CONSTRUCTOR"
 
-        protected override void OnInitialized()
-        {
-            // State
-            store.AddStateChangeListeners(updateView);
+    protected override void OnInitialized()
+    {
+        // State
+        storeGlobal.AddStateChangeListeners(updateView);
+        store.AddStateChangeListeners(updateView);
 
-            // Formulario
-            editFormContext = new(store.GetFormLogin());
-            editFormContext.OnFieldChanged += HandleFieldFormChanged;
-        }
+        // Formulario
+        editFormContext = new(store.GetFormLogin());
+        editFormContext.OnFieldChanged += HandleFieldFormChanged;
+    }
 
     #endregion
 
@@ -71,37 +73,43 @@
 
     #region METODOS 
 
-        private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
+    private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
-        private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    {
+        if (editFormContext is not null)
         {
-            if (editFormContext is not null)
-            {
-                formInvalid = !editFormContext.Validate();
-                updateView();
-            }
+            formInvalid = !editFormContext.Validate();
+            updateView();
+        }
+    }
+
+
+    private async Task HandleLogin()
+    {
+        // TODO: Ver LoginAndRegister.tsx
+        /* 
+        Pendings: 
+        - Hacer maquetado CSS de Todo
+        - Realizar tema de Loader (mientras hace el http)
+        - Realizar tema del Modal
+        - Agregar Try/Catch
+        - Enviar Form al service login
+        */
+
+        var (UserModels, MessageError) = await userService.login();
+
+        if (UserModels != null && MessageError == "")
+        {
+            storeGlobal.SetMyUserData(UserModels);
         }
 
-        
-        private async Task HandleLogin()
-        {
-            // TODO: Ver LoginAndRegister.tsx
-            /* 
-                Pendings: 
-                - Hacer maquetado CSS de Todo
-                - Realizar tema de Loader (mientras hace el http)
-                - Realizar tema del Modal
-                - Almacenar resultado en Store.
-            */
 
-            //consoleJS.log("Handle Login", store.GetFormLogin());
-            var (UserModels, MessageError) = await userService.login();
+        consoleJS.log("ASD", UserModels);
 
-            consoleJS.log("Return Login", UserModels);
-            consoleJS.log("Return MessageError", MessageError);
-
-            //NavigationManager.NavigateTo("hero");
-        }
+        NavigationManager.NavigateTo("Home");
+        store.ResetFormLogin();
+    }
 
 
 
