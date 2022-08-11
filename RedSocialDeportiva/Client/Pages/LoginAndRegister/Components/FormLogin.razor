@@ -85,9 +85,20 @@
         
         private async Task HandleLogin()
         {
+            // TODO: Ver LoginAndRegister.tsx
+            /* 
+                Pendings: 
+                - Hacer maquetado CSS de Todo
+                - Realizar tema de Loader (mientras hace el http)
+                - Realizar tema del Modal
+                - Almacenar resultado en Store.
+            */
 
-            consoleJS.log("Handle Login", store.GetFormLogin());
-            await userService.login();
+            //consoleJS.log("Handle Login", store.GetFormLogin());
+            var (UserModels, MessageError) = await userService.login();
+
+            consoleJS.log("Return Login", UserModels);
+            consoleJS.log("Return MessageError", MessageError);
 
             //NavigationManager.NavigateTo("hero");
         }
