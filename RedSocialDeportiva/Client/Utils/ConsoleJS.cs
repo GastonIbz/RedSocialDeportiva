@@ -15,6 +15,5 @@ namespace RedSocialDeportiva.Client.Utils.ConsoleJS
         {
             await _js.InvokeVoidAsync("console.log", message, data);
         }
-
     }
 }

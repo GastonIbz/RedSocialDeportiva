@@ -19,7 +19,7 @@ global using RedSocialDeportiva.Client.StoreGlobal;
 global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Store; // Accedemos al Store que tiene dicha pag.
 
 // Adapters
-global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Adapters;
+global using RedSocialDeportiva.Client.Adapters;
 
 #endregion
 

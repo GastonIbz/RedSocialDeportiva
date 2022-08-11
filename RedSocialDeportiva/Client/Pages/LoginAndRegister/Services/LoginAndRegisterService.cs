@@ -1,5 +1,4 @@
-﻿using RedSocialDeportiva.Shared;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Json;
 
 namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
 {

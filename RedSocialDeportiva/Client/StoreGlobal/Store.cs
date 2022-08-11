@@ -4,9 +4,11 @@
     public class Store
     {
 
-        #region State con valores iniciales
-
+        #region State
         private GlobalState _stateGlobal;
+
+
+        #region CONSTRUCTOR
 
         public Store()
         {
@@ -16,7 +18,7 @@
             };
         }
 
-        #endregion State con valores iniciales
+        #endregion
 
 
         #region Metodos para obtener y setear los States
@@ -51,6 +53,5 @@
         #endregion
 
         /// Nota: Debemos inyectar la dependencia dentro de los Services de Program.cs
-
     }
 }

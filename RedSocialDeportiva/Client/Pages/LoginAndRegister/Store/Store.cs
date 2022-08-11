@@ -3,10 +3,10 @@
     public class LoginAndRegisterStore
     {
 
-        #region State con valores iniciales
-
+        #region State inicial
         private LoginAndRegisterState _state;
 
+        #region CONSTRUCTOR
         public LoginAndRegisterStore()
         {
             _state = new LoginAndRegisterState
@@ -19,9 +19,7 @@
                 RegisterDto = new RegisterDto()
             };
         }
-
-        #endregion State con valores iniciales
-
+        #endregion
 
         #region Metodos para obtener y setear los States
 

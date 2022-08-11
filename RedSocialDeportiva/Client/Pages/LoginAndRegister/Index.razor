@@ -54,23 +54,17 @@
 
     #region Metodos relacionado al Store
 
-    public void Dispose() // Ejecutar con el ultimo metodo de ciclo de vida.
-    {
-        store.RemoveStateChangeListeners(updateView);
-    }
+    // Ejecutar con el ultimo metodo de ciclo de vida.
+    public void Dispose() => store.RemoveStateChangeListeners(updateView); // QUITAR DE METODO
 
     private void updateView() => StateHasChanged();
 
     #endregion
-    
+
 
     #region METODOS
 
-    public void change()
-    {
-        store.SetLoginActive(!store.IsLoginActive());
-
-    }
+    public void change() => store.SetLoginActive(!store.IsLoginActive());
 
 
 

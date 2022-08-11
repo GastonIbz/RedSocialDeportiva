@@ -1,4 +1,4 @@
-﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Adapters
+﻿namespace RedSocialDeportiva.Client.Adapters
 {
     public class UserAdapter
     {
