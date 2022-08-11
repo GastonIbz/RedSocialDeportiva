@@ -11,8 +11,6 @@ namespace RedSocialDeportiva.Client.Utils.ConsoleJS
             this._js = jS ?? throw new ArgumentNullException(nameof(jS));
         }
 
-
-        //public async void log<DateType>(string message, DateType data)
         public async void log(string message, object data)
         {
             await _js.InvokeVoidAsync("console.log", message, data);
