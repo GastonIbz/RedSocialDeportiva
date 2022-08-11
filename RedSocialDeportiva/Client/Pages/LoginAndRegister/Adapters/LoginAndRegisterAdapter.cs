@@ -16,7 +16,6 @@
                 Token = dataUser.Token,
             };
 
-
             return formattedUser;
         }
     }
