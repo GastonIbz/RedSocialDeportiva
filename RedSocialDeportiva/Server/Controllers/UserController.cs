@@ -16,7 +16,7 @@ namespace RedSocialDeportiva.Server.Controllers
             {
                 User =
                 {
-                    UserName = "Nomber completo",
+                    UserName = "Nombre ricardito completo",
                     Email = "AASDASD",
                     Id = "e21e12",
                     LastName = "qwdqw",

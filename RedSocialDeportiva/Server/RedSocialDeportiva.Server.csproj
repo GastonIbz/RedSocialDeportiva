@@ -21,5 +21,9 @@
     <ProjectReference Include="..\Shared\RedSocialDeportiva.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="asdasd\" />
+  </ItemGroup>
+
 
 </Project>
