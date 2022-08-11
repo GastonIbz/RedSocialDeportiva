@@ -10,11 +10,15 @@ global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Models;
 
 // Services
 global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Services;
+
+//Utils
 global using RedSocialDeportiva.Client.Utils.ConsoleJS;
 
 // Store's
 global using RedSocialDeportiva.Client.Pages.LoginAndRegister; // Accedemos al Store que tiene dicha pag.
 
+// Adapters
+global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Adapters;
 
 #endregion
 
@@ -30,9 +34,17 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 #region Servicios agregados
 
+// Store's
 builder.Services.AddScoped<LoginAndRegisterStore>();
-builder.Services.AddScoped<ConsoleJS>();
+
+// Services
 builder.Services.AddScoped<UserService>();
+
+//Utils
+builder.Services.AddScoped<ConsoleJS>();
+
+// Adapters
+builder.Services.AddScoped<LoginAndRegisterAdapter>();
 
 #endregion
 
