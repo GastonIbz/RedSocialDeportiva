@@ -1,4 +1,4 @@
-﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Models
+﻿namespace RedSocialDeportiva.Client.Models
 {
     public class UserModels
     {

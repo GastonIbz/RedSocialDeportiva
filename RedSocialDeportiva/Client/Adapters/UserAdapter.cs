@@ -1,6 +1,6 @@
-﻿namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Adapters
+﻿namespace RedSocialDeportiva.Client.Adapters
 {
-    public class LoginAndRegisterAdapter
+    public class UserAdapter
     {
 
         public UserModels CreateAdapterUser(LoginDataDTO dataUser)
@@ -15,7 +15,6 @@
                 UserName = dataUser.User.UserName,
                 Token = dataUser.Token,
             };
-
 
             return formattedUser;
         }

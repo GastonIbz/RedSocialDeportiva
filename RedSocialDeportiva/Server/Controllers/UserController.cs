@@ -12,19 +12,23 @@ namespace RedSocialDeportiva.Server.Controllers
         [HttpGet]
         public async Task<LoginDataDTO> Get()
         {
-            return new LoginDataDTO
+
+            LoginDataDTO loginDataDTO = new LoginDataDTO
             {
-                User =
+                User = new User
                 {
                     UserName = "Nombre completo",
                     Email = "asdasdasd@dadasd.com",
                     Id = "e21e12",
-                    LastName = "qwdqw",
-                    NameCompleted = "asdasd"
+                    NameCompleted = "sacasc", 
+                    LastName = "ADS"
                 },
                 Token = "aaaaaaaaadqwdqwdo12kwqndkas",
                 MessageError = ""
             };
+
+
+            return loginDataDTO;
         }
     
 
