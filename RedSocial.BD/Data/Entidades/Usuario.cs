@@ -22,6 +22,7 @@ namespace RedSocial.BD.Data.Entidades
         public string password { get; set; } 
 
         [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage ="Las contraseñas no coinciden")]
         public string COnfirmPassword { get; set; }
 
         
@@ -39,8 +40,7 @@ namespace RedSocial.BD.Data.Entidades
 
         [Required]
         [Url]
-        public string ImgPortada { get; set; }
-
+        public string ImgPortada { get; set; } 
 
     }
 }

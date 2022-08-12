@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="asdasd\**" />
+    <Content Remove="asdasd\**" />
+    <EmbeddedResource Remove="asdasd\**" />
+    <None Remove="asdasd\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.6">
@@ -19,10 +26,6 @@
     <ProjectReference Include="..\..\RedSocial.BD\RedSocial.BD.csproj" />
     <ProjectReference Include="..\Client\RedSocialDeportiva.Client.csproj" />
     <ProjectReference Include="..\Shared\RedSocialDeportiva.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="asdasd\" />
   </ItemGroup>
 
 

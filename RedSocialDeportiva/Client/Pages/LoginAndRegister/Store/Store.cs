@@ -5,6 +5,7 @@
 
         #region State inicial
         private LoginAndRegisterState _state;
+        #endregion 
 
         #region CONSTRUCTOR
         public LoginAndRegisterStore()
