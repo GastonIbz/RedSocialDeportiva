@@ -6,7 +6,7 @@
 
         #region State
         private GlobalState _stateGlobal;
-
+        #endregion 
 
         #region CONSTRUCTOR
 
