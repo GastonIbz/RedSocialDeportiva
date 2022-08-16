@@ -43,31 +43,16 @@ namespace RedSocialDeportiva.Server.Controllers
         //}
 
         // POST api/<UserController>
-        [HttpPost]
-        public async Task<ActionResult<int>> Post(Usuario user)
-        {
-            try
-            {
-                context.Usuarios.Add(user);
-                await context.SaveChangesAsync();
-                return user.Id;
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
         [HttpGet]
         public async Task<ActionResult<List<Usuario>>> Get()
         {
             return await context.Usuarios.ToListAsync();
         }
-        /*
+
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Usuario>> Get(int id)
+        public async Task<ActionResult<Relacion>> Get(int id)
         {
-            var usuario = await context.Usuarios
+            var usuario = await context.Relaciones
                                          .Where(e => e.Id == id)
                                          .Include(m => m.Usuarios)
                                          .FirstOrDefaultAsync();
@@ -78,7 +63,25 @@ namespace RedSocialDeportiva.Server.Controllers
             return usuario;
 
         }
-        */
+
+        [HttpPost]
+        //public async Task<ActionResult<int>> Post(Usuario user)
+        public async Task<ActionResult<int>> Post(Relacion user)
+        {
+            try
+            {
+                //context.Usuarios.Add(user);
+                context.Relaciones.Add(user);
+                await context.SaveChangesAsync();
+                return user.Id;
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+       
         
     }
 }

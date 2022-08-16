@@ -15,6 +15,8 @@ namespace RedSocial.BD.Data
         public DbSet<Publicacion> Publicaciones { get; set; }
         public DbSet<Ranking>   Rankings { get; set; }
         public DbSet<Usuario>   Usuarios { get; set; }
+
+        public DbSet<Relacion> Relaciones { get; set; }
         public BDContext(DbContextOptions options) : base(options)
         {
         }

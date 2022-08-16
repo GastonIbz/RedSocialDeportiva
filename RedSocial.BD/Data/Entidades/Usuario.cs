@@ -37,7 +37,7 @@ namespace RedSocial.BD.Data.Entidades
         //[Url]
         public string ImgPortada { get; set; } 
 
-       // public List<Usuario> Usuarios { get; set; }
+       
 
     }
 }
