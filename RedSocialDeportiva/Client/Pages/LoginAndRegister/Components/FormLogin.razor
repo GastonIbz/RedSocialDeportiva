@@ -98,7 +98,7 @@
         - Enviar Form al service login
         */
 
-        var (UserModels, MessageError) = await userService.login();
+        var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
 
         if (UserModels != null && MessageError == "")
         {
@@ -112,7 +112,7 @@
         store.ResetFormLogin();
     }
 
-
+    
 
 
 

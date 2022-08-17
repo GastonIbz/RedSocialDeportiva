@@ -83,18 +83,24 @@ namespace RedSocialDeportiva.Server.Controllers
         //}
         //}
 
-        [HttpPost("/register")]
-        public async Task<ActionResult<string>> Register(RegisterDto form)
+        [HttpPost("register")]
+        public async Task<ActionResult<RegisterDataDTO>> Register(RegisterDto form)
         {
-            string MessageError;
+            string MessageError = "";
+
 
             if (form == null)
             {
                 MessageError = "Ha ocurrido un error";
-                return NotFound(MessageError);
+                return NotFound(new RegisterDataDTO
+                {
+                    MessageError = MessageError,
+                });
             }
 
-            return Ok();
+            return Ok(new RegisterDataDTO {
+                MessageError = MessageError,
+            });
 
         }
     }
