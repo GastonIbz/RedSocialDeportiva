@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using RedSocial.BD.Data;
 using RedSocial.BD.Data.Entidades;
+using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -80,8 +82,7 @@ namespace RedSocialDeportiva.Server.Controllers
                 return BadRequest(e.Message);
             }
         }
-
-       
+        */
         
     }
 }
