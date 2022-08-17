@@ -51,38 +51,51 @@ namespace RedSocialDeportiva.Server.Controllers
             return await context.Usuarios.ToListAsync();
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<Relacion>> Get(int id)
-        {
-            var usuario = await context.Relaciones
-                                         .Where(e => e.Id == id)
-                                         .Include(m => m.Usuarios)
-                                         .FirstOrDefaultAsync();
-            if (usuario == null)
-            {
-                return NotFound($"No existe la especialidad de Id={id}");
-            }
-            return usuario;
+        //[HttpGet("{id:int}")]
+        //public async Task<ActionResult<Relacion>> Get(int id)
+        //{
+        //var usuario = await context.Relaciones
+        //                             .Where(e => e.Id == id)
+        //                             .Include(m => m.Usuarios)
+        //                             .FirstOrDefaultAsync();
+        //if (usuario == null)
+        //{
+        //    return NotFound($"No existe la especialidad de Id={id}");
+        //}
+        //return usuario;
 
-        }
+        //}
 
-        [HttpPost]
+        //[HttpPost]
         //public async Task<ActionResult<int>> Post(Usuario user)
-        public async Task<ActionResult<int>> Post(Relacion user)
+        //public async Task<ActionResult<int>> Post(Relacion user)
+        //{
+        //try
+        //{
+        //    //context.Usuarios.Add(user);
+        //    context.Relaciones.Add(user);
+        //    await context.SaveChangesAsync();
+        //    return user.Id;
+        //}
+        //catch (Exception e)
+        //{
+        //    return BadRequest(e.Message);
+        //}
+        //}
+
+        [HttpPost("/register")]
+        public async Task<ActionResult<string>> Register(RegisterDto form)
         {
-            try
+            string MessageError;
+
+            if (form == null)
             {
-                //context.Usuarios.Add(user);
-                context.Relaciones.Add(user);
-                await context.SaveChangesAsync();
-                return user.Id;
+                MessageError = "Ha ocurrido un error";
+                return NotFound(MessageError);
             }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
+
+            return Ok();
+
         }
-        */
-        
     }
 }
