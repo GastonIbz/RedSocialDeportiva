@@ -38,7 +38,7 @@ builder.Services.AddAuthorizationCore();
 #region Servicios agregados
 
 // Store's
-builder.Services.AddScoped<Store>();
+builder.Services.AddScoped<GlobalStore>();
 builder.Services.AddScoped<LoginAndRegisterStore>();
 
 // Services
