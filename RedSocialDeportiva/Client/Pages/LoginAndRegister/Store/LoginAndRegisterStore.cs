@@ -15,8 +15,6 @@
             {
                 LoginActive = true,
                 RegisterActive = false,
-                IsLoader = false,
-                MessageModal = "",
                 LoginDto = new LoginDto(),
                 RegisterDto = new RegisterDto()
             };
@@ -38,22 +36,6 @@
         public void SetRegisterActive(bool newState)
         {
             _state.RegisterActive = newState;
-            ExecuteStateChange();
-        }
-
-
-        public bool IsLoader() => _state.IsLoader;
-        public void SetIsLoader(bool newState)
-        {
-            _state.IsLoader = newState;
-            ExecuteStateChange();
-        }
-
-
-        public string MessageModal() => _state.MessageModal;
-        public void SetMessageModal(string newState)
-        {
-            _state.MessageModal = newState;
             ExecuteStateChange();
         }
 

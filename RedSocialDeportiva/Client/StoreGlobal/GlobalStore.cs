@@ -1,7 +1,7 @@
 ﻿namespace RedSocialDeportiva.Client.StoreGlobal
 {
 
-    public class Store
+    public class GlobalStore
     {
 
         #region State
@@ -10,11 +10,13 @@
 
         #region CONSTRUCTOR
 
-        public Store()
+        public GlobalStore()
         {
             _stateGlobal = new GlobalState
             {
-                User = new UserModels()
+                User = new UserModels(),
+                IsLoader = false,
+                MessageModal = "",
             };
         }
 
@@ -30,6 +32,21 @@
             ExecuteStateChange();
         }
 
+        
+        public bool IsLoader() => _stateGlobal.IsLoader;
+        public void SetIsLoader(bool newState)
+        {
+            _stateGlobal.IsLoader = newState;
+            ExecuteStateChange();
+        }
+
+
+        public string MessageModal() => _stateGlobal.MessageModal;
+        public void SetMessageModal(string newState)
+        {
+            _stateGlobal.MessageModal = newState;
+            ExecuteStateChange();
+        }
 
         #endregion Metodos para obtener y setear los States
 
