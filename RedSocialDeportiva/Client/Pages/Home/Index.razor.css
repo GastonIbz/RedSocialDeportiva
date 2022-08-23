@@ -1,18 +1,124 @@
-﻿.containerPage {
-    width: 100%;
-    max-width: 50rem;
-    margin: auto;
-    position: relative;
-    /*background: red;*/
+﻿
+body {
+    --GLHF-color: #808080;
+    --GLHF-background: #808080;
 }
 
-/* Contenedor fondo azul text */
-.containerBackground {
+.sidebar {
+    border-right: 1px solid var(--GLHF-background);
+    flex:0.2;
+   
+    min-width: 250px;
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.feed {
+    flex: 0.5;
+    border-right: 1px solid var(--GLHF-background);
+    min-width :fit-content;
+    overflow-y: scroll;
+}
+.feed__header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 100;
+    border: 1px solid var(--GLHF-background);
+    padding:15px 20px;
+}
+.feed__header h2 {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+/* Post Box */
+.postbox {
+    padding-bottom: 10px;
+    border-bottom: 8px solid var(--GLHF-background);
+    padding-right: 10px;
+}
+
+.postbox form {
+    display: flex;
+    flex-direction: column;
+}
+.postbox__input {
+    display: flex;
+    padding: 20px;
+}
+
+.postbox__input input {
+ flex: 1;
+ margin-left: 20px;
+ font-size: 20px;
+ border: none;
+ outline: none;
+}
+
+.postBox__postButton {
+    background-color: green;
+    border: none;
+    color: white;
+    font-weight: 900;
+    border-radius:30px;
+    width: 80px;
+    height:40px;
+    margin-top: 20px;
+    margin-left: auto;
+}
+
+/* post */
+.post_avatar img {
+    border-radius: 50%;
+    height: 40px;
+
+
+}
+.post {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--GLHF-background);
+    padding-bottom: 10px;
+
+}
+.post_body img {
+    width: 450px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+.post__footer {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    padding: 2.25rem 1.5rem;
-    text-align: center;
-    backdrop-filter: blur(0.75rem);
-    background: rgba(0, 128, 255, 0.5);
+    margin-top: 10px;
+}
+
+.post__badge {
+    font-size: 14px !important;
+    color:var(--GLHF-color);
+    margin-right: 5px;
+}
+.post__headerSpecial{
+    font-weight:600;
+    font-size: 12px;
+    color: gray;
+}
+.post__headerText h3{
+    font-size: 15px;
+    margin-bottom: 5px
+
+}
+.post_headerDescription {
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+.post_body {
+flex: 1;
+padding: 10px;
+
+}
+.post__avatar {
+    padding: 20px;
+
 }

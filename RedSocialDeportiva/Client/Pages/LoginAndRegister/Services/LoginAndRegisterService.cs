@@ -43,7 +43,7 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
 
         public async Task<string> register(RegisterDto form)
         {
-            // TODO: Hacer que envie metodo POST y adaptarlo al respecto,.
+            // TODO: Hacer que envie metodo POST y adaptarlo al respecto.
             var response = await this.http.PostAsJsonAsync("api/User/register", form);
 
             var result = await response.Content.ReadFromJsonAsync<RegisterDataDTO>();
