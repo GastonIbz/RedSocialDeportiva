@@ -11,7 +11,7 @@
         #region CONSTRUCTOR
         public LoginAndRegisterStore()
         {
-            _state = new LoginAndRegisterState
+            this._state = new LoginAndRegisterState
             {
                 LoginActive = true,
                 RegisterActive = false,
@@ -24,33 +24,33 @@
         #region Metodos para obtener y setear los States
 
 
-        public bool IsLoginActive() => _state.LoginActive;
+        public bool IsLoginActive() => this._state.LoginActive;
         public void SetLoginActive(bool newState)
         {
-            _state.LoginActive = newState;
+            this._state.LoginActive = newState;
             ExecuteStateChange();
         }
 
 
-        public bool IsRegisterActive() => _state.RegisterActive;
+        public bool IsRegisterActive() => this._state.RegisterActive;
         public void SetRegisterActive(bool newState)
         {
-            _state.RegisterActive = newState;
+            this._state.RegisterActive = newState;
             ExecuteStateChange();
         }
 
 
-        public LoginDto GetFormLogin() => _state.LoginDto;
+        public LoginDto GetFormLogin() => this._state.LoginDto;
         public void ResetFormLogin() 
         {
-            _state.LoginDto = new LoginDto();
+            this._state.LoginDto = new LoginDto();
             ExecuteStateChange();
         }
 
-        public RegisterDto GetFormRegister() => _state.RegisterDto;
+        public RegisterDto GetFormRegister() => this._state.RegisterDto;
         public void ResetFormRegister()
         {
-            _state.RegisterDto = new RegisterDto();
+            this._state.RegisterDto = new RegisterDto();
             ExecuteStateChange();
         } 
 
@@ -64,14 +64,14 @@
         // Actua como controlador de eventos.
         private Action _listeners;
 
-        // Permite subscribirnos a una accion.
-        public void AddStateChangeListeners(Action listener) => _listeners += listener;
+        // Permite subscribirnos a una accion. 
+        public void SubscribeChangedState(Action listener) => this._listeners += listener;
 
         // Permite desubscribirnos a una accion.
-        public void RemoveStateChangeListeners(Action listener) => _listeners -= listener;
+        public void DesubscribeChangedState(Action listener) => this._listeners -= listener;
 
         // Invocamos la accion 
-        private void ExecuteStateChange() => _listeners.Invoke();
+        private void ExecuteStateChange() => this._listeners.Invoke();
 
 
         #endregion

@@ -59,8 +59,8 @@
     protected override void OnInitialized()
     {
         // State
-        storeGlobal.AddStateChangeListeners(updateView);
-        store.AddStateChangeListeners(updateView);
+        storeGlobal.SubscribeChangedState(updateView);
+        store.SubscribeChangedState(updateView);
 
         // Formulario
         editFormContext = new(store.GetFormLogin());

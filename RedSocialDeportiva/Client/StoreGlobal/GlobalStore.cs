@@ -12,7 +12,7 @@
 
         public GlobalStore()
         {
-            _stateGlobal = new GlobalState
+            this._stateGlobal = new GlobalState
             {
                 User = new UserModels(),
                 IsLoader = false,
@@ -25,26 +25,26 @@
 
         #region Metodos para obtener y setear los States
 
-        public UserModels GetMyUserData() => _stateGlobal.User;
+        public UserModels GetMyUserData() => this._stateGlobal.User;
         public void SetMyUserData(UserModels newState)
         {
-            _stateGlobal.User = newState;
+            this._stateGlobal.User = newState;
             ExecuteStateChange();
         }
 
         
-        public bool IsLoader() => _stateGlobal.IsLoader;
+        public bool IsLoader() => this._stateGlobal.IsLoader;
         public void SetIsLoader(bool newState)
         {
-            _stateGlobal.IsLoader = newState;
+            this._stateGlobal.IsLoader = newState;
             ExecuteStateChange();
         }
 
 
-        public string MessageModal() => _stateGlobal.MessageModal;
+        public string MessageModal() => this._stateGlobal.MessageModal;
         public void SetMessageModal(string newState)
         {
-            _stateGlobal.MessageModal = newState;
+            this._stateGlobal.MessageModal = newState;
             ExecuteStateChange();
         }
 
@@ -58,13 +58,13 @@
         private Action _listeners;
 
         // Permite subscribirnos a una accion.
-        public void AddStateChangeListeners(Action listener) => _listeners += listener;
+        public void SubscribeChangedState(Action listener) => this._listeners += listener;
 
         // Permite desubscribirnos a una accion.
-        public void RemoveStateChangeListeners(Action listener) => _listeners -= listener;
+        public void DesubscribeChangedState(Action listener) => this._listeners -= listener;
 
         // Invocamos la accion 
-        private void ExecuteStateChange() => _listeners.Invoke();
+        private void ExecuteStateChange() => this._listeners.Invoke();
 
 
         #endregion
