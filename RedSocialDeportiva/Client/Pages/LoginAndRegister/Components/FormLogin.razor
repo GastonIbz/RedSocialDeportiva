@@ -3,46 +3,57 @@
 @inject ConsoleJS consoleJS;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
+@using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
-<h2>Iniciar Sesion</h2>
 
-<EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
 
+
+<div class="containerFormLogin @(store.IsLoginActive() ? "containerFormLogin--show" : "containerFormLogin--hide")" >
+
+    <h2>Iniciar Sesion</h2> 
+
+
+    <EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
+            
         <DataAnnotationsValidator/>
 
-        @*Email *@
-        <div>
-            <label for="Email">Correo electronico: </label>
             <div>
-                <InputText 
-                    id="Email"
-                    @bind-Value="store.GetFormLogin().Email" 
-                    type="email"
-                    class="form-control col-sm-3" 
-                ></InputText>
-                <ValidationMessage For="(() => store.GetFormLogin().Email)"/>  
+                <label for="Email">Correo electronico: </label>
+                <div class="FormLogin">
+                    <InputText 
+                        id="Email"
+                        @bind-Value="store.GetFormLogin().Email"  
+                        type="email" 
+                        class="form-control col-sm-3" 
+                    ></InputText>
+                    <ValidationMessage For="(() => store.GetFormLogin().Email)"/>  
+                </div>
             </div>
-        </div>
 
-        @*Contraseña *@
-        <div>
-            <label for="Password">Contraseña: </label>
+            @*Contraseña *@ 
             <div>
-                <InputText 
-                    id="Password"
-                    @bind-Value="store.GetFormLogin().Password"  
-                    type="password"
-                    class="form-control col-sm-3" 
-                ></InputText>
-                <ValidationMessage For="(() => store.GetFormLogin().Password)"/>  
-            </div>
-        </div>
+                <label for="Password">Contraseña: </label>
+                <div>
+                    <InputText 
+                        id="Password"
+                        @bind-Value="store.GetFormLogin().Password"  
+                        type="password"
+                        class="form-control col-sm-3" 
+                    ></InputText>
 
-        <br />
+                    <ValidationMessage For="(() => store.GetFormLogin().Password)"/>  
+                </div>
+            </div>
+
+            <br />
     
-        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
    
-</EditForm>
+    </EditForm>
+
+
+</div>
+
 
 @code {
 
@@ -50,6 +61,8 @@
 
     private EditContext editFormContext;
     private bool formInvalid = false;
+
+    public string ASD { get; set; }
 
     #endregion
 
@@ -98,18 +111,18 @@
         - Enviar Form al service login
         */
 
-        var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
+        //var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
 
-        if (UserModels != null && MessageError == "")
-        {
-            storeGlobal.SetMyUserData(UserModels);
-        }
+        //if (UserModels != null && MessageError == "")
+        //{
+        //    storeGlobal.SetMyUserData(UserModels);
+        //}
 
 
-        consoleJS.log("ASD", UserModels);
+        consoleJS.log("ASD", ASD);
 
-        NavigationManager.NavigateTo("Home");
-        store.ResetFormLogin();
+        //NavigationManager.NavigateTo("Home");
+        //store.ResetFormLogin();
     }
 
     

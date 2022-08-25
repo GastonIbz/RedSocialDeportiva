@@ -3,6 +3,11 @@
 @inject ConsoleJS consoleJS;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
+
+
+
+<div class="containerFormRegister @(store.IsRegisterActive() ? "containerFormRegister--show" : "containerFormRegister--hide")" >
+
 <h2>Registrarse</h2>
 
 <EditForm EditContext="editFormContext" OnValidSubmit="HandleRegister">
@@ -87,6 +92,8 @@
 
 </EditForm>
 
+</div>
+
 @code {
 
     #region VARIABLES
@@ -101,7 +108,7 @@
     protected override void OnInitialized()
     {
         // State
-        store.AddStateChangeListeners(updateView);
+        store.SubscribeChangedState(updateView);
 
         // Formulario
         editFormContext = new(store.GetFormRegister());

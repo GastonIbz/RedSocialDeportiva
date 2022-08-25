@@ -1,6 +1,9 @@
 ﻿@inject LoginAndRegisterStore store;
 
-<article>
+<article 
+    class="containerBackgroundLogin @(store.IsLoginActive() ? "noneElement" : "")"
+    style="@(store.IsRegisterActive() ? "opacity: 1" : "opacity: 0")"
+>
 
    <h3> ¿Ya tienes una cuenta?</h3>
    <p> Inicia sesion para entrar a la pagina</p>
@@ -15,19 +18,20 @@
 
 @code {
 
-    #region Ciclo de vida del componente.// "CONSTRUCTOR"
+    #region Ciclo de vida del componente./ Store.
 
         protected override void OnInitialized()
         {
-            store.AddStateChangeListeners(updateView);
+            store.SubscribeChangedState(updateView);
         }
 
+        private void updateView() => StateHasChanged();
+    
     #endregion
+
 
     #region METODOS
 
-
-        private void updateView() => StateHasChanged();
 
         public void goToLogin()
         {
@@ -38,12 +42,6 @@
 
 
     #endregion
-
-
-
-
-
-
 
 }
 

@@ -1,13 +1,23 @@
-﻿.containerPage {
+﻿/*Metodologia BEM de CSS: https://animaticss.com/articulo/que-es-bem-css/ */
+.mainLoginAndRegister {
+    background-image: url(https://placeimg.com/640/480/nature);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    width: 100vw;
+    height:100vh;
+}
+
+.containerPage {
     width: 100%;
     max-width: 50rem;
     margin: auto;
     position: relative;
     /*background: red;*/
 }
-
 /* Contenedor fondo azul text */
-.containerBackground {
+.containerPage__Background {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -15,4 +25,41 @@
     text-align: center;
     backdrop-filter: blur(0.75rem);
     background: rgba(0, 128, 255, 0.5);
+}
+
+.containerPage__LoginAndRegister {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 23rem;
+    position: relative;
+    top: -12rem;
+    transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.containerPage__LoginAndRegister--loginActive {
+    left: 1.5rem;
+}
+.containerPage__LoginAndRegister--registerActive {
+    left: 25.65rem;
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .containerPage__Background {
+        max-width: 22rem;
+        height: 18.75rem;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+
+    .containerPage__LoginAndRegister {
+        top: -5rem;
+        left: 0rem;
+        margin: auto;
+    }
+
+
 }
