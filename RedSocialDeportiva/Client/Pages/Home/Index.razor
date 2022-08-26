@@ -2,11 +2,13 @@
 @*Incorporamos el store dentro del index *@
 @inject StoreGlobal.GlobalStore storeGlobal;
 
-<link href="https:/fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="style.css" />
+    <div class="">
+        <NavMenu />
+    </div>
+
 
 <main>
+
     @*Comienza el Feed*@
     <div class="feed">
        <div class ="feed__header">
@@ -17,58 +19,53 @@
        </div>
        
     </div>
-        @*Postbox Inicio*@
-        <div class="postbox">
-            <form>
-                <div class="postbox__input">
-                    <img src="/ImgAvatar.gif" alt="" /> 
-                    <input type="text" placeholder="Publica algo en GL.HF...">
-                </div>
-                <button class="postbox__postbutton">Publicar</button>
-            </form>
-            
-        </div>
 
-         @*Postbox Fin*@
-
-
-@*Post Inicio*@
-<div class="post">
-    <div class="post__avatar">
-       
-    <div class="post__body">
-        <div class="post__header">
+    @*Postbox Inicio*@
+    <div class="postbox">
+        <form>
+            <div class="postbox__input">
+                <img src="/ImgAvatar.gif" alt="" /> 
+                <input type="text" placeholder="Publica algo en GL.HF...">
             </div>
+            <button class="postbox__postbutton">Publicar</button>
+        </form>
+        
+    </div>
+
+    @*Postbox Fin*@
+
+
+    @*Post Inicio*@
+    <div class="post">
+        <div class="post__avatar">
+       
+             <div class="post__body">
+               <div class="post__header"></div>
+             </div>
+
         </div>
+
         <div class="post__headerText">
-
-            <h3> <img src="/ImgAvatar.gif" alt="" /> Nickname
-                </h3>
-
+             <img src="/ImgAvatar.gif" alt="" /> 
+             <h3> Nickname </h3>
         </div>
+
         <div class="post_headerDescription">
             <p>Excelente sabado de noticias, fui convocado por el equipo 9Z para competir en las clasificaciones al torneo internacional.</p>
-
         </div>
+
     </div>
+    
     <div class="post__publicacion">
-     <img src="/VideoHome.jpg" alt="" />
-     
-</div>
+         <img src="/VideoHome.jpg" alt="" /> 
+    </div>
 
     <div class="post__footer">
-     <img src="/Favorite.png" alt="" /> 
-      <img src="/Compartir.png" alt="" />
-
-      
-</div>
-
+         <img src="/Favorite.png" alt="" /> 
+         <img src="/Compartir.png" alt="" />
     </div>
 
-
-
-
-@*Post Fin*@
+    @*Post Fin*@
 
 
 

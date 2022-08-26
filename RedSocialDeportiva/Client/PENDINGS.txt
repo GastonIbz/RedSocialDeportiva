@@ -1,0 +1,30 @@
+﻿
+**** Pendings ****
+
+⏰ Ejecutar con el ultimo metodo de ciclo de vida.: store.RemoveStateChangeListeners(updateView)
+   para desubscribirse al Listeners del store. 
+   Nota: En todos los comopnentes de LoginAndRegister
+
+
+⏰ Al llenar cualquiera de los formularios e irse a la otra seccion (es decir, para registrarse o loguearse)
+   y completar los campos, deja de validarnos si escribimos mal, debido a que la variable "formInvalid" 
+   o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima vez y no vuelve a 
+   su valor inicial
+
+
+⏰ Ir a App.css y especificar html{ font-size: 16px } para q coordine todos los REM.
+
+
+⏰ Investigar sobre Action para hacer todo lo del store mas explicito. 
+
+
+
+⏰ Convertir los Inputs de los FOrmn login y registro en un componente
+
+
+
+
+
+
+
+
