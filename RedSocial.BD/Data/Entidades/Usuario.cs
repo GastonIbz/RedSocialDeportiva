@@ -18,29 +18,26 @@ namespace RedSocial.BD.Data.Entidades
 
         [Required] 
         [MinLength(8, ErrorMessage = "la contraseña debe tener al menos {1} caracteres")] 
-        [DataType(DataType.Password)]   
+        //[DataType(DataType.Password)]   
         public string password { get; set; } 
-
-        [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage ="Las contraseñas no coinciden")]
-        public string COnfirmPassword { get; set; }
-
         
         [Required]
-        [EmailAddress] 
-        [StringLength(100, ErrorMessage = "El {0} debe tener al menos {1} caracter",MinimumLength=1)]
+        //[EmailAddress] 
+        //[StringLength(100, ErrorMessage = "El {0} debe tener al menos {1} caracter",MinimumLength=1)]
         public string Email { get; set; }
 
         [MaxLength(300, ErrorMessage = "La descripcion no debe superar los {1} caracteres")]
         public string Descripcion { get; set; }  
 
-        [Required]
-        [Url]
+        //[Required]
+        //[Url]
         public string ImgPerfil { get; set; }  
 
-        [Required]
-        [Url]
+       // [Required]
+        //[Url]
         public string ImgPortada { get; set; } 
+
+       
 
     }
 }

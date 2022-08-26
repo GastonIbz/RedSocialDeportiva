@@ -1,10 +1,7 @@
-﻿@page "/a"
+﻿@page "/a" @*Cambiar url*@
 @using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components
-
-
-
-@*Incorporamos el store dentro del index *@
 @inject LoginAndRegisterStore store;
+
 
 
 @*LOADER*@
@@ -38,7 +35,7 @@
 
 @code{
 
-    //private string css_containerFormActive = 
+    private string css_containerFormActive = 
     private string styleContainerForms = $"containerLoginAndRegister";
 
 
@@ -47,7 +44,7 @@
 
     protected override void OnInitialized()
     {
-        store.AddStateChangeListeners(updateView);
+        store.SubscribeChangedState(updateView);
     }
 
     #endregion
@@ -55,7 +52,7 @@
     #region Metodos relacionado al Store
 
     // Ejecutar con el ultimo metodo de ciclo de vida.
-    public void Dispose() => store.RemoveStateChangeListeners(updateView); // QUITAR DE METODO
+    public void Dispose() => store.DesubscribeChangedState(updateView); // QUITAR DE METODO
 
     private void updateView() => StateHasChanged();
 

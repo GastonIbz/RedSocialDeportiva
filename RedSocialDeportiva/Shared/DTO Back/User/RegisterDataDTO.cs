@@ -4,14 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RedSocial.BD.Data.Entidades
+namespace RedSocialDeportiva.Shared.DTO_Back.User
 {
-    public class Ranking : EntityBase
+    public class RegisterDataDTO
     {
-        
-
-        public string Name { get; set; }   
-
-
+        public string MessageError { get; set; }  
     }
 }

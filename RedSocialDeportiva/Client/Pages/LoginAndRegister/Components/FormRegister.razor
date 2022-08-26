@@ -1,7 +1,8 @@
 ﻿@inject LoginAndRegisterStore store;
-
+@inject StoreGlobal.GlobalStore storeGlobal;
 @inject ConsoleJS consoleJS;
-
+@inject LoginAndRegisterService userService;
+@inject NavigationManager NavigationManager;
 <h2>Registrarse</h2>
 
 <EditForm EditContext="editFormContext" OnValidSubmit="HandleRegister">
@@ -90,48 +91,59 @@
 
     #region VARIABLES
 
-        private EditContext editFormContext;
-        private bool formInvalid = false;
+    private EditContext editFormContext;
+    private bool formInvalid = false;
 
     #endregion
 
     #region Ciclo de vida del componente.// "CONSTRUCTOR"
 
-        protected override void OnInitialized()
-        {
-            // State
-            store.AddStateChangeListeners(updateView);
+    protected override void OnInitialized()
+    {
+        // State
+        store.AddStateChangeListeners(updateView);
 
-            // Formulario
-            editFormContext = new(store.GetFormRegister());
-            editFormContext.OnFieldChanged += HandleFieldFormChanged;
-        }
+        // Formulario
+        editFormContext = new(store.GetFormRegister());
+        editFormContext.OnFieldChanged += HandleFieldFormChanged;
+    }
 
     #endregion
 
 
     #region METODOS 
 
-        private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
+    private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
-        private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    {
+        if (editFormContext is not null)
         {
-            if (editFormContext is not null)
-            {
-                formInvalid = !editFormContext.Validate();
-                StateHasChanged();
-            }
+            formInvalid = !editFormContext.Validate();
+            StateHasChanged();
+        }
+    }
+
+
+    private async Task HandleRegister()
+    {
+
+        var  MessageError = await userService.register(store.GetFormRegister());
+
+        if (MessageError != "")
+        {
+            /// strR
+
+
+
         }
 
 
-        private void HandleRegister()
-        {
 
-            consoleJS.log("HandleRegister", store.GetFormRegister());
-        }
+        NavigationManager.NavigateTo("Home");
+        store.ResetFormRegister();
 
-
-
+    }
 
 
 

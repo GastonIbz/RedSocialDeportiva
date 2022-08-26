@@ -1,4 +1,4 @@
-﻿@inject StoreGlobal.Store storeGlobal;
+﻿@inject StoreGlobal.GlobalStore storeGlobal;
 @inject LoginAndRegisterStore store;
 @inject ConsoleJS consoleJS;
 @inject LoginAndRegisterService userService;
@@ -59,8 +59,8 @@
     protected override void OnInitialized()
     {
         // State
-        storeGlobal.AddStateChangeListeners(updateView);
-        store.AddStateChangeListeners(updateView);
+        storeGlobal.SubscribeChangedState(updateView);
+        store.SubscribeChangedState(updateView);
 
         // Formulario
         editFormContext = new(store.GetFormLogin());
@@ -98,7 +98,7 @@
         - Enviar Form al service login
         */
 
-        var (UserModels, MessageError) = await userService.login();
+        var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
 
         if (UserModels != null && MessageError == "")
         {
@@ -112,7 +112,7 @@
         store.ResetFormLogin();
     }
 
-
+    
 
 
 

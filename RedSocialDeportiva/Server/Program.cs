@@ -6,6 +6,7 @@ global using RedSocialDeportiva.Shared.DTO_Back.User;
 
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using RedSocial.BD.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,10 +16,28 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
-var conn = builder.Configuration.GetConnectionString("DefaultConnection");
+var conn = builder.Configuration.GetConnectionString("con");
+
 builder.Services.AddDbContext<BDContext>(opciones => opciones.UseSqlServer(conn));
 
+
+
+builder.Services.AddSwaggerGen(config =>
+{
+    config.SwaggerDoc("v1", new OpenApiInfo { 
+        Title = "Usuario", Version = "v2",
+    });
+});
+
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(config => {
+    config.SwaggerEndpoint(
+        "/swagger/v1/swagger.json",
+        "Usuario v2");
+});
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

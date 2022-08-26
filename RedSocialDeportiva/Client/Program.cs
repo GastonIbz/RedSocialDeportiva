@@ -33,10 +33,12 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+builder.Services.AddAuthorizationCore(); 
+
 #region Servicios agregados
 
 // Store's
-builder.Services.AddScoped<Store>();
+builder.Services.AddScoped<GlobalStore>();
 builder.Services.AddScoped<LoginAndRegisterStore>();
 
 // Services

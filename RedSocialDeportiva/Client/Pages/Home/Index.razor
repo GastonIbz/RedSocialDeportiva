@@ -1,23 +1,73 @@
 ﻿@page "/Home"
 @*Incorporamos el store dentro del index *@
-@inject StoreGlobal.Store storeGlobal;
-
-@*LOADER*@
-<PageTitle>HOME</PageTitle>
-
+@inject StoreGlobal.GlobalStore storeGlobal;
 
 <main>
+   @*Inicio de barras laterales*@
+    <div class="sidebar">
 
-    <h1> ESTO ES EL HOME </h1>
+    </div>
+    @*Fin de barras laterales*@
 
-    <h3>Datos del usuario logueado</h3>
-    <p>Email: @storeGlobal.GetMyUserData().Email</p>
-    <p>LastName: @storeGlobal.GetMyUserData().LastName</p>
-    <p>NameCompleted: @storeGlobal.GetMyUserData().NameCompleted</p>
-    <p>Token: @storeGlobal.GetMyUserData().Token</p>
-    <p>UserName: @storeGlobal.GetMyUserData().UserName</p>
+
+
+    @*Comienza el Feed*@
+    <div class="feed">
+       <div class ="feed__header">
+           <h2>
+               Home
+           </h2>
+       </div>
+       
+    </div>
+        @*Postbox Inicio*@
+        <div class="postBox">
+            <form>
+                <div class="postbox__input">
+                    <input type="text" placeholder="Publica algo en GLHF...">
+                </div>
+                <button class="postBox__postButton">Publicar</button>
+            </form>
+        </div>
+
+         @*Postbox Fin*@
+
+
+@*Post Inicio*@
+<div class="post">
+    <div class="post__avatar">
+        <img src="" alt="">
+    <div class="post__body">
+        <div class="post__header">
+            </div>
+        </div>
+        <div class="post__headerText">
+            <h3> Gibz
+                </h3>
+        </div>
+        <div class="post_headerDescription">
+            <p>Excelente sabado de noticias, fui convocado por el equipo 9Z para competir en las clasificaciones al torneo internacional.</p>
+
+        </div>
+    </div>
+    <img src="" alt="" />
+    <div class="post__footer">
+        <span class="material-icons"> repeat </span>
+        <span class="material-icons"> favorite_border </span>
+        <span class="material-icons"> publish </span>
+
+    </div>
+</div>
+
+
+
+@*Post Fin*@
+
+
+    @*Termina el Feed*@
 
 </main>
+
 
 
 @code{
