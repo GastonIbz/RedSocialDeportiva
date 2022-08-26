@@ -1,8 +1,9 @@
-﻿@inject StoreGlobal.GlobalStore storeGlobal;
+﻿@inject ConsoleJS consoleJS;
 @inject LoginAndRegisterStore store;
-@inject ConsoleJS consoleJS;
+@inject StoreGlobal.GlobalStore storeGlobal;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
+
 @using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
 
@@ -17,6 +18,8 @@
             
         <DataAnnotationsValidator/>
 
+        
+            @* Email *@
             <div>
                 <label for="Email">Correo electronico: </label>
                 <div class="FormLogin">
@@ -60,9 +63,9 @@
     #region VARIABLES
 
     private EditContext editFormContext;
+
     private bool formInvalid = false;
 
-    public string ASD { get; set; }
 
     #endregion
 
@@ -80,6 +83,8 @@
         editFormContext.OnFieldChanged += HandleFieldFormChanged;
     }
 
+    /// METODO QUE CIERRE EL CICLO DE VIDA.
+
     #endregion
 
 
@@ -87,6 +92,7 @@
     #region METODOS 
 
     /// TODO: DIVIR EN METODOS PARA EL CICLO DE VIDA Y DEL STORE COMO EN INDEX
+    /// 
     private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
     private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
@@ -101,28 +107,36 @@
 
     private async Task HandleLogin()
     {
-        // TODO: Ver LoginAndRegister.tsx
-        /* 
-        Pendings: 
-        - Hacer maquetado CSS de Todo
-        - Realizar tema de Loader (mientras hace el http)
-        - Realizar tema del Modal
-        - Agregar Try/Catch
-        - Enviar Form al service login
-        */
+        try
+        {
 
-        //var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
+            // Abrir Loader ... 
 
-        //if (UserModels != null && MessageError == "")
-        //{
-        //    storeGlobal.SetMyUserData(UserModels);
-        //}
+            var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
 
+            if (UserModels == null || MessageError != null)
+            {
+                throw new Exception(MessageError);
+            }
 
-        consoleJS.log("ASD", ASD);
+            storeGlobal.SetMyUserData(UserModels);
 
-        //NavigationManager.NavigateTo("Home");
-        //store.ResetFormLogin();
+            NavigationManager.NavigateTo("Home");
+
+        }
+        catch (Exception ex)
+        {
+            consoleJS.log("Message: ", ex.Message);
+            
+            // Abrir modal error mostrando error
+
+        }
+        finally
+        {
+            // cerrar Loader...
+            // setTimeOut para cerrar Modal
+            store.ResetFormLogin();
+        }
     }
 
     
