@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RedSocial.BD.Data;
+using RedSocial.BD.Data.Entidades;
 
 namespace RedSocialDeportiva.Server.Controllers
 {
@@ -12,6 +14,11 @@ namespace RedSocialDeportiva.Server.Controllers
         public PublicacionController(BDContext context)
         {
             this.context = context;
+        }
+        [HttpGet]
+        public async Task<ActionResult<List<Publicacion>>> Get()
+        {
+            return await context.Publicaciones.ToListAsync();
         }
     }
 }
