@@ -2,32 +2,31 @@
 @*Incorporamos el store dentro del index *@
 @inject StoreGlobal.GlobalStore storeGlobal;
 
+<link href="https:/fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="style.css" />
+
 <main>
-   @*Inicio de barras laterales*@
-    <div class="sidebar">
-
-    </div>
-    @*Fin de barras laterales*@
-
-
-
     @*Comienza el Feed*@
     <div class="feed">
        <div class ="feed__header">
            <h2>
-               Home
+               GL.HF Home
+
            </h2>
        </div>
        
     </div>
         @*Postbox Inicio*@
-        <div class="postBox">
+        <div class="postbox">
             <form>
                 <div class="postbox__input">
-                    <input type="text" placeholder="Publica algo en GLHF...">
+                    <img src="/ImgAvatar.gif" alt="" /> 
+                    <input type="text" placeholder="Publica algo en GL.HF...">
                 </div>
-                <button class="postBox__postButton">Publicar</button>
+                <button class="postbox__postbutton">Publicar</button>
             </form>
+            
         </div>
 
          @*Postbox Fin*@
@@ -36,32 +35,41 @@
 @*Post Inicio*@
 <div class="post">
     <div class="post__avatar">
-        <img src="" alt="">
+       
     <div class="post__body">
         <div class="post__header">
             </div>
         </div>
         <div class="post__headerText">
-            <h3> Gibz
+
+            <h3> <img src="/ImgAvatar.gif" alt="" /> Nickname
                 </h3>
+
         </div>
         <div class="post_headerDescription">
             <p>Excelente sabado de noticias, fui convocado por el equipo 9Z para competir en las clasificaciones al torneo internacional.</p>
 
         </div>
     </div>
-    <img src="" alt="" />
+    <div class="post__publicacion">
+     <img src="/VideoHome.jpg" alt="" />
+     
+</div>
+
     <div class="post__footer">
-        <span class="material-icons"> repeat </span>
-        <span class="material-icons"> favorite_border </span>
-        <span class="material-icons"> publish </span>
+     <img src="/Favorite.png" alt="" /> 
+      <img src="/Compartir.png" alt="" />
+
+      
+</div>
 
     </div>
-</div>
+
 
 
 
 @*Post Fin*@
+
 
 
     @*Termina el Feed*@
