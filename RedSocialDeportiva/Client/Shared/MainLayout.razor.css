@@ -2,6 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    background-color: #232323;
 }
 
 main {
@@ -13,17 +14,18 @@ main {
 }
 
 .top-row {
-    background-color: #f7f7f7;
+    background-color: #232323;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
     height: 3.5rem;
+   
     display: flex;
     align-items: center;
 }
 
     .top-row ::deep a, .top-row ::deep .btn-link {
         white-space: nowrap;
-        margin-left: 1.5rem;
+        margin-left: 1rem;
         text-decoration: none;
     }
 
@@ -75,7 +77,7 @@ main {
     }
 
     .top-row, article {
-        padding-left: 2rem !important;
-        padding-right: 1.5rem !important;
+        padding-left:0rem !important;
+        padding-right: 1rem !important;
     }
 }

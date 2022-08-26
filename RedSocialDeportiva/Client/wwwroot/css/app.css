@@ -62,3 +62,63 @@ a, .btn-link {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
+
+
+
+    /*  POSIBLE BORRAR */
+@media screen and (max-height: 570px) {
+    body {
+        margin-top: -5.5rem;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+@media screen and (max-width: 850px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+    *::-webkit-scrollbar {
+        width: 0.5rem;
+        border-radius: 1rem;
+        -webkit-appearance: none;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: #aaa;
+        margin: .75rem;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: blue;
+        border-radius: 1.25rem;
+        border: 3px solid orange;
+    }

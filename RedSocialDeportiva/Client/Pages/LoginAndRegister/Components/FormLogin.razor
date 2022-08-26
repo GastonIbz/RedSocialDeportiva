@@ -1,55 +1,71 @@
-﻿@inject StoreGlobal.GlobalStore storeGlobal;
+﻿@inject ConsoleJS consoleJS;
 @inject LoginAndRegisterStore store;
-@inject ConsoleJS consoleJS;
+@inject StoreGlobal.GlobalStore storeGlobal;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
 
-<h2>Iniciar Sesion</h2>
+@using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
-<EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
 
+
+
+<div class="containerFormLogin @(store.IsLoginActive() ? "containerFormLogin--show" : "containerFormLogin--hide")" >
+
+    <h2>Iniciar Sesion</h2> 
+
+
+    <EditForm EditContext="editFormContext" OnValidSubmit="HandleLogin">
+            
         <DataAnnotationsValidator/>
 
-        @*Email *@
-        <div>
-            <label for="Email">Correo electronico: </label>
+        
+            @* Email *@
             <div>
-                <InputText 
-                    id="Email"
-                    @bind-Value="store.GetFormLogin().Email" 
-                    type="email"
-                    class="form-control col-sm-3" 
-                ></InputText>
-                <ValidationMessage For="(() => store.GetFormLogin().Email)"/>  
+                <label for="Email">Correo electronico: </label>
+                <div class="FormLogin">
+                    <InputText 
+                        id="Email"
+                        @bind-Value="store.GetFormLogin().Email"  
+                        type="email" 
+                        class="form-control col-sm-3" 
+                    ></InputText>
+                    <ValidationMessage For="(() => store.GetFormLogin().Email)"/>  
+                </div>
             </div>
-        </div>
 
-        @*Contraseña *@
-        <div>
-            <label for="Password">Contraseña: </label>
+            @*Contraseña *@ 
             <div>
-                <InputText 
-                    id="Password"
-                    @bind-Value="store.GetFormLogin().Password"  
-                    type="password"
-                    class="form-control col-sm-3" 
-                ></InputText>
-                <ValidationMessage For="(() => store.GetFormLogin().Password)"/>  
-            </div>
-        </div>
+                <label for="Password">Contraseña: </label>
+                <div>
+                    <InputText 
+                        id="Password"
+                        @bind-Value="store.GetFormLogin().Password"  
+                        type="password"
+                        class="form-control col-sm-3" 
+                    ></InputText>
 
-        <br />
+                    <ValidationMessage For="(() => store.GetFormLogin().Password)"/>  
+                </div>
+            </div>
+
+            <br />
     
-        <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
    
-</EditForm>
+    </EditForm>
+
+
+</div>
+
 
 @code {
 
     #region VARIABLES
 
     private EditContext editFormContext;
+
     private bool formInvalid = false;
+
 
     #endregion
 
@@ -67,6 +83,8 @@
         editFormContext.OnFieldChanged += HandleFieldFormChanged;
     }
 
+    /// METODO QUE CIERRE EL CICLO DE VIDA.
+
     #endregion
 
 
@@ -74,6 +92,7 @@
     #region METODOS 
 
     /// TODO: DIVIR EN METODOS PARA EL CICLO DE VIDA Y DEL STORE COMO EN INDEX
+    /// 
     private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
 
     private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
@@ -88,28 +107,36 @@
 
     private async Task HandleLogin()
     {
-        // TODO: Ver LoginAndRegister.tsx
-        /* 
-        Pendings: 
-        - Hacer maquetado CSS de Todo
-        - Realizar tema de Loader (mientras hace el http)
-        - Realizar tema del Modal
-        - Agregar Try/Catch
-        - Enviar Form al service login
-        */
-
-        var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
-
-        if (UserModels != null && MessageError == "")
+        try
         {
+
+            // Abrir Loader ... 
+
+            var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
+
+            if (UserModels == null || MessageError != null)
+            {
+                throw new Exception(MessageError);
+            }
+
             storeGlobal.SetMyUserData(UserModels);
+
+            NavigationManager.NavigateTo("Home");
+
         }
+        catch (Exception ex)
+        {
+            consoleJS.log("Message: ", ex.Message);
+            
+            // Abrir modal error mostrando error
 
-
-        consoleJS.log("ASD", UserModels);
-
-        NavigationManager.NavigateTo("Home");
-        store.ResetFormLogin();
+        }
+        finally
+        {
+            // cerrar Loader...
+            // setTimeOut para cerrar Modal
+            store.ResetFormLogin();
+        }
     }
 
     

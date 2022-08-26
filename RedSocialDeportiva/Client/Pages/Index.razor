@@ -1,10 +1,30 @@
-﻿@page "/";
+﻿@page "/test";
 
 <PageTitle>Index</PageTitle>
 
+<div class="page"> 
 
-Welcome to your new app.
-<SurveyPrompt Title="How is Blazor working for you?" />
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    Welcome to your new app.
+
+    <div class="alert alert-secondary mt-4">
+        <span class="oi oi-pencil me-2" aria-hidden="true"></span>
+        <strong>How is Blazor working for you?</strong>
+
+        <span class="text-nowrap">
+            Please take our
+            <a target="_blank" class="font-weight-bold link-dark" href="https://go.microsoft.com/fwlink/?linkid=2148851">brief survey</a>
+        </span>
+        and tell us what you think.
+    </div>
+
+</div>
+
+
+
 
 
 @code {

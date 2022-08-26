@@ -1,18 +1,19 @@
-﻿@page "/a" @*Cambiar url*@
-@using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components
+﻿@*Cambiar url*@
+@page "/"; 
 @inject LoginAndRegisterStore store;
+@using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
 
 
 @*LOADER*@
-<PageTitle>Index</PageTitle>
+<PageTitle>Inicio</PageTitle>
 
 
-<main>
+<main class="mainLoginAndRegister">
 
     <div class="containerPage">
 
-        <section class="containerBackground">
+        <section class="containerPage__Background">
 
             <MessageLogin/>
 
@@ -20,7 +21,7 @@
 
         </section>
 
-        <section>
+        <section class="containerPage__LoginAndRegister @store.GetClassCssFormModifed()">
 
             <FormLogin />
             
@@ -35,8 +36,6 @@
 
 @code{
 
-    private string css_containerFormActive = 
-    private string styleContainerForms = $"containerLoginAndRegister";
 
 
 
@@ -45,6 +44,10 @@
     protected override void OnInitialized()
     {
         store.SubscribeChangedState(updateView);
+
+        store.ChangeClassCssForm();
+
+
     }
 
     #endregion
@@ -59,13 +62,17 @@
     #endregion
 
 
+
+
+
     #region METODOS
 
-    public void change() => store.SetLoginActive(!store.IsLoginActive());
 
 
+    public void change() {
+        store.SetLoginActive(!store.IsLoginActive());
 
-
+    }
 
     #endregion
 

@@ -3,23 +3,20 @@
     public class LoginAndRegisterStore
     {
 
-        #region State inicial
         private LoginAndRegisterState _state;
-        #endregion
 
-
-        #region CONSTRUCTOR
         public LoginAndRegisterStore()
         {
             this._state = new LoginAndRegisterState
             {
                 LoginActive = true,
                 RegisterActive = false,
+                ClassCssForm = "",
                 LoginDto = new LoginDto(),
                 RegisterDto = new RegisterDto()
             };
         }
-        #endregion
+
 
         #region Metodos para obtener y setear los States
 
@@ -28,6 +25,7 @@
         public void SetLoginActive(bool newState)
         {
             this._state.LoginActive = newState;
+            this.ChangeClassCssForm();
             ExecuteStateChange();
         }
 
@@ -36,6 +34,7 @@
         public void SetRegisterActive(bool newState)
         {
             this._state.RegisterActive = newState;
+            this.ChangeClassCssForm();
             ExecuteStateChange();
         }
 
@@ -47,19 +46,34 @@
             ExecuteStateChange();
         }
 
+
         public RegisterDto GetFormRegister() => this._state.RegisterDto;
         public void ResetFormRegister()
         {
             this._state.RegisterDto = new RegisterDto();
             ExecuteStateChange();
-        } 
+        }
+
+
+        public string GetClassCssFormModifed() => this._state.ClassCssForm;
+        public void ChangeClassCssForm()
+        {
+            if (this._state.LoginActive && !this._state.RegisterActive)
+            {
+                this._state.ClassCssForm = "containerPage__LoginAndRegister--loginActive";
+            }
+            else
+            {
+                this._state.ClassCssForm = "containerPage__LoginAndRegister--registerActive";
+            }
+        }
+
 
         #endregion Metodos para obtener y setear los States
 
 
 
         #region Listeners Patron Observer || Gestion de eventos
-
 
         // Actua como controlador de eventos.
         private Action _listeners;
