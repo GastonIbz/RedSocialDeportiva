@@ -3,12 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RedSocial.BD.Data;
 using RedSocial.BD.Data.Entidades;
-using RedSocialDeportiva.Shared.DTO_Back.User;
 using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister;
 using System.IdentityModel.Tokens.Jwt;
+
 using System.Security.Claims;
 using System.Security.Cryptography;
-using static RedSocialDeportiva.Shared.DTO_Back.Response;
+using RedSocialDeportiva.Shared.DTO_Back;
+using Microsoft.EntityFrameworkCore;
 
 namespace RedSocialDeportiva.Server.Controllers
 {
@@ -69,8 +70,7 @@ namespace RedSocialDeportiva.Server.Controllers
                 }
 
 
-                
-                var UserBD = this.context.TablaUsuario.Where(Usuario => Usuario.Email == DataLogin.Email);
+                Usuario UserBD = await this.context.TablaUsuario.FirstOrDefaultAsync(Usuario => Usuario.Email == DataLogin.Email);
 
                 if (UserBD == null)
                 {

@@ -11,12 +11,12 @@ namespace RedSocial.BD.Data
     public class BDContext : DbContext
     {
 
-        public DbSet<Estadistica> TablaEstadistica { get; set; }
-        public DbSet<Publicacion> TablaPublicacion { get; set; }
-        public DbSet<Ranking>   TablaRanking { get; set; }
-        public DbSet<Usuario>   TablaUsuario { get; set; }
         public BDContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Estadistica> TablaEstadistica { get; set; }
+        public DbSet<Publicacion> TablaPublicacion { get; set; }
+        public DbSet<Ranking> TablaRanking { get; set; }
+        public DbSet<Usuario> TablaUsuario { get; set; }
     }
 }
