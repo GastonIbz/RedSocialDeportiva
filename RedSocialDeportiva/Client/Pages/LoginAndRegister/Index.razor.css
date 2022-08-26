@@ -1,4 +1,5 @@
 ﻿/*Metodologia BEM de CSS: https://animaticss.com/articulo/que-es-bem-css/ */
+
 .mainLoginAndRegister {
     background-image: url(https://placeimg.com/640/480/nature);
     background-repeat: no-repeat;
@@ -13,15 +14,14 @@
 
 .containerPage {
     width: 100%;
-    max-width: 50rem;
     margin: auto;
+    max-width: 50rem;
     position: relative;
-    /*background: red;*/
 }
 /* Contenedor fondo azul text */
 .containerPage__Background {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     padding: 2.25rem 1.5rem;
     text-align: center;
@@ -49,8 +49,11 @@
 
 @media screen and (max-width: 450px) {
 
-    .containerPage__Background {
+    .containerPage {
         max-width: 22rem;
+    }
+
+    .containerPage__Background {
         height: 18.75rem;
         flex-direction: column;
         align-items: center;
