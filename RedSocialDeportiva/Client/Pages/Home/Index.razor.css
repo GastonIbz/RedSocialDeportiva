@@ -110,16 +110,16 @@ main {
     font-size: 20px;
     margin-bottom: 5px;
     color:white;
+  
     
     
 
 }
     .post__headerText h3 img {
-      
         height: 20%;
         width: 10%;
         object-fit: contain;
-        
+        display: flex;
     }
 .post_headerDescription {
     margin-bottom: 10px;
