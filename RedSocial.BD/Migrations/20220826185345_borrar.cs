@@ -4,9 +4,32 @@
 
 namespace RedSocial.BD.Migrations
 {
-    public partial class Relaciones : Migration
+    public partial class borrar : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Usuarios_Relaciones_RelacionId",
+                table: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Relaciones");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Usuarios_RelacionId",
+                table: "Usuarios");
+
+            migrationBuilder.DropColumn(
+                name: "RelacionId",
+                table: "Usuarios");
+
+            migrationBuilder.RenameIndex(
+                name: "IdUsuario_UQ4",
+                table: "Usuarios",
+                newName: "IdUsuario_UQ3");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.RenameIndex(
                 name: "IdUsuario_UQ3",
@@ -25,8 +48,8 @@ namespace RedSocial.BD.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    idUsuario = table.Column<int>(type: "int", nullable: false),
-                    usuarioId = table.Column<int>(type: "int", nullable: true)
+                    usuarioId = table.Column<int>(type: "int", nullable: true),
+                    idUsuario = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,29 +83,6 @@ namespace RedSocial.BD.Migrations
                 column: "RelacionId",
                 principalTable: "Relaciones",
                 principalColumn: "Id");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Usuarios_Relaciones_RelacionId",
-                table: "Usuarios");
-
-            migrationBuilder.DropTable(
-                name: "Relaciones");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Usuarios_RelacionId",
-                table: "Usuarios");
-
-            migrationBuilder.DropColumn(
-                name: "RelacionId",
-                table: "Usuarios");
-
-            migrationBuilder.RenameIndex(
-                name: "IdUsuario_UQ4",
-                table: "Usuarios",
-                newName: "IdUsuario_UQ3");
         }
     }
 }

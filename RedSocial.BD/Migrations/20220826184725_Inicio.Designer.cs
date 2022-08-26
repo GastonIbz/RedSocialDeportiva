@@ -12,8 +12,8 @@ using RedSocial.BD.Data;
 namespace RedSocial.BD.Migrations
 {
     [DbContext(typeof(BDContext))]
-    [Migration("20220815232551_Bd")]
-    partial class Bd
+    [Migration("20220826184725_Inicio")]
+    partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,31 @@ namespace RedSocial.BD.Migrations
                     b.ToTable("Rankings");
                 });
 
+            modelBuilder.Entity("RedSocial.BD.Data.Entidades.Relacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("idUsuario")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("usuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("usuarioId");
+
+                    b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
+                        .IsUnique()
+                        .HasDatabaseName("IdUsuario_UQ3");
+
+                    b.ToTable("Relaciones");
+                });
+
             modelBuilder.Entity("RedSocial.BD.Data.Entidades.Usuario", b =>
                 {
                     b.Property<int>("Id")
@@ -105,22 +130,48 @@ namespace RedSocial.BD.Migrations
                     b.Property<string>("ImgPortada")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("NameUsuario")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("password")
-                        .IsRequired()
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("RelacionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("RelacionId");
+
                     b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
                         .IsUnique()
-                        .HasDatabaseName("IdUsuario_UQ3");
+                        .HasDatabaseName("IdUsuario_UQ4");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("RedSocial.BD.Data.Entidades.Relacion", b =>
+                {
+                    b.HasOne("RedSocial.BD.Data.Entidades.Usuario", "usuario")
+                        .WithMany()
+                        .HasForeignKey("usuarioId");
+
+                    b.Navigation("usuario");
+                });
+
+            modelBuilder.Entity("RedSocial.BD.Data.Entidades.Usuario", b =>
+                {
+                    b.HasOne("RedSocial.BD.Data.Entidades.Relacion", null)
+                        .WithMany("Usuarios")
+                        .HasForeignKey("RelacionId");
+                });
+
+            modelBuilder.Entity("RedSocial.BD.Data.Entidades.Relacion", b =>
+                {
+                    b.Navigation("Usuarios");
                 });
 #pragma warning restore 612, 618
         }
