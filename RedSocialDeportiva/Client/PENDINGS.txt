@@ -11,17 +11,11 @@
    o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima vez y no vuelve a 
    su valor inicial
 
-
-⏰ Ir a App.css y especificar html{ font-size: 16px } para q coordine todos los REM.
-
-
 ⏰ Investigar sobre Action para hacer todo lo del store mas explicito. 
 
 
-
-⏰ Convertir los Inputs de los FOrmn login y registro en un componente
-
-
+⏰ Crear Modal de Loader y Modal de Message e implementarlos en LoginAndRegister
+	(Insertarlos en el MainLayout y manejarlos con el store global)
 
 
 
