@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister
 {
-    public class LoginDto
+    public class DataLoginDTO
     {
 
         #region Email

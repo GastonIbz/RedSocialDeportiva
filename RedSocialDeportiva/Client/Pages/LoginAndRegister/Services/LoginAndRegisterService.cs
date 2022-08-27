@@ -19,31 +19,30 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        public async Task<(UserModels, string)> login(LoginDto form)
+        public async Task<(UserModels, string)> login(DataLoginDTO form)
         {
-            // TODO: Hacer que envie metodo POST y adaptarlo al respecto,.
-            var result = await this.http.PostAsJsonAsync("api/User", form);
+            //var result = await this.http.PostAsJsonAsync("api/User", form);
 
-            RegisterdataDTO data = await result.Content.ReadFromJsonAsync<RegisterdataDTO>();
-
+            //RegisterdataDTO data = await result.Content.ReadFromJsonAsync<LoginDataDTO>();
 
             UserModels UserAdapted = new UserModels();
 
-            if (data != null && data.User != null && data.MessageError == "")
-            {
-                UserAdapted = adapter.CreateAdapterUser(data);
-            }
+            //if (data != null && data.User != null && data.MessageError == null)
+            //{
+            //    UserAdapted = adapter.CreateAdapterUser(data);
+            //}
 
             consoleJS.log("ASD", UserAdapted);
 
-            return (UserAdapted, data.MessageError);
+            //return (UserAdapted, data.MessageError);
+
+            return (UserAdapted, "Hubo un error mockeado");
 
         }
 
 
-        public async Task<string> register(RegisterDto form)
+        public async Task<string> register(DataRegisterDTO form)
         {
-            // TODO: Hacer que envie metodo POST y adaptarlo al respecto.
             var response = await this.http.PostAsJsonAsync("api/User/register", form);
 
             var result = await response.Content.ReadFromJsonAsync<RegisterDataDTO>();

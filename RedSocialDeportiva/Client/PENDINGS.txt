@@ -1,7 +1,7 @@
 ﻿
 **** Pendings ****
 
-⏰ Ejecutar con el ultimo metodo de ciclo de vida.: store.RemoveStateChangeListeners(updateView)
+⏰ Ejecutar con el ultimo metodo de ciclo de vida.: store.DesubscribeChangedState(updateView)
    para desubscribirse al Listeners del store. 
    Nota: En todos los comopnentes de LoginAndRegister
 
@@ -11,14 +11,8 @@
    o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima vez y no vuelve a 
    su valor inicial
 
-⏰ Investigar sobre Action para hacer todo lo del store mas explicito. 
-
 
 ⏰ Crear Modal de Loader y Modal de Message e implementarlos en LoginAndRegister
 	(Insertarlos en el MainLayout y manejarlos con el store global)
-
-
-
-
 
 

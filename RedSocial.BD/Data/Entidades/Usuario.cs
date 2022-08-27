@@ -11,10 +11,12 @@ namespace RedSocial.BD.Data.Entidades
     
     public class Usuario : EntityBase
     {
+
         public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+        public byte[] PasswordHash { get; set; } 
+        public byte[] PasswordSalt { get; set; } 
+
+      
         public string Email { get; set; }
 
         [MaxLength(300, ErrorMessage = "La descripcion no debe superar los {1} caracteres")]

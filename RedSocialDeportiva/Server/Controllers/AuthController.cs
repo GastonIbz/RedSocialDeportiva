@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using RedSocial.BD.Data;
 using RedSocial.BD.Data.Entidades;
-using RedSocialDeportiva.Shared.DTO_Back.User;
+using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister;
 using System.IdentityModel.Tokens.Jwt;
+
 using System.Security.Claims;
 using System.Security.Cryptography;
-
+using RedSocialDeportiva.Shared.DTO_Back;
+using Microsoft.EntityFrameworkCore;
 
 namespace RedSocialDeportiva.Server.Controllers
 {
@@ -18,22 +20,17 @@ namespace RedSocialDeportiva.Server.Controllers
         private readonly BDContext context;
         private readonly IConfiguration _configuration;
 
-        /*
-        public AuthController(BDContext context)
-        {
-            this.context = context;
-        }
-        */
 
         public static Usuario user = new Usuario();
 
         
 
-        public AuthController(IConfiguration configuration)
+        public AuthController(IConfiguration configuration, BDContext context)
         {
-            _configuration = configuration;
+            this.context = context;
+            this._configuration = configuration;
         }
-
+        /*
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDTO request)
         {
@@ -53,47 +50,95 @@ namespace RedSocialDeportiva.Server.Controllers
            
             
         }
-
+        */
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(LoginDTO request)
+        public async Task<ActionResult<ResponseDto<UserData>>> Login(DataLoginDTO DataLogin)
         {
-            if (user.Email != request.Email)
+            ResponseDto<UserData> ResponseDto = new ResponseDto<UserData>();
+
+            try
             {
-                return BadRequest("El mail es incorrecto");
+                if (DataLogin.Email == null || DataLogin.Email == string.Empty)
+                {
+                    throw new Exception("Email incorrecto");
+                }
+
+                if (DataLogin.Password == null || DataLogin.Password == string.Empty)
+                {
+
+                    throw new Exception("Contraseña incorrecta");
+                }
+
+
+                Usuario UserBD = await this.context.TablaUsuario.FirstOrDefaultAsync(Usuario => Usuario.Email == DataLogin.Email);
+
+                if (UserBD == null)
+                {
+                    throw new Exception("Email ingresado es incorrecto");
+                }
+
+
+                
+                if (!this.VerifyPasswordHash(DataLogin.Password, UserBD.PasswordHash ,UserBD.PasswordSalt))
+                {
+                    throw new Exception("Contraseña incorrecta");
+                }
+
+                ResponseDto.Data = new UserData
+                {
+                    Token = CreateToken(user), //Creamos un nuevo metodo y obtiene usuario
+                    User = new User
+                    {
+                        Email = UserBD.Email,
+                        Descripcion = UserBD.Descripcion,
+                        Id = UserBD.Id,
+                        ImgPerfil = UserBD.ImgPerfil,
+                        ImgPortada = UserBD.ImgPortada,
+                        Username = UserBD.Username
+                    },
+
+                };
+              
+                
+                return Ok(ResponseDto);
+
             }
-            if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
-            {
-                return BadRequest("Contraseña incorrecta");
+            catch (Exception ex)
+            { 
+                ResponseDto.MessageError = ex.Message;  
+                return BadRequest(ResponseDto);
+
             }
-            string token = CreateToken(user); 
-            return Ok(token);
+            
 
           
 
         }
         private string CreateToken(Usuario user)
         {
-            List<Claim> claims = new List<Claim>
+            List<Claim> claims = new List<Claim> //Permisos para describir
+                                                 //la informacion del usuario
             {
-               new Claim(ClaimTypes.Email, user.Email)
+               new Claim(ClaimTypes.Email, user.Email) //Permiso de seguridad
             };
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
-                 _configuration.GetSection("AppSettings:Token").Value));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+                 _configuration.GetSection("AppSettings:Token").Value)); //Clave simetrica
+                                   //Obtenemos el token de configuracion 
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);//Credenciales de firma 
             var token = new JwtSecurityToken(
                claims: claims,
-               expires: DateTime.Now.AddDays(1),
-               signingCredentials: creds);
+               expires: DateTime.Now.AddHours(2),
+               signingCredentials: creds); //Defino la carga del token 
 
-            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token); //Defino la cadena de token
+                                                                       //que quiero que retorne 
 
             return jwt;
             
         }
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            using (var hmac = new HMACSHA512())
+            using (var hmac = new HMACSHA512()) //Algoritmo de firma 
             {
                 passwordSalt = hmac.Key;
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));

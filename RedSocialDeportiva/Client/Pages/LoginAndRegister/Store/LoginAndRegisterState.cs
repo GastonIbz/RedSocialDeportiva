@@ -5,7 +5,7 @@
         public bool LoginActive { get; set; }
         public bool RegisterActive { get; set; }
         public string ClassCssForm { get; set; }
-        public LoginDto? LoginDto { get; set; }
-        public RegisterDto? RegisterDto { get; set; }
+        public DataLoginDTO? LoginDto { get; set; }
+        public DataRegisterDTO? RegisterDto { get; set; }
     }
 }

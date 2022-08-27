@@ -3,7 +3,7 @@
     public class UserAdapter
     {
 
-        public UserModels CreateAdapterUser(RegisterdataDTO dataUser)
+        public UserModels CreateAdapterUser(LoginDataDTO dataUser)
         {
 
             UserModels formattedUser = new UserModels

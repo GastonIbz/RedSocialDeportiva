@@ -1,6 +1,6 @@
-﻿@*Cambiar url*@
-@page "/"; 
+﻿@page "/"; 
 @inject LoginAndRegisterStore store;
+@implements IDisposable;
 @using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
 
@@ -13,7 +13,7 @@
 
     <div class="containerPage">
 
-        <section class="containerPage__Background">
+        <section class="containerPage__Background">                
 
             <MessageLogin/>
 
@@ -27,7 +27,7 @@
             
             <FormRegister />
 
-        </section>
+        </section>                                                                                                                           
 
     </div>
 
@@ -47,17 +47,21 @@
 
         store.ChangeClassCssForm();
 
-
     }
+    // Posible:Ejecutar con el ultimo metodo de ciclo de vida.
+    
+
+    // Elimina recursos no administrados cuando el componente se elimina de la interfaz del usuario.
+    // Ergo, elimina el recurso de escuchar los cambios del Store. 
+    // Nota: Utilziar @implements IDispose.
+    public void Dispose() => store.DesubscribeChangedState(updateView); 
 
     #endregion
 
     #region Metodos relacionado al Store
 
-    // Ejecutar con el ultimo metodo de ciclo de vida.
-    public void Dispose() => store.DesubscribeChangedState(updateView); // QUITAR DE METODO
 
-    private void updateView() => StateHasChanged();
+    private void updateView() => StateHasChanged(); 
 
     #endregion
 
@@ -71,7 +75,6 @@
 
     public void change() {
         store.SetLoginActive(!store.IsLoginActive());
-
     }
 
     #endregion
