@@ -112,14 +112,14 @@
 
             // Abrir Loader ... 
 
-            var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
+            //var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
 
-            if (UserModels == null || MessageError != null)
-            {
-                throw new Exception(MessageError);
-            }
+            //if (UserModels == null || MessageError != null)
+            //{
+            //    throw new Exception(MessageError);
+            //}
 
-            storeGlobal.SetMyUserData(UserModels);
+            //storeGlobal.SetMyUserData(UserModels);
 
             NavigationManager.NavigateTo("Home");
 
