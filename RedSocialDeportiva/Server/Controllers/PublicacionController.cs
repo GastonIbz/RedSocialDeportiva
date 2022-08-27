@@ -22,13 +22,9 @@ namespace RedSocialDeportiva.Server.Controllers
         }*/
 
         [HttpGet]
-        public  IEnumerable<Publicacion> Get()
+        public async Task<IEnumerable<Publicacion>> Get()
         {
-            using (BDContext context = new BDContext())
-            {
-
-                return context.Publicaciones.ToList(); 
-            }
+            return await context.TablaPublicacion.ToListAsync();
         }
     }
 }
