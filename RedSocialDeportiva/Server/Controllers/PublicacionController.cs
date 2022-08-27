@@ -15,10 +15,20 @@ namespace RedSocialDeportiva.Server.Controllers
         {
             this.context = context;
         }
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<List<Publicacion>>> Get()
         {
             return await context.Publicaciones.ToListAsync();
+        }*/
+
+        [HttpGet]
+        public  IEnumerable<Publicacion> Get()
+        {
+            using (BDContext context = new BDContext())
+            {
+
+                return context.Publicaciones.ToList(); 
+            }
         }
     }
 }

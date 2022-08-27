@@ -18,5 +18,9 @@ namespace RedSocial.BD.Data
         public BDContext(DbContextOptions options) : base(options)
         {
         }
+
+        public BDContext()
+        {
+        }
     }
 }
