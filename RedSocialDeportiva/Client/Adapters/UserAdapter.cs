@@ -3,16 +3,16 @@
     public class UserAdapter
     {
 
-        public UserModels CreateAdapterUser(LoginDataDTO dataUser)
+        public UserModels CreateAdapterUser(UserData dataUser)
         {
 
             UserModels formattedUser = new UserModels
             {
                 Email = dataUser.User.Email,
                 Id = dataUser.User.Id,
-                LastName = dataUser.User.LastName,
-                NameCompleted = dataUser.User.NameCompleted,
-                UserName = dataUser.User.UserName,
+                ImgPerfil = dataUser.User.ImgPerfil,
+                ImgPortada= dataUser.User.ImgPortada,
+                UserName = dataUser.User.Username,
                 Token = dataUser.Token,
             };
 

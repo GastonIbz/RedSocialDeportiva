@@ -41,15 +41,16 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        public async Task<string> register(DataRegisterDTO form)
+        //public async Task<string> register(DataRegisterDTO form)
+        public async void register(DataRegisterDTO form)
         {
-            var response = await this.http.PostAsJsonAsync("api/User/register", form);
+            //var response = await this.http.PostAsJsonAsync("api/User/register", form);
 
-            var result = await response.Content.ReadFromJsonAsync<RegisterDataDTO>();
+            //var result = await response.Content.ReadFromJsonAsync<RegisterDataDTO>();
 
-            consoleJS.log("ASDAS", result);
+            //consoleJS.log("ASDAS", result);
 
-            return result.MessageError;
+            //return result.MessageError;
         }
     }
 }
