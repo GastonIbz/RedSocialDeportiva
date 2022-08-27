@@ -79,13 +79,28 @@ namespace RedSocialDeportiva.Server.Controllers
 
 
                 
-                if (UserBD !=null && !this.VerifyPasswordHash(DataLogin.Password, UserBD.PasswordHash ,UserBD.PasswordSalt))
+                if (!this.VerifyPasswordHash(DataLogin.Password, UserBD.PasswordHash ,UserBD.PasswordSalt))
                 {
-                    return BadRequest("Contraseña incorrecta");
+                    throw new Exception("Contraseña incorrecta");
                 }
-                string token = CreateToken(user); //Creamos un nuevo metodo y obtiene usuario
+
+                ResponseDto.Data = new UserData
+                {
+                    Token = CreateToken(user), //Creamos un nuevo metodo y obtiene usuario
+                    User = new User
+                    {
+                        Email = UserBD.Email,
+                        Descripcion = UserBD.Descripcion,
+                        Id = UserBD.Id,
+                        ImgPerfil = UserBD.ImgPerfil,
+                        ImgPortada = UserBD.ImgPortada,
+                        Username = UserBD.Username
+                    },
+
+                };
+              
                 
-                return Ok(token);
+                return Ok(ResponseDto);
 
             }
             catch (Exception ex)
