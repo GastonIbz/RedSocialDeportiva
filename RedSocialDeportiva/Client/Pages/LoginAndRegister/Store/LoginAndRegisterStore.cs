@@ -12,8 +12,8 @@
                 LoginActive = true,
                 RegisterActive = false,
                 ClassCssForm = "",
-                LoginDto = new LoginDto(),
-                RegisterDto = new RegisterDto()
+                LoginDto = new DataLoginDTO(),
+                RegisterDto = new DataRegisterDTO()
             };
         }
 
@@ -39,18 +39,18 @@
         }
 
 
-        public LoginDto GetFormLogin() => this._state.LoginDto;
+        public DataLoginDTO GetFormLogin() => this._state.LoginDto;
         public void ResetFormLogin() 
         {
-            this._state.LoginDto = new LoginDto();
+            this._state.LoginDto = new DataLoginDTO();
             ExecuteStateChange();
         }
 
 
-        public RegisterDto GetFormRegister() => this._state.RegisterDto;
+        public DataRegisterDTO GetFormRegister() => this._state.RegisterDto;
         public void ResetFormRegister()
         {
-            this._state.RegisterDto = new RegisterDto();
+            this._state.RegisterDto = new DataRegisterDTO();
             ExecuteStateChange();
         }
 

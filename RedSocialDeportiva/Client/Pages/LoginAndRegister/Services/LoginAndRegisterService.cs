@@ -19,7 +19,7 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        public async Task<(UserModels, string)> login(LoginDto form)
+        public async Task<(UserModels, string)> login(DataLoginDTO form)
         {
             // TODO: Hacer que envie metodo POST y adaptarlo al respecto,.
             var result = await this.http.PostAsJsonAsync("api/User", form);
@@ -41,7 +41,7 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        public async Task<string> register(RegisterDto form)
+        public async Task<string> register(DataRegisterDTO form)
         {
             // TODO: Hacer que envie metodo POST y adaptarlo al respecto.
             var response = await this.http.PostAsJsonAsync("api/User/register", form);

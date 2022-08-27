@@ -84,7 +84,7 @@ namespace RedSocialDeportiva.Server.Controllers
         //}
 
         [HttpPost("register")]
-        public async Task<ActionResult<RegisterDataDTO>> Register(RegisterDto form)
+        public async Task<ActionResult<RegisterDataDTO>> Register(DataRegisterDTO form)
         {
             string MessageError = "";
 
