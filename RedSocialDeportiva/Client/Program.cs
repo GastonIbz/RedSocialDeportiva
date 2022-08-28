@@ -16,7 +16,7 @@ global using RedSocialDeportiva.Client.Utils.ConsoleJS;
 
 // Store's
 global using RedSocialDeportiva.Client.StoreGlobal;
-global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Store; // Accedemos al Store que tiene dicha pag.
+global using RedSocialDeportiva.Client.Pages.LoginAndRegister.Store;
 
 // Adapters
 global using RedSocialDeportiva.Client.Adapters;
