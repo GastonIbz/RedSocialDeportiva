@@ -6,7 +6,7 @@
 
 
 @*LOADER*@
-<PageTitle>Inicio</PageTitle>
+<PageTitle>Autenticacion</PageTitle>
 
 
 <main class="mainLoginAndRegister">
@@ -35,48 +35,27 @@
 
 
 @code{
-
-
-
-
     #region Ciclo Vida componente
 
     protected override void OnInitialized()
     {
-        store.SubscribeChangedState(updateView);
+        store.SubscribeChangedState(updateComponent);
 
         store.ChangeClassCssForm();
-
     }
-    // Posible:Ejecutar con el ultimo metodo de ciclo de vida.
-    
 
-    // Elimina recursos no administrados cuando el componente se elimina de la interfaz del usuario.
-    // Ergo, elimina el recurso de escuchar los cambios del Store. 
-    // Nota: Utilziar @implements IDispose.
-    public void Dispose() => store.DesubscribeChangedState(updateView); 
+    public void Dispose() 
+    {
+       store.DesubscribeChangedState(updateComponent); 
+    }
 
     #endregion
-
-    #region Metodos relacionado al Store
-
-
-    private void updateView() => StateHasChanged(); 
-
-    #endregion
-
-
 
 
 
     #region METODOS
 
-
-
-    public void change() {
-        store.SetLoginActive(!store.IsLoginActive());
-    }
+    private void updateComponent() => StateHasChanged(); 
 
     #endregion
-
 }
