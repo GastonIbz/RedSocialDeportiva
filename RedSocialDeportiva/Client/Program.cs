@@ -3,7 +3,7 @@
 
 // DTO's
 global using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister; // Voy a poder utilziar todos los DTO de LoginAndRegister dentro del CLiente.
-global using RedSocialDeportiva.Shared.DTO_Back.User;
+global using RedSocialDeportiva.Shared.DTO_Back;
 
 // Models
 global using RedSocialDeportiva.Client.Models;
