@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using RedSocial.BD.Data;
-using RedSocial.BD.Data.Entidades;
 using RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister;
 using System.IdentityModel.Tokens.Jwt;
 
 using System.Security.Claims;
 using System.Security.Cryptography;
-using RedSocialDeportiva.Shared.DTO_Back;
-using Microsoft.EntityFrameworkCore;
+using RedSocialDeportiva.Shared.DTO_Back.Auth;
 
 namespace RedSocialDeportiva.Server.Controllers
 {
@@ -21,40 +18,34 @@ namespace RedSocialDeportiva.Server.Controllers
         private readonly IConfiguration _configuration;
 
 
-        public static Usuario user = new Usuario();
-
-        
-
         public AuthController(IConfiguration configuration, BDContext context)
         {
             this.context = context;
             this._configuration = configuration;
         }
-        /*
+
         [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(UserDTO request)
+        // Nota: Hay que modificarlo, lo deje de esta manera para que no me rompiera.
+        public async Task<ActionResult<string>> Register(string request)
         {
-         
-            
-                
-                CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-                user.Username = request.Username;
-                user.PasswordHash = passwordHash;
-                user.PasswordSalt = passwordSalt;
-                user.Email = request.Email;
+            //CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-                
-                return Ok(user);
+            //user.Username = request.Username;
+            //user.PasswordHash = passwordHash;
+            //user.PasswordSalt = passwordSalt;
+            //user.Email = request.Email;
 
-           
-            
+
+            //return Ok(user);
+
+            return "METODO MOCKEADO";     
         }
-        */
+
         [HttpPost("login")]
-        public async Task<ActionResult<ResponseDto<UserData>>> Login(DataLoginDTO DataLogin)
+        public async Task<ActionResult<ResponseDto<AuthData>>> Login(DataLoginDTO DataLogin)
         {
-            ResponseDto<UserData> ResponseDto = new ResponseDto<UserData>();
+            ResponseDto<AuthData> ResponseDto = new ResponseDto<AuthData>();
 
             try
             {
@@ -65,7 +56,6 @@ namespace RedSocialDeportiva.Server.Controllers
 
                 if (DataLogin.Password == null || DataLogin.Password == string.Empty)
                 {
-
                     throw new Exception("Contraseña incorrecta");
                 }
 
@@ -77,16 +67,15 @@ namespace RedSocialDeportiva.Server.Controllers
                     throw new Exception("Email ingresado es incorrecto");
                 }
 
-
                 
                 if (!this.VerifyPasswordHash(DataLogin.Password, UserBD.PasswordHash ,UserBD.PasswordSalt))
                 {
                     throw new Exception("Contraseña incorrecta");
                 }
 
-                ResponseDto.Data = new UserData
+                ResponseDto.Data = new AuthData
                 {
-                    Token = CreateToken(user), //Creamos un nuevo metodo y obtiene usuario
+                    Token = CreateToken(UserBD), //Creamos un nuevo metodo y obtiene usuario
                     User = new User
                     {
                         Email = UserBD.Email,
@@ -99,21 +88,17 @@ namespace RedSocialDeportiva.Server.Controllers
 
                 };
               
-                
                 return Ok(ResponseDto);
 
             }
             catch (Exception ex)
             { 
-                ResponseDto.MessageError = ex.Message;  
+                ResponseDto.MessageError = ex.Message; 
                 return BadRequest(ResponseDto);
-
-            }
-            
-
-          
-
+            }      
         }
+
+
         private string CreateToken(Usuario user)
         {
             List<Claim> claims = new List<Claim> //Permisos para describir
