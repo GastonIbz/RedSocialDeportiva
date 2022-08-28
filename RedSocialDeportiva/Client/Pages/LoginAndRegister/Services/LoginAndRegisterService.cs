@@ -34,22 +34,20 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
                 UserAdapted = adapter.CreateAdapterUser(response.Data);
             }
 
-            consoleJS.log("ASD", UserAdapted);
-
+            //consoleJS.log("ASD", UserAdapted);
             //return (UserAdapted, data.MessageError);
 
             return (UserAdapted, "Hubo un error mockeado");
-
         }
 
 
-        public async Task<ResponseDto<string>> Register(DataRegisterDTO form)
+        public async Task<(string, string)> Register(DataRegisterDTO form)
         {
             var resultHttp = await this.http.PostAsJsonAsync("api/Auth/register", form);
 
             ResponseDto<string> response = await resultHttp.Content.ReadFromJsonAsync<ResponseDto<string>>();
 
-            return response;
+            return (response.Data, response.MessageError);
         }
     }
 }
