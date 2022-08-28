@@ -5,7 +5,9 @@
     {
 
         #region State
+
         private GlobalState _stateGlobal;
+
         #endregion
 
         #region CONSTRUCTOR
@@ -14,9 +16,9 @@
         {
             this._stateGlobal = new GlobalState
             {
+                ShowLoader = false,
+                MessageModal = new ModalModels(),
                 User = new UserModels(),
-                IsLoader = false,
-                MessageModal = "",
             };
         }
 
@@ -25,6 +27,7 @@
 
         #region Metodos para obtener y setear los States
 
+
         public UserModels GetMyUserData() => this._stateGlobal.User;
         public void SetMyUserData(UserModels newState)
         {
@@ -32,39 +35,52 @@
             ExecuteStateChange();
         }
 
-        
-        public bool IsLoader() => this._stateGlobal.IsLoader;
-        public void SetIsLoader(bool newState)
+
+        public bool IsShowLoader() => this._stateGlobal.ShowLoader;
+        public void SetShowLoader(bool newState)
         {
-            this._stateGlobal.IsLoader = newState;
+            this._stateGlobal.ShowLoader = newState;
             ExecuteStateChange();
         }
 
 
-        public string MessageModal() => this._stateGlobal.MessageModal;
+        public bool IsShowMessageModal() => this._stateGlobal.MessageModal.ShowModal;
+        public void SetShowMessageModal(bool newState)
+        {
+            this._stateGlobal.MessageModal.ShowModal = newState;
+            ExecuteStateChange();
+        }
+
+
+        public string GetMessageModal() => this._stateGlobal.MessageModal.Message;
         public void SetMessageModal(string newState)
         {
-            this._stateGlobal.MessageModal = newState;
+            this._stateGlobal.MessageModal.Message = newState;
             ExecuteStateChange();
         }
+
+
+        public string GetCssMessageModal() => this._stateGlobal.MessageModal.CssModal;
+        public void SetCssMessageModal(string newState)
+        {
+            this._stateGlobal.MessageModal.CssModal = newState;
+            ExecuteStateChange();
+        }
+
 
         #endregion Metodos para obtener y setear los States
 
 
+
         #region Listeners Patron Observer || Gestion de eventos
 
+        private Action OnStateChange;
 
-        // Actua como controlador de eventos.
-        private Action _listeners;
+        public void SubscribeChangedState(Action listenerComponent) => this.OnStateChange += listenerComponent;
 
-        // Permite subscribirnos a una accion.
-        public void SubscribeChangedState(Action listener) => this._listeners += listener;
+        public void DesubscribeChangedState(Action listenerComponent) => this.OnStateChange -= listenerComponent;
 
-        // Permite desubscribirnos a una accion.
-        public void DesubscribeChangedState(Action listener) => this._listeners -= listener;
-
-        // Invocamos la accion 
-        private void ExecuteStateChange() => this._listeners.Invoke();
+        private void ExecuteStateChange() => this.OnStateChange.Invoke();
 
 
         #endregion
