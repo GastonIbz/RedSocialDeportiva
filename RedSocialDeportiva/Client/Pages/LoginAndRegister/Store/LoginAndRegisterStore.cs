@@ -75,16 +75,12 @@
 
         #region Listeners Patron Observer || Gestion de eventos
 
-        // Actua como controlador de eventos.
         private Action OnStateChange;
-
-        // Permite subscribirnos a una accion. 
-        public void SubscribeChangedState(Action listener) => this.OnStateChange += listener;
-
-        // Permite desubscribirnos a una accion.
-        public void DesubscribeChangedState(Action listener) => this.OnStateChange -= listener;
-
-        // Invocamos la accion 
+        
+        public void SubscribeChangedState(Action listenerComponent) => this.OnStateChange += listenerComponent;
+        
+        public void DesubscribeChangedState(Action listenerComponent) => this.OnStateChange -= listenerComponent;
+        
         private void ExecuteStateChange() => this.OnStateChange.Invoke();
 
 
