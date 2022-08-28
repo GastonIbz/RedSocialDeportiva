@@ -1,9 +1,11 @@
-﻿namespace RedSocialDeportiva.Client.Adapters
+﻿using RedSocialDeportiva.Shared.DTO_Back.Auth;
+
+namespace RedSocialDeportiva.Client.Adapters
 {
     public class UserAdapter
     {
 
-        public UserModels CreateAdapterUser(UserData dataUser)
+        public UserModels CreateAdapterUser(AuthData dataUser)
         {
 
             UserModels formattedUser = new UserModels
