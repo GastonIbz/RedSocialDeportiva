@@ -1,4 +1,6 @@
 ﻿using System.Net.Http.Json;
+using RedSocialDeportiva.Shared.DTO_Back.Auth;
+
 
 namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
 {
@@ -19,18 +21,18 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        public async Task<(UserModels, string)> login(DataLoginDTO form)
+        public async Task<(UserModels, string)> Login(DataLoginDTO form)
         {
-            //var result = await this.http.PostAsJsonAsync("api/User", form);
+            var resultHttp = await this.http.PostAsJsonAsync("api/Auth/login", form);
 
-            //RegisterdataDTO data = await result.Content.ReadFromJsonAsync<LoginDataDTO>();
+            ResponseDto<AuthData> response = await resultHttp.Content.ReadFromJsonAsync<ResponseDto<AuthData>>();
 
             UserModels UserAdapted = new UserModels();
 
-            //if (data != null && data.User != null && data.MessageError == null)
-            //{
-            //    UserAdapted = adapter.CreateAdapterUser(data);
-            //}
+            if (response != null && response.Data != null && response.MessageError == null)
+            {
+                UserAdapted = adapter.CreateAdapterUser(response.Data);
+            }
 
             consoleJS.log("ASD", UserAdapted);
 
@@ -41,16 +43,13 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
         }
 
 
-        //public async Task<string> register(DataRegisterDTO form)
-        public async void register(DataRegisterDTO form)
+        public async Task<ResponseDto<string>> Register(DataRegisterDTO form)
         {
-            //var response = await this.http.PostAsJsonAsync("api/User/register", form);
+            var resultHttp = await this.http.PostAsJsonAsync("api/Auth/register", form);
 
-            //var result = await response.Content.ReadFromJsonAsync<RegisterDataDTO>();
+            ResponseDto<string> response = await resultHttp.Content.ReadFromJsonAsync<ResponseDto<string>>();
 
-            //consoleJS.log("ASDAS", result);
-
-            //return result.MessageError;
+            return response;
         }
     }
 }
