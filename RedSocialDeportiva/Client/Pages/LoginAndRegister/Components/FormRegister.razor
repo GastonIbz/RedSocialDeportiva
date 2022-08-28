@@ -3,7 +3,7 @@
 @inject ConsoleJS consoleJS;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
-
+@implements IDisposable;
 
 
 <div class="containerFormRegister @(store.IsRegisterActive() ? "containerFormRegister--show" : "containerFormRegister--hide")" >
@@ -87,7 +87,7 @@
 
             <br />
     
-            <button type="submit" class="btn btn-primary" disabled="@formInvalid">Registrarse</button>
+            <button type="submit" class="btn btn-primary" disabled="@isFormInvalid">Registrarse</button>
 
 
     </EditForm>
@@ -99,7 +99,7 @@
     #region VARIABLES
 
     private EditContext editFormContext;
-    private bool formInvalid = false;
+    private bool isFormInvalid = false;
 
     #endregion
 
@@ -108,11 +108,16 @@
     protected override void OnInitialized()
     {
         // State
-        store.SubscribeChangedState(updateView);
+        store.SubscribeChangedState(updateComponent);
 
         // Formulario
         editFormContext = new(store.GetFormRegister());
-        editFormContext.OnFieldChanged += HandleFieldFormChanged;
+        editFormContext.OnFieldChanged += updateChangedFieldForm;
+    }
+
+    public void Dispose()
+    {
+        store.DesubscribeChangedState(updateComponent);
     }
 
     #endregion
@@ -120,32 +125,51 @@
 
     #region METODOS 
 
-    private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
+    private void updateComponent() => StateHasChanged(); 
 
-    private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    private void updateChangedFieldForm(object? sender, FieldChangedEventArgs e)
     {
-        if (editFormContext is not null)
+        if (editFormContext != null)
         {
-            formInvalid = !editFormContext.Validate();
+            isFormInvalid = !editFormContext.Validate();
             StateHasChanged();
         }
     }
 
-
     private async Task HandleRegister()
     {
+        try
+        {
 
-        //var  MessageError = await userService.register(store.GetFormRegister());
+            // Abrir Loader ... 
 
-        //if (MessageError != "")
-        //{
-        //    /// strR
-        //}
-
+            var (Data, MessageError) = await userService.Register(store.GetFormRegister());
 
 
-        NavigationManager.NavigateTo("Home");
-        store.ResetFormRegister();
+            if (Data == null || MessageError != null)
+            {
+                throw new Exception(MessageError);
+            }
+
+            store.SetLoginActive(true);
+            store.SetRegisterActive(false);
+
+            NavigationManager.NavigateTo("Home");
+
+        }
+        catch (Exception ex)
+        {
+            consoleJS.log("Message: ", ex.Message);
+            
+            // Abrir modal error mostrando error
+
+        }
+        finally
+        {
+            // cerrar Loader...
+            // setTimeOut para cerrar Modal
+            store.ResetFormRegister();
+        }
 
     }
 

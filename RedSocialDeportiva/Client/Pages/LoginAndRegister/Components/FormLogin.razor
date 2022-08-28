@@ -3,7 +3,7 @@
 @inject StoreGlobal.GlobalStore storeGlobal;
 @inject LoginAndRegisterService userService;
 @inject NavigationManager NavigationManager;
-
+@implements IDisposable;
 @using RedSocialDeportiva.Client.Pages.LoginAndRegister.Components;
 
 
@@ -22,7 +22,7 @@
             @* Email *@
             <div>
                 <label for="Email">Correo electronico: </label>
-                <div class="FormLogin">
+                <div>
                     <InputText 
                         id="Email"
                         @bind-Value="store.GetFormLogin().Email"  
@@ -50,7 +50,7 @@
 
             <br />
     
-            <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            <button type="submit" class="btn btn-primary" disabled="@isFormInvalid">Iniciar Sesion</button>
    
     </EditForm>
 
@@ -63,27 +63,29 @@
     #region VARIABLES
 
     private EditContext editFormContext;
-
-    private bool formInvalid = false;
-
+    private bool isFormInvalid = false;
 
     #endregion
 
 
-    #region Ciclo de vida del componente.// "CONSTRUCTOR"
+    #region Ciclo de vida del componente
 
     protected override void OnInitialized()
     {
         // State
-        storeGlobal.SubscribeChangedState(updateView);
-        store.SubscribeChangedState(updateView);
+        storeGlobal.SubscribeChangedState(updateComponent);
+        store.SubscribeChangedState(updateComponent);
 
         // Formulario
         editFormContext = new(store.GetFormLogin());
-        editFormContext.OnFieldChanged += HandleFieldFormChanged;
+        editFormContext.OnFieldChanged += updateChangedFieldForm;
     }
 
-    /// METODO QUE CIERRE EL CICLO DE VIDA.
+    public void Dispose()
+    {
+        store.DesubscribeChangedState(updateComponent);
+        storeGlobal.DesubscribeChangedState(updateComponent);
+    }
 
     #endregion
 
@@ -91,19 +93,16 @@
 
     #region METODOS 
 
-    /// TODO: DIVIR EN METODOS PARA EL CICLO DE VIDA Y DEL STORE COMO EN INDEX
-    /// 
-    private void updateView() => StateHasChanged(); // Metodo relacionado al Store    
+    private void updateComponent() => StateHasChanged();  
 
-    private void HandleFieldFormChanged(object? sender, FieldChangedEventArgs e)
+    private void updateChangedFieldForm (object? sender, FieldChangedEventArgs e)
     {
-        if (editFormContext is not null)
+        if (editFormContext != null)
         {
-            formInvalid = !editFormContext.Validate();
-            updateView();
+            isFormInvalid = !editFormContext.Validate();
+            updateComponent();
         }
     }
-
 
     private async Task HandleLogin()
     {
@@ -112,14 +111,14 @@
 
             // Abrir Loader ... 
 
-            //var (UserModels, MessageError) = await userService.login(store.GetFormLogin());
+            var (UserModels, MessageError) = await userService.Login(store.GetFormLogin());
 
-            //if (UserModels == null || MessageError != null)
-            //{
-            //    throw new Exception(MessageError);
-            //}
+            if (UserModels == null || MessageError != null)
+            {
+                throw new Exception(MessageError);
+            }
 
-            //storeGlobal.SetMyUserData(UserModels);
+            storeGlobal.SetMyUserData(UserModels);
 
             NavigationManager.NavigateTo("Home");
 
@@ -138,18 +137,6 @@
             store.ResetFormLogin();
         }
     }
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
     #endregion

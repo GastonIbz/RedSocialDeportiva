@@ -1,4 +1,5 @@
 ﻿@inject LoginAndRegisterStore store;
+@implements IDisposable;
 
 <article 
     class="containerBackgroundRegister @(store.IsRegisterActive() ? "noneElement" : null)"
@@ -23,23 +24,26 @@
 
         protected override void OnInitialized()
         {
-            store.SubscribeChangedState(updateView);
+            store.SubscribeChangedState(updateComponent);
         }
 
-        private void updateView() => StateHasChanged();
-    
+        public void Dispose()
+        {
+            store.DesubscribeChangedState(updateComponent);
+        }
+
     #endregion
 
 
     #region METODOS
 
+        private void updateComponent() => StateHasChanged();  
 
         public void goToRegister()
         {
             store.SetLoginActive(false);
             store.SetRegisterActive(true);
             store.ResetFormLogin();
-            
         } 
 
 
