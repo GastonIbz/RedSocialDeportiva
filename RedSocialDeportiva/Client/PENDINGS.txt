@@ -1,9 +1,6 @@
 ﻿
 **** Pendings ****
 
-⏰ Ejecutar con el ultimo metodo de ciclo de vida.: store.DesubscribeChangedState(updateView)
-   para desubscribirse al Listeners del store. 
-   Nota: En todos los comopnentes de LoginAndRegister
 
 
 ⏰ Al llenar cualquiera de los formularios e irse a la otra seccion (es decir, para registrarse o loguearse)
