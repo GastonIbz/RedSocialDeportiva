@@ -19,6 +19,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
+builder.Services.AddSignalR()
+    .AddJsonProtocol(options => {
+        options.PayloadSerializerOptions.PropertyNamingPolicy = null;
+    });
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
 var conn = builder.Configuration.GetConnectionString("con");
 
 builder.Services.AddDbContext<BDContext>(opciones => opciones.UseSqlServer(conn));
