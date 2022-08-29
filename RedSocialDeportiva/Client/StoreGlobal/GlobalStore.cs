@@ -60,14 +60,6 @@
         }
 
 
-        public string GetCssMessageModal() => this._stateGlobal.MessageModal.CssModal;
-        public void SetCssMessageModal(string newState)
-        {
-            this._stateGlobal.MessageModal.CssModal = newState;
-            ExecuteStateChange();
-        }
-
-
         #endregion Metodos para obtener y setear los States
 
 
