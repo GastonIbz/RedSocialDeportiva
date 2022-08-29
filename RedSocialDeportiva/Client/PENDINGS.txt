@@ -1,15 +1,9 @@
 ﻿
 **** Pendings ****
 
-
-
-⏰ Al llenar cualquiera de los formularios e irse a la otra seccion (es decir, para registrarse o loguearse)
-   y completar los campos, deja de validarnos si escribimos mal, debido a que la variable "formInvalid" 
-   o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima vez y no vuelve a 
-   su valor inicial
-
-
-⏰ Crear Modal de Loader y Modal de Message e implementarlos en LoginAndRegister
-	(Insertarlos en el MainLayout y manejarlos con el store global)
-
-
+⏰ Al llenar cualquiera de los formularios e irse a la otra seccion (es decir, para
+registrarse o loguearse)
+   y completar los campos, deja de validarnos si escribimos mal, debido a que la 
+   variable "formInvalid" 
+   o "editFormContext", de cualquiera de los formularios, queda seteado como su ultima 
+   vez y no vuelve a su valor inicial
