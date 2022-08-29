@@ -18,6 +18,8 @@
     pointer-events: none;
     transform: scale(0);
     transition: opacity 0.7s ease-in-out, pointer-events 0.7s ease-in-out, transform 0.7s ease-in-out;
+
+    overflow: hidden;
 }
 
 .openModal {
@@ -25,3 +27,26 @@
     pointer-events: auto;
     transform: scale(1);
 }
+
+
+.contentModal {
+    width:100%;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 150px;
+
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+
+}
+
+    .contentModal b {
+        /*        display:flex;*/
+        max-width: 230px;
+        white-space: pre-wrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }

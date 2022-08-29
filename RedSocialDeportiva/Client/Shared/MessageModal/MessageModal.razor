@@ -1,11 +1,13 @@
 ﻿@inject StoreGlobal.GlobalStore storeGlobal;
 @implements IDisposable;
 
-<article class="@(storeGlobal.IsShowMessageModal() ? OpenModalCss : CloseModalCss)">
+<article class="@(!storeGlobal.IsShowMessageModal() ? OpenModalCss : CloseModalCss)">
+@*<article class="@(storeGlobal.IsShowMessageModal() ? OpenModalCss : CloseModalCss)">*@
   <div>
-    <article class="@storeGlobal.GetCssMessageModal()">
-      <h3>@storeGlobal.GetMessageModal()</h3>
-      <i class="far fa-smile-wink" />
+    <article class="contentModal">
+      @*<p>@storeGlobal.GetMessageModal()</p> *@
+      <div>ASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLWASDNDKWQNDKWQNDLKANDKQLW</div> 
+      <i class="fa-solid fa-face-laugh-beam"/>
     </article>
   </div>
 </article>
