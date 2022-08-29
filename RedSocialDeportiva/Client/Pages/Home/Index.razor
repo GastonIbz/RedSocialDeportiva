@@ -1,12 +1,140 @@
-﻿@page "/Home"
+﻿@*
+
+    <div class="">
+        <NavMenu />
+    </div>
+
+
+<main>
+
+
+    <div class="feed">
+       <div class ="feed__header">
+           <h2>
+               GL.HF Home
+
+           </h2>
+       </div>
+       
+    </div>
+
+
+    <div class="postbox">
+        <form>
+            <div class="postbox__input">
+                <img src="/ImgAvatar.gif" alt="" /> 
+                <input type="text" placeholder="Publica algo en GL.HF...">
+            </div>
+            <button class="postbox__postbutton">Publicar</button>
+        </form>
+        
+    </div>
+
+
+    <div class="post">
+        <div class="post__avatar">
+       
+             <div class="post__body">
+               <div class="post__header"></div>
+             </div>
+
+        </div>
+
+        <div class="post__headerText">
+             <img src="/ImgAvatar.gif" alt="" /> 
+             <h3> Nickname </h3>
+        </div>
+
+        <div class="post_headerDescription">
+            <p>Excelente sabado de noticias, fui convocado por el equipo 9Z para competir en las clasificaciones al torneo internacional.</p>
+        </div>
+
+    </div>
+    
+    <div class="post__publicacion">
+         <img src="/VideoHome.jpg" alt="" /> 
+    </div>
+
+    <div class="post__footer">
+         <img src="/Favorite.png" alt="" /> 
+         <img src="/Compartir.png" alt="" />
+    </div>
+
+
+
+</main>
+*@
+
+@page "/Home"
 @*Incorporamos el store dentro del index *@
 @inject StoreGlobal.GlobalStore storeGlobal;
 <body>
 <main class="grid-container">
-    <header class="header">HEADER</header>
+    <header class="header">GL.HF Home</header>
     <nav class="navbar"></nav>
-    <aside class="sidebar">SIDEBAR</aside>
-    <article class="main" >MAIN</article>
+    <aside class="sidebar"></aside>
+    <article class="main" >
+        <div class="post">
+
+<img class="post__author-logo" src="./imgavatar.png"/>
+
+
+<div class="post__main">
+    <div class="post__header">
+
+    </div>
+
+    <div class="post__author-name">
+        NickName
+    </div>
+    <div class="post__publish-time">
+        10hs
+    </div>
+
+    
+</div>
+
+<div class="post__content">
+    Fui convocado por el Team Sharks para competir en el torneo Aorus League con la posibilidad de entrar al campeonato mundial. <br /> #GoTeamSharks 
+   
+
+</div>
+        </div>
+         <img class="post__img" src="/sharks.png" />
+     
+         @*-*@
+         <div class="post2">
+
+<img class="post__author-logo2" src="./fotito10.png"/>
+<div class="post__main2">
+    <div class="post__header2">
+
+    </div>
+    <div class="post__author-name2">
+        Shroud
+    </div>
+    <div class="post__publish-time2">
+        12hs
+    </div>
+    
+</div>
+
+<div class="post__content2">
+    ¡Hola! <br />
+Los invito a pasarse a mi canal de Twitch, ¡donde se realizará un mini sorteo de apertura!
+   <a href="https://www.twitch.tv/shroud" > https://www.twitch.tv/shroud
+       
+       </a> 
+       <br />
+       #Shroud #Sorteo #StreamON
+
+</div>
+        </div>
+         <img class="post__img2" src="/twitch.jpg" />
+
+    </article>
+
+
     <footer class="footer"></footer>
    
 </main>
