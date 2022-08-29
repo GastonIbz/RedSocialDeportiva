@@ -27,21 +27,61 @@ namespace RedSocialDeportiva.Server.Controllers
         }
 
         [HttpPost("register")]
-        // Nota: Hay que modificarlo, lo deje de esta manera para que no me rompiera.
-        public async Task<ActionResult<string>> Register(string request) //DataRegisterDTO
+        public async Task<ActionResult<ResponseDto<string>>> Register(DataRegisterDTO DataRegister)
         {
 
-            //CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            ResponseDto<string> ResponseDto = new ResponseDto<string>();
 
-            //user.Username = request.Username;
-            //user.PasswordHash = passwordHash;
-            //user.PasswordSalt = passwordSalt;
-            //user.Email = request.Email;
+            try
+            {
+                if (DataRegister.Email == null || DataRegister.Email == string.Empty)
+                {
+                    throw new Exception("Email requerido");
+                }
 
+                if (DataRegister.UserName == null || DataRegister.UserName == string.Empty)
+                {
+                    throw new Exception("Nombre de usuario requerido");
+                }
 
-            //return Ok(user);
+                if (DataRegister.Password == null || DataRegister.Password == string.Empty)
+                {
+                    throw new Exception("Contraseña requerida");
+                }
+                    
+                Usuario UserBD = await this.context.TablaUsuario.FirstOrDefaultAsync(Usuario => Usuario.Email == DataRegister.Email);
 
-            return "METODO MOCKEADO";     
+                if (UserBD != null)
+                {
+                    throw new Exception("Ya existe un usuario con este email. Intentelo nuevamente.");
+                }
+
+                CreatePasswordHash(DataRegister.Password, out byte[] passwordHash, out byte[] passwordSalt);
+
+                this.context.TablaUsuario.Add(new Usuario
+                {
+                    Email = DataRegister.Email,
+                    Descripcion = "",
+                    ImgPerfil = "",
+                    ImgPortada = "",
+                    Username = DataRegister.UserName,
+                    PasswordHash = passwordHash,
+                    PasswordSalt = passwordSalt
+                });
+
+                await context.SaveChangesAsync();
+
+                ResponseDto.Data = "!Se ha registrado correctamente!! Ahora inicie sesión!.";
+
+                return Ok(ResponseDto);
+
+            }
+            catch (Exception ex)
+            {
+                ResponseDto.MessageError = ex.Message;
+                return BadRequest(ResponseDto);
+            }
+
         }
 
         [HttpPost("login")]
@@ -87,7 +127,6 @@ namespace RedSocialDeportiva.Server.Controllers
                         ImgPortada = UserBD.ImgPortada,
                         Username = UserBD.Username
                     },
-
                 };
               
                 return Ok(ResponseDto);
@@ -99,6 +138,8 @@ namespace RedSocialDeportiva.Server.Controllers
                 return BadRequest(ResponseDto);
             }      
         }
+
+
 
 
         private string CreateToken(Usuario user)
@@ -123,6 +164,7 @@ namespace RedSocialDeportiva.Server.Controllers
             return jwt;
             
         }
+
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
             using (var hmac = new HMACSHA512()) //Algoritmo de firma 
@@ -131,6 +173,7 @@ namespace RedSocialDeportiva.Server.Controllers
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
+
 
         private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
         {
