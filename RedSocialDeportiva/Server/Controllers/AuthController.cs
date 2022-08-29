@@ -101,14 +101,12 @@ namespace RedSocialDeportiva.Server.Controllers
                     throw new Exception("Contraseña incorrecta");
                 }
 
-
                 Usuario UserBD = await this.context.TablaUsuario.FirstOrDefaultAsync(Usuario => Usuario.Email == DataLogin.Email);
 
                 if (UserBD == null)
                 {
                     throw new Exception("Email ingresado es incorrecto");
                 }
-
                 
                 if (!this.VerifyPasswordHash(DataLogin.Password, UserBD.PasswordHash ,UserBD.PasswordSalt))
                 {
