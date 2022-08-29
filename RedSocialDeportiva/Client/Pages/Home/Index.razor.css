@@ -184,7 +184,24 @@ main {
         border-radius:15px;
         margin-top: 10px;
     }
-
+ /*   .post__img-Favorite {
+        height: 32px;
+        position: relative;
+        top: 450px;
+        right: 840px;
+    }
+    .post__img-Shared {
+        height: 32px;
+        position: relative;
+        top: 450px;
+        right: 645px;
+    }
+    .post__img-Coment {
+        height: 32px;
+        position: relative;
+        top: 450px;
+        right: 1100px;
+    }*/
     /*-*/
     .post2 {
         display: flex;
@@ -237,7 +254,7 @@ main {
     .post__img2 {
         height: 307px;
         position: relative;
-        top: -1680px;
+        top: -1700px;
         left: 55px;
         border-radius: 15px;
         margin-top: 10px;
@@ -248,4 +265,5 @@ main {
     .post2 a:hover{
         text-decoration:underline;
     }
-}
+
+ }
