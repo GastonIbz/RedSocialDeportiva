@@ -108,7 +108,9 @@
     protected override void OnInitialized()
     {
         // State
+        storeGlobal.SubscribeChangedState(updateComponent);
         store.SubscribeChangedState(updateComponent);
+
 
         // Formulario
         editFormContext = new(store.GetFormRegister());
@@ -117,6 +119,7 @@
 
     public void Dispose()
     {
+        storeGlobal.DesubscribeChangedState(updateComponent);
         store.DesubscribeChangedState(updateComponent);
     }
 
@@ -141,7 +144,7 @@
         try
         {
 
-            // Abrir Loader ... 
+            storeGlobal.SetShowLoader(true);
 
             var (Data, MessageError) = await userService.Register(store.GetFormRegister());
 
@@ -153,35 +156,35 @@
 
             store.SetLoginActive(true);
             store.SetRegisterActive(false);
-
-            NavigationManager.NavigateTo("Home");
+            
+            storeGlobal.SetShowLoader(false);
+            storeGlobal.SetMessageModal(Data);
+            storeGlobal.SetShowMessageModal(true);
 
         }
         catch (Exception ex)
         {
-            consoleJS.log("Message: ", ex.Message);
-            
-            // Abrir modal error mostrando error
-
+            storeGlobal.SetMessageModal(ex.Message);
+            storeGlobal.SetShowMessageModal(true);
         }
         finally
         {
-            // cerrar Loader...
-            // setTimeOut para cerrar Modal
+            storeGlobal.SetShowLoader(false);
             store.ResetFormRegister();
+
+            var timer = new PeriodicTimer(TimeSpan.FromSeconds(3));
+            Task.Run(async () => {
+                await Task.Delay(4000);
+                timer.Dispose();
+            });
+
+            while (await timer.WaitForNextTickAsync())
+            {
+                storeGlobal.SetShowMessageModal(false);
+            }
         }
 
     }
-
-
-
-
-
-
-
-
-
-
 
     #endregion
 

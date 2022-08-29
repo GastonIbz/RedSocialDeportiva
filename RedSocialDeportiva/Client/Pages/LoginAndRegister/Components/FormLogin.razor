@@ -108,38 +108,42 @@
     {
         try
         {
+            storeGlobal.SetShowLoader(true);
 
-            // Abrir Loader ... //storeGlobal.SetShowLoader(true);
+            var (UserModels, MessageError) = await userService.Login(store.GetFormLogin());
 
-            //storeGlobal.SetCssMessageModal();
-            storeGlobal.SetMessageModal("PUTO");
-            storeGlobal.SetShowMessageModal(true);
+            if (UserModels == null || MessageError != null)
+            {
+                throw new Exception(MessageError);
+            }
 
-            //var (UserModels, MessageError) = await userService.Login(store.GetFormLogin());
+            storeGlobal.SetMyUserData(UserModels);
 
-            //if (UserModels == null || MessageError != null)
-            //{
-            //    throw new Exception(MessageError);
-            //}
-
-            //storeGlobal.SetMyUserData(UserModels);
-
-            //NavigationManager.NavigateTo("Home");
+            NavigationManager.NavigateTo("Home");
 
         }
         catch (Exception ex)
         {
-            consoleJS.log("Message: ", ex.Message);
-            
-            // Abrir modal error mostrando error
-
+            storeGlobal.SetMessageModal(ex.Message);
+            storeGlobal.SetShowMessageModal(true);
         }
         finally
         {
-            // cerrar Loader...
-            // setTimeOut para cerrar Modal
+            storeGlobal.SetShowLoader(false);
             store.ResetFormLogin();
+
+            var timer = new PeriodicTimer(TimeSpan.FromSeconds(3));
+            Task.Run(async () => {
+                await Task.Delay(4000);
+                timer.Dispose();
+            });
+
+            while (await timer.WaitForNextTickAsync())
+            {
+                storeGlobal.SetShowMessageModal(false);
+            }
         }
+
     }
 
 
