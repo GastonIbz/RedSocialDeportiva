@@ -19,14 +19,14 @@ namespace RedSocialDeportiva.Shared.DTO_Front.LoginAndRegister
 
         #endregion
 
-        #region Nombre Completo
+        //#region Nombre Completo
 
-            [Required(ErrorMessage = "Campo requerido")]
-            [MinLength(2, ErrorMessage = "El nombre puede contener un minimo de {1} caracteres")]
-            [RegularExpression(
-                "^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]{2,245}", ErrorMessage = "Solo puede contener letras.")]
-            public string? NameCompleted { get; set; }
-        #endregion
+        //    [Required(ErrorMessage = "Campo requerido")]
+        //    [MinLength(2, ErrorMessage = "El nombre puede contener un minimo de {1} caracteres")]
+        //    [RegularExpression(
+        //        "^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\\s]{2,245}", ErrorMessage = "Solo puede contener letras.")]
+        //    public string? NameCompleted { get; set; }
+        //#endregion
 
         #region UserName
 

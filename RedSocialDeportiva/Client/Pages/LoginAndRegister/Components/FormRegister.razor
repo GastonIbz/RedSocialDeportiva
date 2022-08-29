@@ -28,20 +28,6 @@
                     <ValidationMessage For="(() => store.GetFormRegister().Email)"/>
                  </div>
             </div>
-
-            @*Nombre completo *@
-            <div>
-                <label for="NameCompleted">Nombere Completo: </label>
-                <div>
-                    <InputText 
-                        id="NameCompleted"
-                        @bind-Value="store.GetFormRegister().NameCompleted" 
-                        type="text"
-                        class="form-control col-sm-3" 
-                    ></InputText>
-                    <ValidationMessage For="(() => store.GetFormRegister().NameCompleted)"/>
-                 </div>
-            </div> 
         
             @*Usuario *@
             <div>
