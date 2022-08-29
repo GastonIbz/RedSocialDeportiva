@@ -34,10 +34,7 @@ namespace RedSocialDeportiva.Client.Pages.LoginAndRegister.Services
                 UserAdapted = adapter.CreateAdapterUser(response.Data);
             }
 
-            //consoleJS.log("ASD", UserAdapted);
-            //return (UserAdapted, data.MessageError);
-
-            return (UserAdapted, "Hubo un error mockeado");
+            return (UserAdapted, response.MessageError);
         }
 
 
