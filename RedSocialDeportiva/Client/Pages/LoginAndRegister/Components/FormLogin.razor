@@ -109,18 +109,22 @@
         try
         {
 
-            // Abrir Loader ... 
+            // Abrir Loader ... //storeGlobal.SetShowLoader(true);
 
-            var (UserModels, MessageError) = await userService.Login(store.GetFormLogin());
+            //storeGlobal.SetCssMessageModal();
+            storeGlobal.SetMessageModal("PUTO");
+            storeGlobal.SetShowMessageModal(true);
 
-            if (UserModels == null || MessageError != null)
-            {
-                throw new Exception(MessageError);
-            }
+            //var (UserModels, MessageError) = await userService.Login(store.GetFormLogin());
 
-            storeGlobal.SetMyUserData(UserModels);
+            //if (UserModels == null || MessageError != null)
+            //{
+            //    throw new Exception(MessageError);
+            //}
 
-            NavigationManager.NavigateTo("Home");
+            //storeGlobal.SetMyUserData(UserModels);
+
+            //NavigationManager.NavigateTo("Home");
 
         }
         catch (Exception ex)
