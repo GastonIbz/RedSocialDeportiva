@@ -8,6 +8,8 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using RedSocialDeportiva.Shared.DTO_Back.Auth;
 
+
+
 namespace RedSocialDeportiva.Server.Controllers
 {
     [Route("api/[controller]")]
@@ -26,7 +28,7 @@ namespace RedSocialDeportiva.Server.Controllers
 
         [HttpPost("register")]
         // Nota: Hay que modificarlo, lo deje de esta manera para que no me rompiera.
-        public async Task<ActionResult<string>> Register(string request)
+        public async Task<ActionResult<string>> Register(string request) //DataRegisterDTO
         {
 
             //CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
