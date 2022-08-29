@@ -43,10 +43,20 @@
 
 }
 
-    .contentModal div {
-        /*        display:flex;*/
-        max-width: 230px;
+    .contentModal p {
+        width: 100%;
+        max-width: 250px;
+        height: auto;
         white-space: pre-wrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        font-weight: 800;
+        text-align:center;
+        margin: 0 auto;
+    }
+
+    .contentModal i {
+        color: #f66868;
+        font-size: 3rem;
+    
     }
