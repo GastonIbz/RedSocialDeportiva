@@ -43,7 +43,7 @@
 
 }
 
-    .contentModal b {
+    .contentModal div {
         /*        display:flex;*/
         max-width: 230px;
         white-space: pre-wrap;
