@@ -1,0 +1,43 @@
+﻿@page "/Perfil";
+@inject StoreGlobal.GlobalStore storeGlobal;
+
+<header>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</header>
+<body>
+
+<main class="grid-container">
+    <header class="header"></header>
+
+    <aside class="sidebar">
+
+        
+
+    </aside>
+     <nav class="navbar"></nav>
+  
+    <article class="main" >
+        
+
+    </article>
+
+
+    <footer class="footer"></footer>
+   
+</main>
+</body>
+
+
+@code{
+     private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    
+
+}

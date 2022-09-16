@@ -68,11 +68,49 @@
 @page "/Home"
 @*Incorporamos el store dentro del index *@
 @inject StoreGlobal.GlobalStore storeGlobal;
+<header>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</header>
 <body>
+
 <main class="grid-container">
     <header class="header">GL.HF Home</header>
-    <nav class="navbar"></nav>
-    <aside class="sidebar"></aside>
+
+    <aside class="sidebar">
+
+        <div class="sidebar-menu">
+
+        <div class="sidebar-menu__item">
+           <img class="sidebar-menu__item-icon" src="/Home.png" />
+           Home
+           </div>
+        </div>
+         <div class="sidebar-menu2">
+
+        <div class="sidebar-menu__item2">
+           <img class="sidebar-menu__item-icon2" src="/PerfilIcon.png" />
+           Perfil
+           </div>
+        </div>
+         <div class="sidebar-menu3">
+
+        <div class="sidebar-menu__item3">
+           <img class="sidebar-menu__item-icon3" src="/Estadisticas.png" />
+           Estadisticas
+           </div>
+        </div>
+         <div class="sidebar-menu4">
+
+        <div class="sidebar-menu__item4">
+           <img class="sidebar-menu__item-icon4" src="/Ranking.png" />
+           Ranking
+           </div>
+        </div>
+
+    </aside>
+     <nav class="navbar"></nav>
+  
     <article class="main" >
         <div class="post">
 
@@ -147,7 +185,14 @@ Los invito a pasarse a mi canal de Twitch, ¡donde se realizará un mini sorteo 
 
 
 @code{
+     private bool collapseNavMenu = true;
 
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
     
 
 }
