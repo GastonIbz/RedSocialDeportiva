@@ -66,8 +66,10 @@
 *@
 
 @page "/Home"
+@inject NavigationManager UriHelper
 @*Incorporamos el store dentro del index *@
 @inject StoreGlobal.GlobalStore storeGlobal;
+
 <header>
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
@@ -83,28 +85,51 @@
 
         <div class="sidebar-menu__item">
            <img class="sidebar-menu__item-icon" src="/Home.png" />
-           Home
+         <p>
+    <a href="/Home">Home</a><br />
+</p>
+<p>
+    <NavLink href="/Home"></NavLink><br />
+</p>
+
+
            </div>
         </div>
          <div class="sidebar-menu2">
 
         <div class="sidebar-menu__item2">
            <img class="sidebar-menu__item-icon2" src="/PerfilIcon.png" />
-           Perfil
+           <p>
+    <a href="/Perfil">Perfil</a><br />
+</p>
+             <p>
+    <NavLink href="/Perfil"></NavLink><br />
+</p>
+         
            </div>
         </div>
          <div class="sidebar-menu3">
 
         <div class="sidebar-menu__item3">
            <img class="sidebar-menu__item-icon3" src="/Estadisticas.png" />
-           Estadisticas
+            <p>
+    <a href="/Estadisticas">Estadisticas</a><br />
+</p>
+              <p>
+    <NavLink href="/Estadisticas"></NavLink><br />
+</p>
            </div>
         </div>
          <div class="sidebar-menu4">
 
         <div class="sidebar-menu__item4">
            <img class="sidebar-menu__item-icon4" src="/Ranking.png" />
-           Ranking
+            <p>
+    <a href="/Ranking">Ranking</a><br />
+</p>
+            <p>
+    <NavLink href="/Ranking"></NavLink><br />
+</p>
            </div>
         </div>
 
@@ -193,6 +218,9 @@ Los invito a pasarse a mi canal de Twitch, ¡donde se realizará un mini sorteo 
     {
         collapseNavMenu = !collapseNavMenu;
     }
-    
+    void Navigate()
+{
+
+}
 
 }

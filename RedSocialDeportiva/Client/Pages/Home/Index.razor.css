@@ -94,6 +94,7 @@ main {
 }
 
 .sidebar {
+    
     grid-area: sidebar;
     background-color: #1b1b1b;
 }
@@ -128,9 +129,9 @@ main {
         background-color: #0e0e0ef0;
         grid-template:
             "header header header" 50px
-            "sidebar   main   navbar" 1000px 
+            "sidebar   main   navbar" 1000px
             "footer footer footer" 35px /
-            280px auto 280px;
+            320px auto 320px;
     }
 
     .post {
@@ -272,67 +273,67 @@ main {
         }
     /**/
 
-    .sidebar-menu {
-        position: fixed;
-        
-    }
-    .sidebar-menu__item {
-
-        font-size: 20px;
-        color: white;
-        display: flex;
-        position:relative;
-        top: 50px;
-        left: 40px;
-        font-weight: 700;
-        padding: 10px;
-    }
     
-    .sidebar-menu__item-icon {
-        height: 26px;
-        margin-right: 20px;
-    }
     .sidebar-menu {
         position: fixed;
     }
 
     .sidebar-menu__item {
-
         font-size: 20px;
         color: white;
         display: flex;
         position: relative;
         top: 50px;
         left: 40px;
-    }
-    .sidebar-menu__item:hover {
-        background: #067212;
-      
+        font-weight: 700;
+        padding: 10px;
     }
 
     .sidebar-menu__item-icon {
+        height: 26px;
+        margin-right: 20px;
+    }
 
+    .sidebar-menu__item {
+        font-size: 20px;
+        color: white;
+        display: flex;
+        position: relative;
+        top: 50px;
+        left: 90px;
+    }
+     
+
+        .sidebar-menu__item:hover {
+            background: #1b1b1b;
+        }
+
+    .sidebar-menu__item-icon {
         height: 30px;
         margin-right: 18px;
+    }
 
+    .sidebar-menu2 {
+        position: fixed;
     }
-        .sidebar-menu2{
-        position:fixed;
-    }
+
     .sidebar-menu__item2 {
         font-size: 20px;
         color: white;
         display: flex;
         position: relative;
         top: 100px;
-        left: 40px;
+        left: 90px;
         font-weight: 700;
         padding: 10px;
     }
-    .sidebar-menu__item-icon2 {
-        height: 32px;
-        margin-right: 18px;
-    }
+      
+
+        .sidebar-menu__item-icon2 {
+            height: 32px;
+            margin-right: 18px;
+        }
+
     .sidebar-menu3 {
         position: fixed;
     }
@@ -343,7 +344,7 @@ main {
         display: flex;
         position: relative;
         top: 150px;
-        left: 40px;
+        left: 90px;
         font-weight: 700;
         padding: 10px;
     }
@@ -352,6 +353,7 @@ main {
         height: 32px;
         margin-right: 18px;
     }
+
     .sidebar-menu4 {
         position: fixed;
     }
@@ -362,7 +364,7 @@ main {
         display: flex;
         position: relative;
         top: 200px;
-        left: 40px;
+        left: 90px;
         font-weight: 700;
         padding: 10px;
     }
@@ -370,7 +372,10 @@ main {
     .sidebar-menu__item-icon4 {
         height: 32px;
         margin-right: 18px;
-        
+    }
+
+    .p_perfil{
+        height:1px;
     }
 
  }
