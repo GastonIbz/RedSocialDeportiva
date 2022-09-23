@@ -12,6 +12,8 @@ namespace RedSocial.BD.Data.Entidades
 
         public string image { get; set; } 
 
+        public string url { get; set; }
+
 
     }
 }
