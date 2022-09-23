@@ -5,22 +5,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RedSocial.BD.Migrations
 {
-    public partial class asd : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "TablaEstadistica",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TablaEstadistica", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "TablaPublicacion",
                 columns: table => new
@@ -73,24 +61,18 @@ namespace RedSocial.BD.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IdUsuario_UQ",
-                table: "TablaEstadistica",
-                column: "Id",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IdUsuario_UQ1",
                 table: "TablaPublicacion",
                 column: "Id",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IdUsuario_UQ2",
+                name: "IdUsuario_UQ1",
                 table: "TablaRanking",
                 column: "Id",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IdUsuario_UQ3",
+                name: "IdUsuario_UQ2",
                 table: "TablaUsuario",
                 column: "Id",
                 unique: true);
@@ -98,9 +80,6 @@ namespace RedSocial.BD.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "TablaEstadistica");
-
             migrationBuilder.DropTable(
                 name: "TablaPublicacion");
 

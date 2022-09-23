@@ -14,7 +14,7 @@ namespace RedSocial.BD.Data
         public BDContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<EstadisticaBR> TablaEstadistica { get; set; }
+        
         public DbSet<Publicacion> TablaPublicacion { get; set; }
         public DbSet<Ranking> TablaRanking { get; set; }
         public DbSet<Usuario> TablaUsuario { get; set; }

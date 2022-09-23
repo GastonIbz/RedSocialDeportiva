@@ -22,34 +22,6 @@ namespace RedSocial.BD.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("RedSocial.BD.Data.Entidades.EstadisticaBR", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("accounType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("timeWindow")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
-                        .IsUnique();
-
-                    b.ToTable("TablaEstadistica");
-                });
-
             modelBuilder.Entity("RedSocial.BD.Data.Entidades.Publicacion", b =>
                 {
                     b.Property<int>("Id")
@@ -83,8 +55,7 @@ namespace RedSocial.BD.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
-                        .IsUnique()
-                        .HasDatabaseName("IdUsuario_UQ1");
+                        .IsUnique();
 
                     b.ToTable("TablaPublicacion");
                 });
@@ -104,7 +75,7 @@ namespace RedSocial.BD.Migrations
 
                     b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
                         .IsUnique()
-                        .HasDatabaseName("IdUsuario_UQ2");
+                        .HasDatabaseName("IdUsuario_UQ1");
 
                     b.ToTable("TablaRanking");
                 });
@@ -143,7 +114,7 @@ namespace RedSocial.BD.Migrations
 
                     b.HasIndex(new[] { "Id" }, "IdUsuario_UQ")
                         .IsUnique()
-                        .HasDatabaseName("IdUsuario_UQ3");
+                        .HasDatabaseName("IdUsuario_UQ2");
 
                     b.ToTable("TablaUsuario");
                 });
