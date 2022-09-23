@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace RedSocial.BD.Data.Entidades
 {
-    public class Estadistica : EntityBase
-    {
-       
+    public class ApiAutorizacion
+    { 
+        public string ApiKey { get; set; } 
     }
 }
