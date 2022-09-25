@@ -3,29 +3,31 @@
 .containerFormLogin {
     width: 100%;
     padding: 4rem 1.25rem;
-    background: #fff;
+    background: #1b1b1bff;
+    color:white;
     position: absolute;
     border-radius: 1.25rem;
-    text-align: center; 
-}
-
-.containerFormLogin h2 {
-    font-size: 2rem;
     text-align: center;
-    margin-bottom: 1.25rem;
-    color: #46a2fd;
 }
 
-.containerFormLogin button {
-    padding: 0.5rem 2rem;
-    margin-top: 1rem;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    background: #46a2fd;
-    color: #fff;
-    outline: none;
-}
+    .containerFormLogin h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.25rem;
+        color: #02490a;
+    }
+    
+
+    .containerFormLogin button {
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        background: #02490a;
+        color: #ffffff;
+        outline: none;
+    }
 
 .containerFormLogin--show {
     opacity: 1;

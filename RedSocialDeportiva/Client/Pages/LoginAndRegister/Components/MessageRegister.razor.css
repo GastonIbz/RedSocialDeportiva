@@ -2,7 +2,7 @@
 
 .containerBackgroundRegister {
     margin: 5rem 0rem;
-    color: #fff;
+    color: white;
     transition: all 0.5s;
 }
 
@@ -28,10 +28,10 @@
     transition: all 0.3s;
 }
 
-.containerBackgroundRegister button:hover {
-    background: #fff;
-    color: #46a2fd;
-}
+    .containerBackgroundRegister button:hover {
+        background: #fff;
+        color: #000000;
+    }
 
 @media screen and (max-width: 450px) {
     .containerBackgroundRegister {
