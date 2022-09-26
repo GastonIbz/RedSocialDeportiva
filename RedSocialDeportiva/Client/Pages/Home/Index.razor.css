@@ -464,4 +464,12 @@ main {
             background-color: #06721268;
           
         }
+    .Footer-firm {
+        color: whitesmoke;
+        position: relative;
+        font-size:17px;
+        font-weight: 400;
+        left: 550px;
+        top: 7px;
+    }
  }
