@@ -87,10 +87,13 @@ main {
     
 }
 .header {
+    text-align: left;
     font-size: 25px;
+    font-weight: bold;
     grid-area: header;
     background-color: #0a0a0a;
     color: white;
+
 }
 
 .sidebar {
@@ -126,7 +129,7 @@ main {
         background-color: #065600be;
         grid-template:
             "header header header" 50px
-            "navbar   main   sidebar" 1000px
+            "navbar   main   sidebar" 1700px
             "footer footer footer" 35px /
             270px auto 320px;
     }
@@ -137,10 +140,12 @@ main {
     }
 
     .post__author-logo {
-        width: 52px;
-        height: 52px;
+        height: 50px;
         border-radius: 50%;
         margin-right: 15px;
+        position: relative;
+        top: -1520px;
+        left:4px;
     }
 
     .post__header {
@@ -148,23 +153,23 @@ main {
     }
 
     .post__author-name {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
         color: #ffffff;
         margin-right: 5px;
         position: relative;
-        top: -943px;
-        left: -7px;
+        top: -3165px;
+        left: 0px;
     }
 
     .post__publish-time {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         margin-left: 5px;
         color: #ffffff8f;
         position: relative;
-        top: -1903px;
-        left: 160px;
+        top: -4822px;
+        left: 70px;
     }
 
     .post__content {
@@ -173,15 +178,15 @@ main {
         font-weight: 700;
         margin-left: 10px;
         position: relative;
-        left: -99px;
-        top: 50px;
+        left: -52px;
+        top: -1450px;
     }
 
     .post__img {
         height: 305px;
         position: relative;
-        top: -855px;
-        left: 55px;
+        top: -3050px;
+        left: 100px;
         border-radius: 15px;
         margin-top: 10px;
     }
@@ -209,13 +214,13 @@ main {
     }
 
     .post__author-logo2 {
-        width: 49px;
+       
         height: 49px;
         border-radius: 50%;
         margin-right: 15px;
         position: relative;
-        top: -840px;
-        left: 10px;
+        top: -3000px;
+        left: 40px;
     }
 
     .post__header2 {
@@ -223,23 +228,23 @@ main {
     }
 
     .post__author-name2 {
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
         color: #ffffff;
         margin-right: 5px;
         position: relative;
-        top: -1823px;
-        left: -3px;
+        top: -4685px;
+        left: 35px;
     }
 
     .post__publish-time2 {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 700;
         margin-left: 5px;
         color: #ffffff8f;
         position: relative;
-        top: -2822px;
-        left: 160px;
+        top: -6380px;
+        left: 125px;
     }
 
     .post__content2 {
@@ -248,15 +253,15 @@ main {
         font-weight: 700;
         margin-left: 10px;
         position: relative;
-        left: -75px;
-        top: -780px;
+        left: -35px;
+        top: -2930px;
     }
 
     .post__img2 {
         height: 307px;
         position: relative;
-        top: -1670px;
-        left: 55px;
+        top: -4520px;
+        left: 105px;
         border-radius: 15px;
         margin-top: 10px;
     }
@@ -279,19 +284,24 @@ main {
             color:#067212
         }
         /*navbar*/
+    .navbar-gral {
+        
+    position:relative;
+    top:120px;
+    }
+
         .navbar-menu {
             position: fixed;
 
-        }
 
+        }
     .navbar-menu__item {
-        font-size: 20px;  
-        
+        font-size: 20px;
         position: relative;
         top: -80px;
         left: 30px;
-        font-weight: 700;
-        padding: -10px;
+        font-weight: bold;
+        
     }
     .navbar-menu-title {
         color: #ffffff;
@@ -306,9 +316,10 @@ main {
 
     .navbar-menu__item:hover {
         background: #067212cf;
-        height: 40px;
+        height: 42px;
+        width: 125px;
         Border-radius: 15px;
-    
+        cursor: pointer;
     }
 
 
@@ -322,15 +333,17 @@ main {
         color: white;
         display: flex;
         position: relative;
-        top: -35px;
-        left: 20px;
-        font-weight: 700;
-        padding: 10px;
+        top: -20px;
+        left: 30px;
+        font-weight: bold;
+        
     }
         .navbar-menu__item2:hover {
             background: #067212b4;
-            height: 50px;
+            height: 42px;
+            width: 125px;
             Border-radius: 15px;
+            cursor: pointer;
         }
     .navbar-menu-title2 {
         color: #ffffff;
@@ -339,29 +352,31 @@ main {
 
     .navbar-menu__item-icon2 {
         
-        height: 33px;
+        height: 35px;
         margin-right: 18px;
     }
 
     .navbar-menu3 {
         position: fixed;
+
     }
 
     .navbar-menu__item3 {
         font-size: 20px;
         color: white;
         position: relative;
-        top: 20px;
-        left: 20px;
-        font-weight: 700;
-        padding: 10px;
-      
+        top: 40px;
+        left: 28px;
+        font-weight: bold;
+        padding: 0px;
+       
     }
-    .navbar-menu__item3:hover {
-        background: #067212b4;
-        height: 55px;
-        Border-radius: 15px;
-    }
+        .navbar-menu__item3:hover {
+            background: #067212b4;
+            height: 42px;
+            Border-radius: 15px;
+            cursor: pointer;
+        }
     .navbar-menu__item-icon3 {
         color: #ffffff;
         text-decoration: none;
@@ -378,12 +393,12 @@ main {
     .navbar-menu__item4 {
         font-size: 20px;
         color: white;
-        
+        font-weight:bold;
         position: relative;
-        top: 75px;
-        left: 16px;
-        font-weight: 700;
-        padding: 10px;
+        top: 100px;
+        left: 28px;
+      
+   
     }
     .navbar-menu__item-icon4 {
         color: #ffffff;
@@ -396,9 +411,57 @@ main {
     .navbar-menu__item4:hover {
         
         background: #067212b4;
-        height: 50px;
+        height: 42px;
         Border-radius: 15px;
+         cursor: pointer;
     }
+ /*   *postbox**/
 
 
+    .postbox__input img {
+        border-radius:50%;
+        height:50px;
+    }
+    .postBox form {
+        display:flex;
+        flex-direction:column;
+
+    }
+    .postbox__input {
+        height: 140px;
+        display: flex;
+        padding: 20px;
+     
+    }
+        .postbox__input input {
+            flex: 1;
+            margin-left: 2px;
+            font-size: 22px;
+            border: none;
+            outline: none;
+            color:white;
+            background-color: #00000020;
+            padding-bottom: -200px;
+            border-bottom: 4px solid green;
+            padding-right: 10px;
+            border-radius:25px;
+
+
+        }
+    .postBox__postButton {
+        background-color: #067212b4;
+        
+        color: white;
+        border: none;
+        font-weight: 600;
+        border-radius: 100px;
+        width: 80px;
+        height: 40px;
+        margin-top: 2px;
+        margin-left: 780px;
+    }
+        .postBox__postButton:hover {
+            background-color: #06721268;
+          
+        }
  }
