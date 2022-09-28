@@ -1,70 +1,4 @@
-﻿@*
-
-    <div class="">
-        <NavMenu />
-    </div>
-
-
-<main>
-
-
-    <div class="feed">
-       <div class ="feed__header">
-           <h2>
-               GL.HF Home
-
-           </h2>
-       </div>
-       
-    </div>
-
-
-    <div class="postbox">
-        <form>
-            <div class="postbox__input">
-                <img src="/ImgAvatar.gif" alt="" /> 
-                <input type="text" placeholder="Publica algo en GL.HF...">
-            </div>
-            <button class="postbox__postbutton">Publicar</button>
-        </form>
-        
-    </div>
-
-
-    <div class="post">
-        <div class="post__avatar">
-       
-             <div class="post__body">
-               <div class="post__header"></div>
-             </div>
-
-        </div>
-
-        <div class="post__headerText">
-             <img src="/ImgAvatar.gif" alt="" /> 
-             <h3> Nickname </h3>
-        </div>
-
-        <div class="post_headerDescription">
-            <p>Excelente sabado de noticias, fui convocado por el equipo 9Z para competir en las clasificaciones al torneo internacional.</p>
-        </div>
-
-    </div>
-    
-    <div class="post__publicacion">
-         <img src="/VideoHome.jpg" alt="" /> 
-    </div>
-
-    <div class="post__footer">
-         <img src="/Favorite.png" alt="" /> 
-         <img src="/Compartir.png" alt="" />
-    </div>
-
-
-
-</main>
-*@
-
+﻿
 @page "/Home"
 @inject NavigationManager UriHelper
 @*Incorporamos el store dentro del index *@
@@ -139,7 +73,30 @@
         </div>
         </div>
     </nav>
-     <aside class="sidebar"></aside>
+     <aside class="sidebar">
+
+         <div class="trends-for-you" >
+             <div class="trends-for-you__block">
+                 <div class="trends-for-you__heading" >
+                     ¿Qué esta sucediendo?
+                 </div>
+             </div>
+         </div>
+             <div class="trends-for-you" >
+             <div class="trends-for-you__block">
+                 <div class="trends-for-you__meta-information" >
+                     Tendencias en CS:GO
+                 </div>
+                 </div>
+                 <div class="trends-for-you__trend-name" > 
+                     #FaZeSigueEnPie
+             </div>
+             <div class="trends-for-you__meta-information">
+
+             </div>
+         </div>
+
+     </aside>
   
     <article class="main" >
 
@@ -181,11 +138,10 @@
    
 
 </div>
-@*<img class="post__img-Favorite" src="/Favorite.png" />
-<img class="post__img-Shared" src="/Shared.png" />
-<img class="post__img-Coment" src="/Comentar.png" />*@
+
         </div>
          <img class="post__img" src="/sharks.png" />
+        
      
          @*-*@
          <div class="post2">
@@ -217,8 +173,35 @@ Los invito a pasarse a mi canal de Twitch, ¡donde se realizará un mini sorteo 
 
         </div>
          <img class="post__img2" src="/twitch.jpg" />
-         
+         @*-*@
+                <div class="post3">
 
+<img class="post__author-logo3" src="./fotito8.png"/>
+
+
+<div class="post__main3">
+    <div class="post__header3">
+
+    </div>
+
+    <div class="post__author-name3">
+        Radama
+    </div>
+    <div class="post__publish-time3">
+        10hs
+    </div>
+
+    
+</div>
+
+<div class="post__content3">
+ 
+    Recordatorio diario: cuanto mejor compañero de equipo seas, más probabilidades <br /> tendrás de ganar tus juegos. 👍🤩
+
+</div>
+
+        </div>
+         <img class="post__img3" src="/Cover me.jpg" />
     </article>
 
 

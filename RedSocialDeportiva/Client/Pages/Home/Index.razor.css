@@ -1,71 +1,4 @@
-﻿/*main {
-    --GLHF-color: #2f2f2f;
-    --GLHF-background: #00a50d;
-    overflow-y: scroll;
-}*/
-/* Feed */
-/*.feed {
-    flex: 0.5;
-    border-right: 1px solid var(--GLHF-background);
-    min-width: fit-content;
-}
-
-.feed__header {
-    color: #303030;
-    position: sticky;
-    top: 0;
-    background-color: #008000be;
-    z-index: 100;
-    padding: 10px 20px;
-}
-
-    .feed__header h2 {
-        font-size: 20px;
-        font-weight: 800;
-    }*/
-
-/* Post Box */
-/*.postbox {
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--GLHF-background);
-    padding-right: 2px;
-}
-
-    .postbox form {
-        display: flex;
-        flex-direction: column;
-    }
-
-.postbox__input {
-    display: flex;
-    padding: 10px;
-}
-
-    .postbox__input input {
-        flex: 1;
-        margin-left: 15px;
-        font-size: 20px;
-        border: none;
-        outline: none;
-    }
-
-    .postbox__input img {
-        border-radius: 30%;
-        height: 60px;
-        position: relative;
-        left: 10px;
-    }
-
-.postbox__postbutton {
-    background-color: #00a50dcc;
-    border: none;
-    color: #303030;
-    font-weight: 800;
-    border-radius: 20px;
-    width: 100px;
-    height: 40px;
-    margin-left: auto;
-}*/
+﻿
 * {
 
     box-sizing: border-box;
@@ -273,6 +206,72 @@ main {
         .post2 a:hover {
             text-decoration: underline;
         }
+
+        /*/POST 3/*/
+    .post3 {
+        display: flex;
+    }
+
+    .post__author-logo3 {
+        height: 49px;
+        border-radius: 50%;
+        margin-right: 15px;
+        position: relative;
+        top: -4490px;
+        left: 40px;
+    }
+
+    .post__header3 {
+        display: flex;
+    }
+
+    .post__author-name3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-right: 5px;
+        position: relative;
+        top: -6185px;
+        left: 35px;
+    }
+
+    .post__publish-time3 {
+        font-size: 13px;
+        font-weight: 700;
+        margin-left: 5px;
+        color: #ffffff8f;
+        position: relative;
+        top: -7881px;
+        left: 125px;
+    }
+
+    .post__content3 {
+        color: white;
+        font-size: 15px;
+        font-weight: 700;
+        margin-left: 10px;
+        position: relative;
+        left: -40px;
+        top: -4445px;
+    }
+
+    .post__img3 {
+        height: 325px;
+        position: relative;
+        top: -6085px;
+        left: 105px;
+        border-radius: 15px;
+        margin-top: 10px;
+    }
+    /*POST 2**/
+    .post2 a {
+        color: #067212;
+    }
+
+        .post2 a:hover {
+            text-decoration: underline;
+        }
+
     .grid-container header {
         font-size:35px;
         padding: 0px;
@@ -472,4 +471,6 @@ main {
         left: 550px;
         top: 7px;
     }
+
+    /*/SIDEBAR/*/
  }
