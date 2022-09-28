@@ -26,13 +26,16 @@ global using RedSocialDeportiva.Client.Adapters;
 using RedSocialDeportiva.Client;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using RedSocialDeportiva.Client.Services;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
+builder.Services.AddTransient(sp=> new HttpClient { BaseAddress=new Uri("https://fortnite-api.com/v2/stats/br/v2") });
+builder.Services.AddScoped<IForniteService, ForniteService>();
+builder.Services.AddTransient(sp => new HttpClient { BaseAddress =  new Uri("https://fortnite-api.com/v2/stats/br/v2") });
 builder.Services.AddAuthorizationCore(); 
 
 #region Servicios agregados

@@ -1,7 +1,38 @@
-﻿@page "/EstadisticasBR" 
+﻿@page "/EstadisticasBR/{name}" 
+@using Models
+@using Services 
+@inject IForniteService ForniteService
 
+<h1>Estadisticas Fortnite</h1>
+
+<div>
+    @if (informacion == null)
+    {
+        <p><em>Cargando...</em></p>
+    }
+    else
+    {
+        <p>@informacion.name</p>
+        <p>@informacion.accounType</p>
+        <p>@informacion.timeWindow</p> 
+        <img src=@informacion.image/>
+    }
+</div>
 
 
 @code {
+    [Parameter]
+    public string name { get; set; } 
+    Estadisticas informacion; 
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (name != null)
+        {
+            informacion = await ForniteService.GetEstadisticasBR(name);
+        }
+
+    } 
+
 
 }
