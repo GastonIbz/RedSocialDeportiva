@@ -9,7 +9,6 @@
 
 main {
     overflow: hidden;
-  
     font-family: sans-serif;
     font-size: 1.2rem;
     min-height: 100%;
@@ -30,13 +29,14 @@ main {
 }
 
 .sidebar {
-    overflow-x: hidden;
+ 
     grid-area: sidebar;
     background-color: #1b1b1b;
 }
 .navbar {
     grid-area: navbar;
     background-color: #1b1b1b;
+  
 }
 .main {
     grid-area: main;
@@ -78,7 +78,7 @@ main {
         margin-right: 15px;
         position: relative;
         top: -1520px;
-        left:4px;
+        left: 4px;
     }
 
     .post__header {
@@ -147,7 +147,6 @@ main {
     }
 
     .post__author-logo2 {
-       
         height: 49px;
         border-radius: 50%;
         margin-right: 15px;
@@ -207,7 +206,7 @@ main {
             text-decoration: underline;
         }
 
-        /*/POST 3/*/
+    /*/POST 3/*/
     .post3 {
         display: flex;
     }
@@ -273,42 +272,38 @@ main {
         }
 
     .grid-container header {
-        font-size:35px;
+        font-size: 35px;
         padding: 0px;
         padding-left: 40px;
-
     }
 
         .grid-container header span {
-            color:#067212
+            color: #067212
         }
-        /*navbar*/
+    /*navbar*/
     .navbar-gral {
-        
-    position:relative;
-    top:120px;
+        position: relative;
+        top: 120px;
     }
 
-        .navbar-menu {
-            position: fixed;
+    .navbar-menu {
+        position: fixed;
+    }
 
-
-        }
     .navbar-menu__item {
         font-size: 20px;
         position: relative;
         top: -80px;
         left: 30px;
         font-weight: bold;
-        
     }
+
     .navbar-menu-title {
         color: #ffffff;
-     text-decoration:none;
+        text-decoration: none;
     }
 
     .navbar-menu__item-icon {
-       
         height: 33px;
         margin-right: 15px;
     }
@@ -324,7 +319,6 @@ main {
 
     .navbar-menu2 {
         position: fixed;
-        
     }
 
     .navbar-menu__item2 {
@@ -335,8 +329,8 @@ main {
         top: -20px;
         left: 30px;
         font-weight: bold;
-        
     }
+
         .navbar-menu__item2:hover {
             background: #067212b4;
             height: 42px;
@@ -344,20 +338,19 @@ main {
             Border-radius: 15px;
             cursor: pointer;
         }
+
     .navbar-menu-title2 {
         color: #ffffff;
         text-decoration: none;
     }
 
     .navbar-menu__item-icon2 {
-        
         height: 35px;
         margin-right: 18px;
     }
 
     .navbar-menu3 {
         position: fixed;
-
     }
 
     .navbar-menu__item3 {
@@ -368,21 +361,22 @@ main {
         left: 28px;
         font-weight: bold;
         padding: 0px;
-       
     }
+
         .navbar-menu__item3:hover {
             background: #067212b4;
             height: 42px;
             Border-radius: 15px;
             cursor: pointer;
         }
+
     .navbar-menu__item-icon3 {
         color: #ffffff;
         text-decoration: none;
         height: 31px;
         margin-right: 15px;
     }
-  
+
 
 
     .navbar-menu4 {
@@ -392,64 +386,60 @@ main {
     .navbar-menu__item4 {
         font-size: 20px;
         color: white;
-        font-weight:bold;
+        font-weight: bold;
         position: relative;
         top: 100px;
         left: 28px;
-      
-   
     }
+
     .navbar-menu__item-icon4 {
         color: #ffffff;
         text-decoration: none;
         height: 35px;
         margin-right: 15px;
-
-       
     }
+
     .navbar-menu__item4:hover {
-        
         background: #067212b4;
         height: 42px;
         Border-radius: 15px;
-         cursor: pointer;
+        cursor: pointer;
     }
- /*   *postbox**/
+    /*   *postbox**/
 
 
     .postbox__input img {
-        border-radius:50%;
-        height:50px;
+        border-radius: 50%;
+        height: 50px;
     }
-    .postBox form {
-        display:flex;
-        flex-direction:column;
 
+    .postBox form {
+        display: flex;
+        flex-direction: column;
     }
+
     .postbox__input {
         height: 140px;
         display: flex;
         padding: 20px;
-     
     }
+
         .postbox__input input {
             flex: 1;
             margin-left: 2px;
             font-size: 22px;
             border: none;
             outline: none;
-            color:white;
+            color: white;
             background-color: #00000020;
             padding-bottom: -200px;
             border-bottom: 4px solid green;
             padding-right: 10px;
-            border-radius:25px;
-
-
+            border-radius: 25px;
         }
+
     .postBox__postButton {
         background-color: #067212b4;
-        
         color: white;
         border: none;
         font-weight: 600;
@@ -459,18 +449,61 @@ main {
         margin-top: 2px;
         margin-left: 780px;
     }
+
         .postBox__postButton:hover {
             background-color: #06721268;
-          
         }
+
     .Footer-firm {
         color: whitesmoke;
         position: relative;
-        font-size:17px;
+        font-size: 17px;
         font-weight: 400;
         left: 550px;
         top: 7px;
     }
 
-    /*/SIDEBAR/*/
- }
+    /*/SIDEBAR Trends/*/
+
+    .trends-for-you {
+        border-radius: 15px;
+        background: #181818;
+   
+    }
+
+    .trends-for-you__heading {
+        font-size: 19px;
+   
+        color: white;
+        position:relative;
+        left:28px;
+        top:15px;
+    }
+
+    .trends-for-you__block {
+    
+        position: relative;
+        top: 20px;
+    }
+
+    .trends-for-you__trend-name {
+        font-size: 13px;
+        font-weight: 300;
+        color: white;
+        position: relative;
+        top: -3285px;
+        left: 40px;
+    }
+
+    .trends-for-you__meta-information {
+        font-size: 15px;
+        font-weight: 300;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 5px;
+        margin-top: 2px;
+        position: relative;
+        top: -1615px;
+        left: 35px;
+    }
+}
