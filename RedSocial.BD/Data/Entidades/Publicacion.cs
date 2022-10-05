@@ -10,8 +10,10 @@ namespace RedSocial.BD.Data.Entidades
     public class Publicacion : EntityBase
     {
         [Required]
-        [MaxLength(50)]
-        public string Usuario { get; set; }
+        public int UsuarioId { get; set; }  
+
+        public Usuario Usuario { get; set; } 
+
         [Required]
         [StringLength(100)]
         public string ContenidoPublicacion { get; set; }

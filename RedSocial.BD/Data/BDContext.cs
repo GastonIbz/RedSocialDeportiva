@@ -16,7 +16,7 @@ namespace RedSocial.BD.Data
         }
         
         public DbSet<Publicacion> TablaPublicacion { get; set; }
-        public DbSet<Ranking> TablaRanking { get; set; }
+    
         public DbSet<Usuario> TablaUsuario { get; set; }
     }
 }
