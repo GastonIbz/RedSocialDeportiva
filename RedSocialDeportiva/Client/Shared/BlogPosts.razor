@@ -1,0 +1,29 @@
+﻿@using RedSocialDeportiva.Shared
+@inject RedSocialDeportiva.Client.Services.BlogService.IBlogService BlogService
+
+<h3>BlogPost</h3>
+@foreach (var post in Posts)
+{
+    <div style="margin: 20px;">
+        <div>
+            <h3>@post.Title</h3>
+        </div>
+        <div>
+            @post.Description
+        </div>
+        <div>
+            <a href="/posts/@post.Url">Leer mas...</a>
+        </div>
+    </div>
+}
+
+
+
+@code {
+    private List<BlogPost> Posts = new List<BlogPost>();
+
+    protected override void OnInitialized()
+    {
+        Posts = BlogService.GetBlogPosts();
+    }
+}

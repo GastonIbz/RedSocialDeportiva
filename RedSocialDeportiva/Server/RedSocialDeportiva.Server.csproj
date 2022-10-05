@@ -28,6 +28,9 @@
     <ProjectReference Include="..\Client\RedSocialDeportiva.Client.csproj" />
     <ProjectReference Include="..\Shared\RedSocialDeportiva.Shared.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<Watch Include="..\Client\**\*.razor"/>
+	</ItemGroup>
 
 
 </Project>
