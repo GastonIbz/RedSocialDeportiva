@@ -1,0 +1,120 @@
+﻿@page "/Estadisticas";
+@inject StoreGlobal.GlobalStore storeGlobal;
+
+<header>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</header>
+<body>
+
+<main class="grid-container">
+    <header class="header"></header>
+
+    <aside class="sidebar">
+
+        
+
+    </aside>
+     <nav class="navbar"></nav>
+  
+    <article class="main" >
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="/dgt.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            
+                            <h5 class="card-title desplazar"> DGT - Franco Garcia</h5>
+                            <h6 class="card-h6 desplazar">Uruguay, Montevideo</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 9250</p>
+                            <p class="card-text desplazar">HeadShot: 49.5%</p>
+                            <p class="card-text desplazar">Total Muertes: 7588</p>
+                            <p class="card-text desplazar">Daño por ronda: 78.1</p>
+                            <p class="card-text desplazar">Mapas Jugados: 473</p>
+                            <p class="card-text desplazar">Roll: Rifler</p>
+
+                        </div>
+                            <button class="botones agrandar">
+                                <span class="fas fa-envelope"></span>
+                                Contactar
+                            </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/try.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title desplazar"> TRY -  Santino Rigal</h5>
+
+                            <h6 class="card-h6 desplazar">Argentina, Buenos Aires</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 7157</p>
+                            <p class="card-text desplazar">HeadShot: 34.3%</p>
+                            <p class="card-text desplazar">Total Muertes: 5594</p>
+                            <p class="card-text desplazar">Daño por ronda: 78.4</p>
+                            <p class="card-text desplazar">Mapas Jugados: 349</p>
+                            <p class="card-text desplazar">Roll: Awper</p>
+                        </div>
+                        <button class="botones agrandar">
+                            <span class="fas fa-envelope"></span>
+                            Contactar
+                        </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/Meyern.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title desplazar"> Meyern -  Ignacio Meyer</h5>
+
+                            <h6 class="card-h6 desplazar">Argentina, Santa Fe</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 9494</p>
+                            <p class="card-text desplazar">HeadShot: 54.3%</p>
+                            <p class="card-text desplazar">Total Muertes: 8609</p>
+                            <p class="card-text desplazar">Daño por ronda: 76.6</p>
+                            <p class="card-text desplazar">Mapas Jugados: 500</p>
+                            <p class="card-text desplazar">Roll: Rifler</p>
+                        </div>
+                        <button class="botones agrandar">
+                            <span class="fas fa-envelope"></span>
+                            Contactar
+                        </button>
+
+                    </div>
+
+                </div>
+           </div>
+
+      
+    </article>
+
+
+    <footer class="footer">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+
+    </footer>
+   
+</main>
+</body>
+
+
+@code{
+     private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    
+
+}

@@ -58,9 +58,9 @@ main {
     .grid-container {
         background-color: #0e0e0ef0;
         grid-template:
-            "header header header" 10px
-            "sidebar   main   navbar" 700px
-            "footer footer footer" 35px /
+            "header header header" 30px
+            "sidebar   main   navbar" 900px
+            "footer footer footer" 60px /
             0px auto 0px;
     }
     .contenedor {
@@ -72,7 +72,7 @@ main {
         
     }
     .card{
-        height: 400px;
+        height: 670px;
         width:300px;
         overflow:hidden;
         padding:10px 20px;
@@ -83,14 +83,32 @@ main {
         text-align:center;
         background: #06721262;
         position:relative;
-        top:50px;
-        left:20px;
+        top:100px;
+        left:60px;
+    }
+    .card-title {
+        color:white;
+        position:relative;
+        top:10px;
+    }
+    .card-h6 {
+        position:relative;
+        color:white;
+        left:-5px;
+        top:10px;
+    }
+    .card-text {
+        color: white;
+        text-align: justify;
+        position: relative;
+        left: 35px;
+        top: 10px;
     }
     .card:hover {
-        height:600px;
-        width:300px;
-        border-radius:5px;
-        box-shadow:0px 2px 10px #0e0e0ef0;
+        height: 600px;
+        width: 300px;
+        border-radius: 5px;
+        box-shadow: 0px 2px 10px #0e0e0ef0;
     }
     .card-encabezado img {
         position:relative;
@@ -162,7 +180,7 @@ main {
         border:none;
         border-radius:30px;
         box-shadow: 0 0 5px #808080;
-        padding:8px 15px;
+        padding:6px 15px;
         font-size: 16px;
         width: 80%;
         margin: 0 auto;
@@ -177,6 +195,15 @@ main {
     .botones span {
         margin-right: 10px; 
         font-size: 20px;
+    }
+    .pagination{
+    position:relative;
+    left: 540px;
+    top:15px;
+    }
+    .page-item{
+        padding:1px;
+
     }
 }
 
