@@ -38,6 +38,7 @@
                             <button class="botones agrandar">
                                 <span class="fas fa-envelope"></span>
                                 Contactar
+
                             </button>
                     </div>
                 </div>
@@ -56,12 +57,16 @@
                             <p class="card-text desplazar">Mapas Jugados: 349</p>
                             <p class="card-text desplazar">Roll: Awper</p>
                         </div>
+                    
                         <button class="botones agrandar">
                             <span class="fas fa-envelope"></span>
                             Contactar
+                            
                         </button>
                     </div>
                 </div>
+                      
+               
                 <div class="col">
                     <div class="card">
                         <img src="/Meyern.jpg" class="card-img-top" alt="...">
@@ -93,11 +98,11 @@
 
     <footer class="footer">
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <li class="page-item"><a class="back" href="Estadisticas3">Previous</a></li>
+                <li class="page-item"><a class="estadisticas" href="Estadisticas">1</a></li>
+                <li class="page-item"><a class="estadisticas2" href="Estadisticas2">2</a></li>
+                <li class="page-item"><a class="estadisticas3" href="Estadisticas3">3</a></li>
+                <li class="page-item"><a class="next" href="Estadisticas2">Next</a></li>
             </ul>
 
     </footer>
@@ -107,7 +112,7 @@
 
 
 @code{
-     private bool collapseNavMenu = true;
+    private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -115,6 +120,7 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
-    
+
+
 
 }

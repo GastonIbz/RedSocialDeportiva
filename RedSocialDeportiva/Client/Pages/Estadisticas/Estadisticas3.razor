@@ -1,0 +1,128 @@
+﻿@page "/Estadisticas3";
+@inject StoreGlobal.GlobalStore storeGlobal;
+
+<header>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</header>
+<body>
+
+<main class="grid-container">
+    <header class="header"></header>
+
+    <aside class="sidebar">
+
+        
+
+    </aside>
+     <nav class="navbar"></nav>
+  
+    <article class="main" >
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="/Cry.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            
+                            <h5 class="card-title desplazar"> Cry -  Owen Veron</h5>
+                            <h6 class="card-h6 desplazar">Argentina, Misiones</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 1797</p>
+                            <p class="card-text desplazar">HeadShot: 46.7%</p>
+                            <p class="card-text desplazar">Total Muertes: 2125</p>
+                            <p class="card-text desplazar">Daño por ronda: 69.2</p>
+                            <p class="card-text desplazar">Mapas Jugados: 113</p>
+                            <p class="card-text desplazar">Roll: Awper</p>
+
+                        </div>
+                            <button class="botones agrandar">
+                                <span class="fas fa-envelope"></span>
+                                Contactar
+
+                            </button>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="/Fusco.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title desplazar"> Fusco -  Lucas Fusco</h5>
+
+                            <h6 class="card-h6 desplazar">Argentina, Buenos Aires</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 1166</p>
+                            <p class="card-text desplazar">HeadShot: 48.6%</p>
+                            <p class="card-text desplazar">Total Muertes: 1378</p>
+                            <p class="card-text desplazar">Daño por ronda: 68.5</p>
+                            <p class="card-text desplazar">Mapas Jugados: 73</p>
+                            <p class="card-text desplazar">Roll: Rifler</p>
+                        </div>
+                    
+                        <button class="botones agrandar">
+                            <span class="fas fa-envelope"></span>
+                            Contactar
+                            
+                        </button>
+                    </div>
+                </div>
+                      
+               
+                <div class="col">
+                    <div class="card">
+                        <img src="/Andrew.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title desplazar"> Andrew -  Andrés Clavijo</h5>
+
+                            <h6 class="card-h6 desplazar">Uruguay, Montevideo</h6>
+                            <br />
+                            <p class="card-text desplazar">Total Asesinatos: 4798</p>
+                            <p class="card-text desplazar">HeadShot: 38.3%</p>
+                            <p class="card-text desplazar">Total Muertes: 5116</p>
+                            <p class="card-text desplazar">Daño por ronda: 73.7</p>
+                            <p class="card-text desplazar">Mapas Jugados: 273</p>
+                            <p class="card-text desplazar">Roll: Lurker</p>
+                        </div>
+                        <button class="botones agrandar">
+                            <span class="fas fa-envelope"></span>
+                            Contactar
+                        </button>
+
+                    </div>
+
+                </div>
+           </div>
+
+      
+    </article>
+
+
+    <footer class="footer">
+
+            <ul class="pagination">
+                <li class="page-item"><a class="back" href="Estadisticas2">Previous</a></li>
+
+                <li class="page-item"><a class="estadisticas" href="Estadisticas">1</a></li>
+                <li class="page-item"><a class="estadisticas2" href="Estadisticas2">2</a></li>
+                <li class="page-item"><a class="estadisticas3" href="Estadisticas3">3</a></li>
+                <li class="page-item"><a class="next" href="Estadisticas">Next</a></li>
+            </ul>
+
+    </footer>
+   
+</main>
+</body>
+
+
+@code{
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+
+
+}
