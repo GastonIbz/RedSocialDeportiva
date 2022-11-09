@@ -1,0 +1,32 @@
+﻿@page "/EstadisticaA/Crear"
+@inject IHttpService http
+@inject NavigationManager NavigatorManager
+
+<h3>Nueva estadistica</h3> 
+
+ <FormEstadistica estadistica ='estadistica' onCancel='Cancelar' onValidSubmit='Grabar'/> 
+ 
+
+
+
+@code {
+
+    private EntidadEstadistica  estadistica = new EntidadEstadistica();  
+
+    private async void Grabar()
+    {
+        var httpRespuesta = await http.Post<EntidadEstadistica>("api/EstadisticaA", estadistica);
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HtttpResponse;
+            NavigatorManager.NavigateTo("/EstadisticaA");
+        }
+         NavigatorManager.NavigateTo("/EstadisticaA");
+    }
+     private void Cancelar()
+    {
+          NavigatorManager.NavigateTo("/EstadisticaA");
+    }
+
+   
+}

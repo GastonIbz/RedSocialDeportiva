@@ -28,19 +28,20 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using RedSocialDeportiva.Client.Services;
 using RedSocialDeportiva.Client.Services.BlogService;
+using RedSocialDeportiva.Client.Servicios;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped<IBlogService, BlogService>();
-builder.Services.AddScoped<IForniteService, ForniteService>();
 
-builder.Services.AddTransient(sp=> new HttpClient { BaseAddress=new Uri("https://fortnite-api.com/v2/stats/br/v2") });
-builder.Services.AddTransient(sp => new HttpClient { BaseAddress =  new Uri("https://fortnite-api.com/v2/stats/br/v2") });
+
+
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddAuthorizationCore(); 
+builder.Services.AddAuthorizationCore();
 
+builder.Services.AddScoped<IHttpService, HttpService>();
 #region Servicios agregados
 
 // Store's

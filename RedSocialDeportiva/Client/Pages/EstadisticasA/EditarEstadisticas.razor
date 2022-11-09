@@ -1,0 +1,51 @@
+﻿@page "/EstadisticaA/Editar/{EstadisticasId:int}"
+@inject IHttpService http
+@inject NavigationManager NavigatorManager
+
+
+<h3>Editar estadisticas</h3>
+<FormEstadistica estadistica ='estadistica' onCancel='Cancelar' onValidSubmit='Grabar'/> 
+ 
+
+
+
+
+@code {
+    private EntidadEstadistica estadistica = new EntidadEstadistica();
+    [Parameter] public int EstadisticasId{ get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        await Mostrar();
+    }
+
+    private async Task Mostrar()
+    {
+        var respuesta = await http.Get<EntidadEstadistica>($"api/EstadisticaA/{EstadisticasId}");
+        if (respuesta.Error)
+        {
+            var body = respuesta.Respuesta; 
+        }
+        else
+        {
+            estadistica = respuesta.Respuesta;
+        }
+    }
+
+
+    
+    private async void Grabar()
+    {
+        var respuesta = await http.Put<EntidadEstadistica>($"api/EstadisticaA/{EstadisticasId}", estadistica);
+         if (respuesta.Error)
+        {
+            var body = respuesta.HtttpResponse;
+           
+        }
+         NavigatorManager.NavigateTo("/EstadisticaA");
+    }
+    private void Cancelar()
+    {
+        NavigatorManager.NavigateTo("/EstadisticaA");
+    }
+}
