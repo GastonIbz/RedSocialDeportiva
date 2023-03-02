@@ -2,16 +2,16 @@
 @inject IHttpService http
 @inject NavigationManager NavigatorManager
 
-<h3>Nueva estadistica</h3> 
+<h3>Nueva estadistica</h3>
 
- <FormEstadistica estadistica ='estadistica' onCancel='Cancelar' onValidSubmit='Grabar'/> 
- 
+<FormEstadistica estadistica='estadistica' onCancel='Cancelar' onValidSubmit='Grabar' />
+
 
 
 
 @code {
 
-    private EntidadEstadistica  estadistica = new EntidadEstadistica();  
+    private EntidadEstadistica estadistica = new EntidadEstadistica();
 
     private async void Grabar()
     {
@@ -21,12 +21,12 @@
             var body = httpRespuesta.HtttpResponse;
             NavigatorManager.NavigateTo("/EstadisticaA");
         }
-         NavigatorManager.NavigateTo("/EstadisticaA");
+        NavigatorManager.NavigateTo("/EstadisticaA");
     }
-     private void Cancelar()
+    private void Cancelar()
     {
-          NavigatorManager.NavigateTo("/EstadisticaA");
+        NavigatorManager.NavigateTo("/EstadisticaA");
     }
 
-   
+
 }

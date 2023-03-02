@@ -1,0 +1,111 @@
+﻿<EditForm Model="estadistica" OnValidSubmit="onValidSubmit">
+    <DataAnnotationsValidator />
+    <div class="form-group">
+        <label>Username</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.Username" />
+            <ValidationMessage For="@(()=> estadistica.Username)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Nombre Equipo</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.NombreEquipo" />
+            <ValidationMessage For="@(()=> estadistica.NombreEquipo)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Juego Profesional</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.JuegoProfesional" />
+            <ValidationMessage For="@(()=> estadistica.JuegoProfesional)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Posicion mundial</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.PosicionMundial" />
+            <ValidationMessage For="@(()=> estadistica.PosicionMundial)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Posicion pais natal</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.PosicionPaisNatal" />
+            <ValidationMessage For="@(()=> estadistica.PosicionPaisNatal)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Ganadas</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.Ganadas" />
+            <ValidationMessage For="@(()=> estadistica.Ganadas)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Perdidas</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.Perdidas" />
+            <ValidationMessage For="@(()=> estadistica.Perdidas)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>empatadas</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.empatadas" />
+            <ValidationMessage For="@(()=> estadistica.empatadas)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>MVP</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.MVP" />
+            <ValidationMessage For="@(()=> estadistica.MVP)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Mayor logro</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.MayorLogro" />
+            <ValidationMessage For="@(()=> estadistica.MayorLogro)" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Horas</label>
+        <div>
+            <InputText class="form-control" @bind-Value="estadistica.Horas" />
+            <ValidationMessage For="@(()=> estadistica.Horas)" />
+        </div>
+    </div>
+
+
+
+    <br />
+
+
+
+    <button class="btn btn-primary" type="submit"> Aceptar</button>
+    <button class="btn btn-secondary" @onclick="onCancel"> Cancelar</button>
+</EditForm>
+
+
+
+
+
+
+@code {
+    [Parameter] public EntidadEstadistica estadistica { get; set; }
+    [Parameter] public EventCallback onValidSubmit { get; set; }
+    [Parameter] public EventCallback onCancel { get; set; }
+
+}

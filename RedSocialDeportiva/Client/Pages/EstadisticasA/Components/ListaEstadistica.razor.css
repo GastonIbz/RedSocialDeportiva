@@ -1,0 +1,69 @@
+﻿/*Metodologia BEM de CSS: https://animaticss.com/articulo/que-es-bem-css/ */
+
+.containerFormLogin {
+    width: 100%;
+    padding: 4rem 1.25rem;
+    background: #1b1b1bff;
+    color:white;
+    position: absolute;
+    border-radius: 1.25rem;
+    text-align: center;
+}
+
+    .containerFormLogin h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1.25rem;
+        color: #02490a;
+    }
+    
+
+    .containerFormLogin button {
+        padding: 0.5rem 2rem;
+        margin-top: 1rem;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        background: #02490a;
+        color: #ffffff;
+        outline: none;
+    }
+
+.containerFormLogin--show {
+    opacity: 1;
+    padding: 8.5rem 1.25rem;
+}
+
+.containerFormLogin--hide {
+    display: none;
+    opacity: 0;
+}
+
+
+
+/*.containerFormLogin__input {
+    width: 10%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: none;
+    background: #f2f2f2;
+    font-size: 1rem;
+    outline: none;
+
+    color: red !important;
+}*/
+
+
+@media screen and (max-width: 450px) {
+
+    .containerFormLogin {
+        position: relative;
+    }
+
+    .containerFormLogin--show {
+        display: block;
+        opacity: 1;
+        padding: 4rem 1.25rem;
+    }
+
+}

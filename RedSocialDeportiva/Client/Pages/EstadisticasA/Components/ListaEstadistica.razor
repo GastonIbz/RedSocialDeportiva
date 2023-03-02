@@ -1,0 +1,128 @@
+﻿@page "/EstadisticaA"
+
+
+@inject IHttpService http
+
+<a class="btn btn-primary" href="/EstadisticaA/Crear"> Nueva Estadisticas</a>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>NombreEquipo</th>
+        <th>JuegoProfesional</th>
+        <th>PosicionMundial</th>
+        <th>PosicionPaisNatal</th>
+        <th>PartidasJugadas</th>
+        <th>Ganadas</th>
+        <th>Perdidas</th>
+        <th>Empatadas</th>
+        <th>MVP</th>
+        <th>MayorLogro</th>
+        <th>Horas</th>
+
+
+    </tr>
+    @if (estadisticasG == null)
+    {
+        <tr>Cargando...</tr>
+    }
+    else if (estadisticasG.Count == 0)
+    {
+        <tr>No existen datos</tr>
+    }
+    else
+    {
+        @foreach (var item in estadisticasG)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    <a class="btn btn-primary" href="/EstadisticaA/Editar/@item.id"> Editar</a>
+                </td>
+                <td>@item.Username</td>
+                <td>@item.NombreEquipo</td>
+                <td>@item.JuegoProfesional</td>
+                <td>@item.PosicionMundial</td>
+                <td>@item.PosicionPaisNatal</td>
+                <td>@item.PartidasJugadas </td>
+                <td>@item.Ganadas</td>
+                <td>@item.Perdidas</td>
+                <td>@item.empatadas</td>
+                <td>@item.MVP</td>
+                <td>@item.MayorLogro</td>
+                <td>@item.Horas</td>
+
+                <td>
+                    <button class="btn btn-warning" @onclick="()=>Eliminar(item)">
+                        Eliminar
+
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+<Confirmacion @ref="confirmacion"
+              verCancelar="true"
+              verOk="true" textCancelar="Cancelar" onCancel="cancelar" onConfirm="Borrar">
+    <div>
+        La estadistica @EBorrar.Username sera eliminada.
+        <br />
+        ¿Esta seguro que desea continuar?
+    </div>
+
+</Confirmacion>
+
+
+
+@code {
+
+    List<EntidadEstadistica> estadisticasG;
+    EntidadEstadistica EBorrar;
+    Confirmacion confirmacion;
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitializedAsync();
+        await Leer();
+    }
+
+    private async Task Leer()
+    {
+
+        var respuesta = await http.Get<List<EntidadEstadistica>>("api/EstadisticaA");
+        if (!respuesta.Error)
+        {
+            estadisticasG = respuesta.Respuesta;
+        }
+    }
+
+    private void Eliminar(EntidadEstadistica borrar)
+    {
+        EBorrar = borrar;
+        confirmacion.Ver();
+
+    }
+    private void cancelar()
+    {
+        confirmacion.Ocultar();
+        EBorrar = null;
+    }
+    private async Task Borrar()
+    {
+        var respuesta = await http.Delete($"api/EstadisticaA/{EBorrar.id}");
+        if (respuesta.Error)
+        {
+            var body = "Error";
+
+        }
+        cancelar();
+        await Leer();
+    }
+}
