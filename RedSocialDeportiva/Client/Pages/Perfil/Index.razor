@@ -1,0 +1,61 @@
+﻿
+@page "/Perfil"
+@inject NavigationManager UriHelper
+@*Incorporamos el store dentro del index *@
+@inject StoreGlobal.GlobalStore storeGlobal;
+
+<header>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</header>
+<head>
+    <title> Perfil </title>
+
+</head>
+<body>
+    <div class="header">
+        <img class="avatar" src="./h6.png" />
+        <h1 class="username">Nickname</h1>
+        <h1 class="username2">20 Años - Argentina.</h1>
+    </div>
+    <ul class="socials">
+        <li>
+            <a href="mailto:nicknameplayer@gmail.com">
+                nicknameplayer@gmail.com
+            </a>
+        </li>
+        <li>
+            <a href="388569971">Telefono</a>
+        </li>
+    </ul>
+    <div class="about">
+        <h3> Acerca de mi: </h3>
+        <p>
+            ¡Hola! Soy Nicolas "NickName" Ibz, tengo 20 años y soy jugador de Counter-Strike.  En este momento me encuentro en busca de un nuevo equipo para participar de torneos, me caracterizo por mi capacidad para tomar decisiones precisas en momentos cruciales.  Soy un jugador de apoyo y busco asegurar que mi equipo se lleve la victoria.   ¡Gracias por leer! No dudes en contactarme. Cordóba - Argentina.
+</p>
+      
+    </div>
+    <div class="estadisticas">
+        <h3> Estadisticas: </h3>
+        <p>Total Asesinatos: 9250 - HeadShot: 49.5% - Total Muertes:8455 - Daño por ronda: 78.4 - Mapas Jugados: 582 - Roll: Rifler </p>
+      
+      
+    </div>
+
+</body>
+
+@code{
+     private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    void Navigate()
+{
+
+}
+
+}

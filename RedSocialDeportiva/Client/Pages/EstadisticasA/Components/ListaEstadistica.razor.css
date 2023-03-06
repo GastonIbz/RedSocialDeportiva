@@ -3,7 +3,7 @@
 .containerFormLogin {
     width: 100%;
     padding: 4rem 1.25rem;
-    background: #1b1b1bff;
+    background: #ff0000;
     color:white;
     position: absolute;
     border-radius: 1.25rem;
@@ -14,7 +14,7 @@
         font-size: 2rem;
         text-align: center;
         margin-bottom: 1.25rem;
-        color: #02490a;
+        color: red;
     }
     
 

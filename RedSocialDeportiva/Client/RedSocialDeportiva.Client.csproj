@@ -25,4 +25,10 @@
     <ProjectReference Include="..\Shared\RedSocialDeportiva.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Pages\Perfil\Index.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 </Project>
